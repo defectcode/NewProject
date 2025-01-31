@@ -72,7 +72,7 @@ export default function Header() {
             <div className={`flex flex-col md:flex-row justify-between max-lg:flex-col max-lg:justify-center customStyles`}>
               <div className="flex flex-col mb-10 max-md:mb-0 items-center md:flex-row gap-3 max-md:gap-0 max-lg:flex-col max-lg:justify-center">
                 <div className="md:hidden flex flex-col items-center justify-center mt-8">
-                  <Image src="/imgs/Collaboration.svg" alt='logo' className='w-[188px] h-auto max-md:mb-4' width={143} height={25} />
+                  <Image src="/imgs/ExclusiveCollaborations.svg" alt='logo' className='w-[188px] h-auto max-md:mb-4' width={143} height={25} />
                   <h3 className="text-lg max-md:text-[14px] text-[#979797] font-avenirRoman max-md:mb-4 max-md:leading-4" style={{ fontFamily: 'Avenir Roman, sans-serif' }}>
                     <span style={{ display: 'inline-block', width: '3px', height: '3px', backgroundColor: '#979797', borderRadius: '50%', margin: '0 5px', verticalAlign: 'middle' }}></span> Sci-Fi
                   </h3>
@@ -80,7 +80,7 @@ export default function Header() {
                 {!showSupportInNavbar && (
                     <div className='flex items-end justify-between min-w-[1200px] w-full'>
                       <div className="flex flex-col items-start px-2 space-y-[10px] max-md:mb-4 font-avenirHeavy max-md:hidden">
-                        <Image src="/imgs/Collaboration.svg" alt='logo' className='w-[188px] h-auto max-md:mb-4' width={336} height={25} />
+                        <Image src="/imgs/ExclusiveCollaborations.svg" alt='logo' className='w-[188px] h-auto max-md:mb-4' width={336} height={25} />
                         <p className='leading-[1] text-[15px]'>
                           Partner with a loyal, premium audience through <br/> authentic, impact content. Apply for a proposal.
                         </p>
