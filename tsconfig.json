@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/Header/components/VideoPlayer.jsx", "src/app/components/Carousel/Carousel.jsx", "src/app/components/Carousel/Components/Title.jsx", "src/app/components/Carousel/Components/Progres.jsx", "src/app/components/Carousel/Components/PrevButton.jsx", "src/app/components/Carousel/Components/NextButton.jsx", "src/app/components/Carousel/Components/Dots.jsx", "src/app/components/Carousel/Components/Button.jsx", "src/app/components/Footer/Footer.jsx", "src/app/components/Header/Header.jsx", "src/app/components/Header/components/Navbar.jsx", "src/app/components/Header/components/Icons.jsx", "src/app/components/Header/components/DynamicVideoPlayer.jsx", "src/app/components/Header/components/Support.jsx"],
+  "exclude": ["node_modules"]
+}
