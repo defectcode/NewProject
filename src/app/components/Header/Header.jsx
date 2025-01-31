@@ -73,9 +73,9 @@ export default function Header() {
               <div className="flex flex-col mb-10 max-md:mb-0 items-center md:flex-row gap-3 max-md:gap-0 max-lg:flex-col max-lg:justify-center">
                 <div className="md:hidden flex flex-col items-center justify-center mt-8">
                   <Image src="/imgs/ExclusiveCollaborations.svg" alt='logo' className='w-[188px] h-auto max-md:mb-4' width={143} height={25} />
-                  <h3 className="text-lg max-md:text-[14px] text-[#979797] font-avenirRoman max-md:mb-4 max-md:leading-4" style={{ fontFamily: 'Avenir Roman, sans-serif' }}>
+                  {/* <h3 className="text-lg max-md:text-[14px] text-[#979797] font-avenirRoman max-md:mb-4 max-md:leading-4" style={{ fontFamily: 'Avenir Roman, sans-serif' }}>
                     <span style={{ display: 'inline-block', width: '3px', height: '3px', backgroundColor: '#979797', borderRadius: '50%', margin: '0 5px', verticalAlign: 'middle' }}></span> Sci-Fi
-                  </h3>
+                  </h3> */}
                 </div>
                 {!showSupportInNavbar && (
                     <div className='flex items-end justify-between min-w-[1200px] w-full'>
@@ -117,7 +117,7 @@ export default function Header() {
                     </div>
                   )} 
                   <div className="flex items-center gap-5 max-lg:gap-1 text-[#979797] max-lg:flex-col max-md:space-y-0 max-md:mb-4">
-                    <h3 className="text-lg max-md:text-base hidden md:block font-avenirRoman">Drama • Sci-Fi • 2024</h3>
+                    {/* <h3 className="text-lg max-md:text-base hidden md:block font-avenirRoman">Drama • Sci-Fi • 2024</h3> */}
                     <div className="flex items-end justify-between gap-5 px-5">
                       <Image src="/imgs/dior.svg" width={37} height={1} alt="dior" className=" h-auto" />
                       <Image src="/imgs/hermes.svg" width={48} height={1} alt="hermes" className="h-auto  " />
