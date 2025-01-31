@@ -82,7 +82,7 @@ export default function Header() {
                       <div className="flex flex-col items-start px-2 space-y-[10px] max-md:mb-4 font-avenirHeavy max-md:hidden">
                         <Image src="/imgs/Collaboration.svg" alt='logo' className='w-[188px] h-auto max-md:mb-4' width={336} height={25} />
                         <p className='leading-[1] text-[15px]'>
-                          Strategic brand partnerships with <br/> premium content. Get your propusal
+                          Partner with a loyal, premium audience through <br/> authentic, impact content. Apply for a proposal.
                         </p>
 
                         <button
@@ -103,8 +103,8 @@ export default function Header() {
                 )}
                 <div className=" md:flex md:flex-col md:items-start md:hidden">
                   <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-md:leading-[1.125rem] max-lg:text-start max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 max-md:mx-4 font-ekMukta tracking-neg-3percent">
-                    Strategic brand partnerships with premium content.<br/> 
-                    Get your propusal, apply now for a colaboration.
+                    Partner with a loyal, premium audience through <br/>
+                    authentic, high-impact content. Apply for a proposal.
                   </p>
                    {!showSupportInNavbar && (
                     <div className="md:hidden flex justify-center max-md:mb-4">
