@@ -1,0 +1,193 @@
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Adaptation Header for all version phone */
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+  .header {
+    height: 70vh;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .header {
+    height: 80vh; 
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .header {
+    height: 93vh; 
+  }
+}
+
+@media only screen and (max-width: 416px) {
+  .header {
+    height: 93vh; 
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .header {
+    height: 89vh; 
+  }
+}
+
+.header {
+  width: 100%; 
+}
+
+.bgMobile {
+  background-image: url('/imgs/SeriesConcept/HeaderMobile.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: flex;
+}
+
+.bgDesktop {
+  background-image: url('/imgs/SeriesConcept/SeriesConcept.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+.gradientOverlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.75) 25%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.25) 75%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 30%;
+}
+
+/* Flexbox utility classes */
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+/* Adaptation Header for all version phone*/
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+  .headerCrowdfunding {
+    height: 70vh;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .headerCrowdfunding {
+    height: 80vh; 
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .headerCrowdfunding {
+    height: 90vh; 
+  }
+}
+
+@media only screen and (max-width: 416px) {
+  .headerCrowdfunding {
+    height: 93vh; 
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .headerCrowdfunding {
+    height: 80vh + 40px; 
+  }
+}
+
+.headerCrowdfunding {
+  width: 100%; 
+}
+
+@media only screen and (min-width: 415px) and (max-width: 768px) {
+  .headerCrowdfunding {
+    height: 90vh;
+  }
+}
+
+@media only screen and (width: 428px) {
+  .headerCrowdfunding {
+    height: 80vh;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .headerCrowdfunding {
+    height: 100vh;
+  }
+}
+
+
+.headerCrowdfunding {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+
+
+
+
+/* Exemplu de utilizare a Tailwind pentru breakpoints iPhone */
+@screen sm {
+  .headerMobile {
+      height: calc(100vh - 30vh); /* Ajustează pentru iPhone 12/13 Mini */
+  }
+}
+
+@screen md {
+  .headerMobile {
+      height: calc(100vh - 32vh); /* Ajustează pentru iPhone 12/13 */
+  }
+}
+
+@screen lg {
+  .headerMobile {
+      height: calc(100vh - 33vh); /* Ajustează pentru iPhone 12/13 Pro */
+  }
+}
+
+@screen xl {
+  .headerMobile {
+      height: calc(100vh - 40vh); /* Ajustează pentru iPhone 12/13 Pro Max */
+  }
+}
+
