@@ -101,7 +101,7 @@ export default function GoalDropdown() {
   };
 
   return (
-    <div className="relative w-full text-[#1E1E1E]">
+    <div className="relative w-full text-[#1E1E1E] font-heboo">
       <label className="block text-[16px] font-semibold mb-2" htmlFor="goal">
         Goal
       </label>

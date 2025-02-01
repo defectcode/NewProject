@@ -44,7 +44,7 @@ export default function ProposalWindow({ onClose }) {
 
   if (isSubmitted) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 font-heboo">
         <div className="bg-white shadow-lg rounded-lg px-5 max-w-[431px] h-[344px] mx-auto text-center flex flex-col items-center justify-center w-full">
            <div className="flex justify-end items-center w-full">
               <button onClick={onClose} className="text-[#1E1E1E] text-5xl">
@@ -71,7 +71,7 @@ export default function ProposalWindow({ onClose }) {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white shadow-xl rounded-2xl p-5 w-full max-w-[430px] mx-auto">
         <div className="flex justify-between items-center w-full">
-          <h2 className="text-[20px] text-[#1E1E1E] font-ek-mukta font-extrabold mb-5 flex items-center justify-center">Request a Custom Proposal</h2>
+          <h2 className="text-[20px] text-[#1E1E1E] font-extrabold mb-5 flex items-center justify-center">Request a Custom Proposal</h2>
           <button onClick={onClose} className="text-[#1E1E1E] text-5xl">
             <Image src="/icons/closeBlack.svg" width={14} height={14} alt='close' className='mb-[20px] mr-2 text-[#1E1E1E]'/>
           </button>

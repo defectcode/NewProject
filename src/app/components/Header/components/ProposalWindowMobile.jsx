@@ -45,7 +45,7 @@ export default function ProposalWindowMobile({ onClose }) {
 
   if (isSubmitted) {
     return (
-      <div className="flex flex-col items-center justify-between h-[344px] bg-[#F9F9F9] rounded-lg text-center w-full">
+      <div className="flex flex-col items-center justify-between h-[344px] bg-[#F9F9F9] rounded-lg text-center w-full font-heboo">
         <div className="flex justify-end items-center w-full">
           <button onClick={onClose} className="text-[#1E1E1E] text-5xl">
             <Image src="/icons/closeBlack.svg" width={14} height={14} alt='close' className='mb-[20px] mr-2 text-[#1E1E1E]'/>
@@ -67,16 +67,16 @@ export default function ProposalWindowMobile({ onClose }) {
   }
 
   return (
-    <div className="text-[#1E1E1E] w-full">
+    <div className="text-[#1E1E1E] w-full font-heboo">
         <div className="flex justify-between items-center w-full mt-5">
-          <h2 className="text-[20px] text-[#1E1E1E] font-ek-mukta font-extrabold mb-5 flex items-center justify-center">Request a Proposal</h2>
+          <h2 className="text-[20px] text-[#1E1E1E] font-extrabold mb-5 flex items-center justify-center">Request a Proposal</h2>
           <button onClick={onClose} className="text-[#1E1E1E] text-5xl">
             <Image src="/icons/closeBlack.svg" width={14} height={14} alt='close' className='mb-[20px] mr-2 text-[#1E1E1E]'/>
           </button>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-[16px] font-semibold mb-1" htmlFor="name">
+              <label className="block text-[16px] font-semibold mb-1 font-heboo" htmlFor="name">
                   Name
               </label>
               

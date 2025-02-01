@@ -56,7 +56,7 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="relative h-[100dvh] max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">
+    <div className="relative h-[100dvh] max-md:h-[var(--viewport-height)] w-auto text-white overflow-hidden">
       <div
         ref={headerRef}
         className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/Background.webp')] bg-[url('/imgs/mobile.webp')] max-md:background-fixed`}
