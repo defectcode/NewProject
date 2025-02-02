@@ -25,9 +25,9 @@ export default function Navbar({ openModal }) {
 
   return (
     <nav className="bg-transparent fixed top-0 w-full h-10 md:h-11 z-50 font-avenirRoman">
-      <div className="max-w-[1200px] flex justify-between items-center h-full mx-5 md:mx-auto relative z-50 mt-2">
-        <div className="flex items-center h-full">
-            <Link href="/"><Image src="/imgs/Valery Fain.svg" alt='logo' className='md:w-200 h-auto' width={117} height={25} /></Link>
+      <div className="max-w-[1200px] flex justify-between items-center h-[20px] mx-5 md:mx-auto relative z-50 mt-5">
+        <div className="flex items-center h-[20px]">
+            <Link href="/"><Image src="/imgs/Valery Fain.svg" alt='logo' className='md:w-200 h-auto' width={131} height={20} /></Link>
         </div>
 
         <div className='flex gap-10 items-center justify-center'>

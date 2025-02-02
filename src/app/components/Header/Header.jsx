@@ -61,9 +61,9 @@ export default function Header() {
         ref={headerRef}
         className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/Background.webp')] bg-[url('/imgs/mobile.webp')] max-md:background-fixed`}
       ></div>
-      <div className={`absolute bottom-0 w-full h-3/6 -mb-2 bg-gradient-to-t  ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}
+      <div className={`absolute bottom-0 w-full md:h-1/5 h-[40%] -mb-2 bg-gradient-to-t  ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''}`}
       style={{
-        background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8) 10%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0) 100%)',
+        background: 'linear-gradient(to top, rgba(0, 0, 0, 0.99) 10%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.01) 100%)',
       }}></div>
       <div className={`relative z-10 h-full overflow-auto ${isModalOpen ? 'blur-sm' : ''}`}>
         <Navbar showSupportInNavbar={showSupportInNavbar} openModal={openModal} />
@@ -71,23 +71,24 @@ export default function Header() {
           <div className="flex-grow flex flex-col justify-end header-content max-md:p-0">
             <div className={`flex flex-col md:flex-row justify-between max-lg:flex-col max-lg:justify-center customStyles`}>
               <div className="flex flex-col mb-10 max-md:mb-0 items-center md:flex-row gap-3 max-md:gap-0 max-lg:flex-col max-lg:justify-center">
-                <div className="md:hidden flex flex-col items-center justify-center mt-8">
-                  <Image src="/imgs/ExclusiveCollaborations.svg" alt='logo' className='w-[188px] h-auto max-md:mb-4' width={143} height={25} />
-                  {/* <h3 className="text-lg max-md:text-[14px] text-[#979797] font-avenirRoman max-md:mb-4 max-md:leading-4" style={{ fontFamily: 'Avenir Roman, sans-serif' }}>
-                    <span style={{ display: 'inline-block', width: '3px', height: '3px', backgroundColor: '#979797', borderRadius: '50%', margin: '0 5px', verticalAlign: 'middle' }}></span> Sci-Fi
-                  </h3> */}
+                <div className="md:hidden flex flex-col items-center justify-center mt-8 leading-[1] mb-5">
+                  <h2 className='font-ekMukta text-[24px]'>
+                    Exclusive Collaborations
+                  </h2>
                 </div>
                 {!showSupportInNavbar && (
                     <div className='flex items-end justify-between min-w-[1200px] w-full'>
                       <div className="flex flex-col items-start px-2 space-y-[10px] max-md:mb-4 font-avenirHeavy max-md:hidden">
-                        <Image src="/imgs/ExclusiveCollaborations.svg" alt='logo' className='w-[188px] h-auto max-md:mb-4' width={336} height={25} />
-                        <p className='leading-[1] text-[15px]'>
+                      <h2 className='font-ekMukta text-[24px] leading-[1] font-extrabold'>
+                        Exclusive Collaborations
+                      </h2>
+                        <p className='leading-[1.2] text-[15px] font-ekMukta'>
                           Partner with a loyal, premium audience through <br/> authentic, impact content. Apply for a proposal.
                         </p>
 
                         <button
                             onClick={openModal}
-                            className="bg-[#F5F5F7] text-[#1E1E1E] rounded-lg px-4 py-2 cursor-pointer w-[249px] h-[40px]"
+                            className="bg-[#F5F5F7] text-[#1E1E1E] rounded-lg px-5 py-2 cursor-pointer w-[289px] h-[40px] avenir-heavy text-[15px]"
                           >
                             Apply
                           </button>
@@ -101,24 +102,23 @@ export default function Header() {
                       </div>
                     </div>
                 )}
-                <div className=" md:flex md:flex-col md:items-start md:hidden">
-                  <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-md:leading-[1.125rem] max-lg:text-start max-md:text-center max-md:mb-4 text-[#CDCDCD] mx-0 max-md:mx-4 font-ekMukta tracking-neg-3percent">
+                <div className=" md:flex md:flex-col md:items-start md:hidden font-avenirHeavy">
+                  <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-md:leading-[1.125rem] max-lg:text-start max-md:text-center max-md:mb-5 text-[#CDCDCD] mx-0 max-md:mx-4 font-ekMukta tracking-neg-3percent">
                     Partner with a loyal, premium audience through <br/>
                     authentic, high-impact content. Apply for a proposal.
                   </p>
                    {!showSupportInNavbar && (
-                    <div className="md:hidden flex justify-center max-md:mb-4">
+                    <div className="md:hidden flex justify-center max-md:mb-5">
                       <button
                         onClick={openModal}
-                        className="bg-[#F5F5F7] text-[#1E1E1E] rounded-lg px-4 py-2 cursor-pointer w-[189px] h-[40px]"
+                            className="bg-[#F5F5F7] text-[#1E1E1E] rounded-lg px-5 py-2 cursor-pointer w-[189px] h-[40px] avenir-heavy text-[15px]"
                       >
                         Apply
                       </button>
                     </div>
                   )} 
-                  <div className="flex items-center gap-5 max-lg:gap-1 text-[#979797] max-lg:flex-col max-md:space-y-0 max-md:mb-4">
-                    {/* <h3 className="text-lg max-md:text-base hidden md:block font-avenirRoman">Drama • Sci-Fi • 2024</h3> */}
-                    <div className="flex items-end justify-between gap-5 px-5">
+                  <div className="flex items-center gap-5 max-lg:gap-1 text-[#979797] max-lg:flex-col max-md:space-y-0 max-md:mb-[15px]">
+                    <div className="flex items-end justify-between gap-5 px-[25px]">
                       <Image src="/imgs/dior.svg" width={37} height={1} alt="dior" className=" h-auto" />
                       <Image src="/imgs/hermes.svg" width={48} height={1} alt="hermes" className="h-auto  " />
                       <Image src="/imgs/cartier.svg" width={45} height={12.46} alt="cartier" className=" h-auto" />

@@ -35,6 +35,8 @@ const config = {
         avenirHeavy: ['Avenir', 'sans-serif'], // Definim Avenir Heavy aici
         inter: ['Inter', 'sans-serif'],
         heboo: ['Heboo', 'sans-serif'],
+        'avenir-heavy': ['Avenir Heavy', 'sans-serif'],
+
       },
       screens: {
         xs: '650px',
