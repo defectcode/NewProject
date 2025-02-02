@@ -14,7 +14,7 @@ const ModalApplyH = ({ isOpen, onClose, children }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center max-md:items-end justify-center bg-black bg-opacity-75 w-auto">
-      <div className="relative bg-[#F9F9F9] md:bg-transparent rounded-t-[10px] min-h-[400px] h-auto w-full shadow-lg flex flex-col items-center justify-center p-5">
+      <div className="relative bg-[#F9F9F9] md:bg-transparent rounded-t-[10px] md:min-h-[400px] md:h-auto min-h-[95%] max-h-[95%] w-full shadow-lg flex flex-col items-center justify-center p-5 overflow-y-auto">
         {children}
       </div>
     </div>
