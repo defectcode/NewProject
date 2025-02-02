@@ -72,14 +72,14 @@ export default function Header() {
             <div className={`flex flex-col md:flex-row justify-between max-lg:flex-col max-lg:justify-center customStyles`}>
               <div className="flex flex-col mb-10 max-md:mb-0 items-center md:flex-row gap-3 max-md:gap-0 max-lg:flex-col max-lg:justify-center">
                 <div className="md:hidden flex flex-col items-center justify-center mt-8 leading-[1] mb-5">
-                  <h2 className='font-ekMukta text-[24px]'>
+                  <h2 className='font-ekMukta text-[24px] font-ekmukta-extrabold'>
                     Exclusive Collaborations
                   </h2>
                 </div>
                 {!showSupportInNavbar && (
                     <div className='flex items-end justify-between min-w-[1200px] w-full'>
                       <div className="flex flex-col items-start px-2 space-y-[10px] max-md:mb-4 font-avenirHeavy max-md:hidden">
-                      <h2 className='font-ekMukta text-[24px] leading-[1] font-extrabold'>
+                      <h2 className='text-[24px] leading-[1] font-ekmukta-extrabold'>
                         Exclusive Collaborations
                       </h2>
                         <p className='leading-[1.2] text-[15px] font-ekMukta'>
@@ -88,7 +88,7 @@ export default function Header() {
 
                         <button
                             onClick={openModal}
-                            className="bg-[#F5F5F7] text-[#1E1E1E] rounded-lg px-5 py-2 cursor-pointer w-[289px] h-[40px] avenir-heavy text-[15px]"
+                            className="bg-[#F5F5F7] text-[#1E1E1E] rounded-lg px-5 py-2 cursor-pointer w-[289px] h-[40px] font-avenir-heavy text-[15px]"
                           >
                             Apply
                           </button>
@@ -111,7 +111,7 @@ export default function Header() {
                     <div className="md:hidden flex justify-center max-md:mb-5">
                       <button
                         onClick={openModal}
-                            className="bg-[#F5F5F7] text-[#1E1E1E] rounded-lg px-5 py-2 cursor-pointer w-[189px] h-[40px] avenir-heavy text-[15px]"
+                            className="bg-[#F5F5F7] text-[#1E1E1E] rounded-lg px-5 py-2 cursor-pointer w-[189px] h-[40px] font-avenir-heavy text-[15px]"
                       >
                         Apply
                       </button>
