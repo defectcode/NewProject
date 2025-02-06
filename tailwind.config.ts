@@ -10,7 +10,7 @@ const config = {
     extend: {
       fontWeight: {
         extrabold: '900',
-        heavy: '700', // Adăugăm aici greutatea de 700 pentru Avenir Heavy
+        heavy: '700', 
       },
       spacing: {
         '120px': '120px',
@@ -32,7 +32,7 @@ const config = {
         ekMukta: ['"Ek Mukta"', 'sans-serif'],
         interLight: ['"Inter"', 'sans-serif'],
         avenirRoman: ['Avenir', 'sans-serif'],
-        avenirHeavy: ['Avenir', 'sans-serif'], // Definim Avenir Heavy aici
+        avenirHeavy: ['Avenir', 'sans-serif'], 
         inter: ['Inter', 'sans-serif'],
         heboo: ['Heboo', 'sans-serif'],
         'avenir-heavy': ['Avenir Heavy', 'sans-serif'],

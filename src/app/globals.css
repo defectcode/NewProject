@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Ek+Mukta:wght@100;200;400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ek+Mukta:wght@100;200;400;500;600;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Heboo:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Avenir+Heavy:wght@400&display=swap');
 
@@ -241,6 +242,10 @@ iframe {
   font-weight: 900;
 }
 
+.font-ekmukta-regular {
+  font-family: 'Ek Mukta', sans-serif !important;
+  font-weight: 400 !important;
+}
 
 .font-ekmukta-extralight {
   font-family: 'Ek Mukta', sans-serif;
@@ -257,6 +262,8 @@ iframe {
 .font-avenir {
   font-family: 'Avenir', sans-serif;
 }
+
+
 
 .font-avenir-heavy {
   font-family: 'Avenir Heavy', sans-serif;

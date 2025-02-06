@@ -16,7 +16,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false); // Stare pentru a verifica dacă este mobil
+  const [isMobile, setIsMobile] = useState(false); 
   const [showSupportInNavbar, setShowSupportInNavbar] = useState(false);
   const headerRef = useRef(null);
 
@@ -25,16 +25,15 @@ export default function Header() {
   };
 
   useEffect(() => {
-    // Funcția care verifică lățimea ferestrei
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Dacă lățimea este sub 768px, este mobil
+      setIsMobile(window.innerWidth <= 768); 
     };
 
-    handleResize(); // Verificăm inițial
-    window.addEventListener('resize', handleResize); // Ascultăm evenimentele de redimensionare
+    handleResize(); 
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize); // Cleanup
+      window.removeEventListener('resize', handleResize); 
     };
   }, []);
 
@@ -72,20 +71,22 @@ export default function Header() {
             <div className={`flex flex-col md:flex-row justify-between max-lg:flex-col max-lg:justify-center customStyles`}>
               <div className="flex flex-col mb-10 max-md:mb-0 items-center md:flex-row gap-3 max-md:gap-0 max-lg:flex-col max-lg:justify-center">
                 <div className="md:hidden flex flex-col items-center justify-center mt-8 leading-[1] mb-5">
-                  <h2 className='font-ekMukta text-[24px] font-ekmukta-extrabold'>
+                  <h2 className='font-ekMukta text-[24px] font-ekmukta-extrabold leading-[1]'>
                     Exclusive Collaborations
                   </h2>
                 </div>
                 {!showSupportInNavbar && (
                     <div className='flex items-end justify-between min-w-[1200px] w-full'>
                       <div className="flex flex-col items-start px-2 space-y-[10px] max-md:mb-4 font-avenirHeavy max-md:hidden">
-                      <h2 className='text-[24px] leading-[1] font-ekmukta-extrabold'>
-                        Exclusive Collaborations
-                      </h2>
-                        <p className='leading-[1.2] text-[15px] font-ekMukta'>
-                          Partner with a loyal, premium audience through <br/> authentic, impact content. Apply for a proposal.
+                        <h2 className='text-[24px] leading-[1] font-ekmukta-extrabold'>
+                          Exclusive Collaborations
+                        </h2>
+                        <p
+                          className="leading-[1.3] text-[15px] font-ekmukta-regular text-[#CDCDCD]"
+                          style={{ letterSpacing: '-0.02em' }}
+                        >
+                          Partner with a loyal, premium audience through <br /> authentic, impact content. Apply for a proposal.
                         </p>
-
                         <button
                             onClick={openModal}
                             className="bg-[#F5F5F7] text-[#1E1E1E] rounded-lg px-5 py-2 cursor-pointer w-[289px] h-[40px] font-avenir-heavy text-[15px]"
@@ -103,7 +104,9 @@ export default function Header() {
                     </div>
                 )}
                 <div className=" md:flex md:flex-col md:items-start md:hidden font-avenirHeavy">
-                  <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-md:leading-[1.125rem] max-lg:text-start max-md:text-center max-md:mb-5 text-[#CDCDCD] mx-0 max-md:mx-4 font-ekMukta tracking-neg-3percent">
+                  <p className="text-[16px] max-lg:text-lg max-md:text-[15px] max-md:leading-[1.125rem] max-lg:text-start max-md:text-center max-md:mb-5 text-[#CDCDCD] mx-0 max-md:mx-4 font-ekMukta tracking-neg-3percent"
+                    style={{ letterSpacing: '-0.02em' }}
+                  >
                     Partner with a loyal, premium audience through <br/>
                     authentic, high-impact content. Apply for a proposal.
                   </p>

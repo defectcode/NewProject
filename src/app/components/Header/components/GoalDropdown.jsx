@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Listbox } from '@headlessui/react';
-import { CheckIcon } from '@heroicons/react/20/solid';
+import Select, { components } from 'react-select';
 
 const options = [
   { value: 'brand-visibility', label: 'Brand Visibility' },
@@ -9,75 +8,119 @@ const options = [
   { value: 'custom-collaboration', label: 'Custom Collaboration' },
 ];
 
-export default function GoalDropdown({ onChange, error }) {
-  const [selectedOption, setSelectedOption] = useState(null);
+const customStyles = {
+  control: (provided) => ({
+    ...provided,
+    border: '1px solid #6F6F6F',
+    borderRadius: '10px',
+    minHeight: '56px',
+    padding: '0 1rem',
+    backgroundColor: 'white',
+    boxShadow: 'none',
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    '&:hover': {
+      border: '1px solid black',
+    },
+  }),
+  multiValue: (provided) => ({
+    ...provided,
+    backgroundColor: '#1E1E1E',
+    color: 'white',
+    borderRadius: '5px',
+    padding: '2px 5px',
+    display: 'inline-flex',
+    flexWrap: 'nowrap',
+    alignItems: 'center',
+    justifyContent: 'center', 
+    margin: '2px',
+  }),
+  multiValueLabel: (provided) => ({
+    ...provided,
+    color: 'white',
+    whiteSpace: 'nowrap',
+  }),
+  multiValueRemove: (provided) => ({
+    ...provided,
+    color: 'white',
+    '&:hover': {
+      backgroundColor: 'black',
+      color: 'white',
+    },
+  }),
+  dropdownIndicator: (provided) => ({
+    ...provided,
+    padding: '0',
+  }),
+  clearIndicator: () => null,
+  menu: (provided) => ({
+    ...provided,
+    borderRadius: '10px',
+    border: '1px solid #E0E0E0',
+    backgroundColor: 'white',
+    zIndex: '20',
+    width: '300px',
+    position: 'absolute',
+    right: '0',
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    padding: '10px',
+    borderBottom: '1px solid #E0E0E0',
+    backgroundColor: state.isSelected ? '#1E1E1E' : 'white',
+    color: state.isSelected ? 'white' : 'black',
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: '#F0F0F0',
+    },
+  }),
+};
 
-  const handleChange = (value) => {
-    setSelectedOption(value);
-    onChange(value); // Trimite valoarea selectată înapoi către componenta părinte
+const DropdownIndicator = (props) => {
+  const { selectProps } = props;
+  const open = selectProps.menuIsOpen;
+
+  return (
+    <components.DropdownIndicator {...props}>
+      <img
+        src="/imgs/arrow.svg"
+        alt="Dropdown icon"
+        className={`w-[11px] h-[6px] transition-transform duration-200 ${
+          open ? 'rotate-180' : 'rotate-0'
+        }`}
+      />
+    </components.DropdownIndicator>
+  );
+};
+
+export default function MultiSelectDropdown({ onChange, error }) {
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const handleChange = (selected) => {
+    setSelectedOptions(selected);
+    onChange(selected ? selected.map(option => option.value) : []);
   };
 
   return (
-    <div className="relative w-full text-[#1E1E1E] font-heboo">
+    <div className="relative text-[#1E1E1E] font-heboo">
       <label className="block text-[16px] font-semibold text-[#1E1E1E] leading-[1] mb-[10px]">
-        Goal
+        Goals
       </label>
-      <Listbox value={selectedOption} onChange={handleChange}>
-        {({ open }) => (
-          <div className="relative">
-            <Listbox.Button className="border border-[#6F6F6F] rounded-[10px] min-h-[56px] px-4 w-full bg-white flex items-center justify-between shadow-none hover:border-black">
-              <span>
-                {selectedOption
-                  ? options.find((o) => o.value === selectedOption)?.label
-                  : 'Select Your Goal'}
-              </span>
-              <img
-                src="/imgs/arrow.svg"
-                alt="Dropdown icon"
-                className={`w-[11px] h-[6px] transition-transform duration-200 ${
-                  open ? 'rotate-180' : 'rotate-0'
-                }`}
-              />
-            </Listbox.Button>
-            <Listbox.Options className="absolute right-0 mt-2 w-64 bg-white shadow-lg rounded-[10px] z-20 overflow-hidden border border-[#E0E0E0]">
-              {options.map((option, index) => (
-                <Listbox.Option
-                  key={option.value}
-                  value={option.value}
-                  className={({ active }) =>
-                    `cursor-pointer flex items-center gap-3 mx-5 py-5 text-[14px] ${
-                      active ? '' : ''
-                    } ${
-                      index !== options.length - 1 ? 'border-b border-[#E0E0E0] ' : ''
-                    }`
-                  }
-                >
-                  {({ selected }) => (
-                    <>
-                      <div
-                        className={`w-5 h-5 border border-[#6F6F6F] rounded flex items-center justify-center ${
-                          selected ? 'bg-[#1E1E1E]' : 'bg-white'
-                        }`}
-                      >
-                        {selected && (
-                          <CheckIcon className="w-3 h-3 text-white" />
-                        )}
-                      </div>
-                      <span className={selected ? 'text-[#000000]' : ''}>
-                        {option.label}
-                      </span>
-                    </>
-                  )}
-                </Listbox.Option>
-              ))}
-            </Listbox.Options>
-          </div>
-        )}
-      </Listbox>
-      {/* Afișează mesajul de eroare dacă există */}
-      {error && (
-        <p className="text-red-500 text-sm mt-2">{error}</p>
-      )}
+      <Select
+        isMulti
+        options={options}
+        value={selectedOptions}
+        onChange={handleChange}
+        styles={customStyles}
+        components={{
+          IndicatorSeparator: () => null, 
+          DropdownIndicator, 
+          ClearIndicator: () => null, 
+        }}
+      />
+      {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
     </div>
   );
 }

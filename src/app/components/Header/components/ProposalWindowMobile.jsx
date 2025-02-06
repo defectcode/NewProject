@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import GoalDropdown from './GoalDropdown';
 import Image from 'next/image';
-import emailjs from 'emailjs-com'; // Importă EmailJS
+import emailjs from 'emailjs-com'; 
 
 export default function ProposalWindowMobile({ onClose }) {
   const [fullName, setFullName] = useState('');
@@ -11,7 +11,6 @@ export default function ProposalWindowMobile({ onClose }) {
   const [message, setMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Stări pentru mesajele de eroare
   const [fullNameError, setFullNameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [brandNameError, setBrandNameError] = useState('');
@@ -20,13 +19,11 @@ export default function ProposalWindowMobile({ onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Resetăm mesajele de eroare înainte de validare
     setFullNameError('');
     setEmailError('');
     setBrandNameError('');
     setGoalError('');
 
-    // Validare câmpuri obligatorii
     let isValid = true;
 
     if (!fullName) {
@@ -37,7 +34,7 @@ export default function ProposalWindowMobile({ onClose }) {
     if (!email) {
       setEmailError('This entry is required.');
       isValid = false;
-    } else if (!/\S+@\S+\.\S+/.test(email)) { // Validare format email
+    } else if (!/\S+@\S+\.\S+/.test(email)) { 
       setEmailError('Please enter a valid email address.');
       isValid = false;
     }
@@ -52,15 +49,14 @@ export default function ProposalWindowMobile({ onClose }) {
       isValid = false;
     }
 
-    // Dacă validarea eșuează, nu trimitem formularul
     if (!isValid) {
       return;
     }
 
-    // Trimitem datele la Google Forms
     try {
       const formUrl =
         'https://docs.google.com/forms/d/e/1FAIpQLSep6g27u3tQvHY8j4q3FU8jR7DK93qrqIGcIl8Q_0SSE3LzGA/formResponse';
+
       const formData = new URLSearchParams();
       formData.append('entry.1898953536', fullName);
       formData.append('entry.757255050', email);
@@ -80,10 +76,9 @@ export default function ProposalWindowMobile({ onClose }) {
         throw new Error('Failed to submit to Google Form');
       }
 
-      // Trimite email folosind EmailJS
       const emailJsResponse = await emailjs.send(
-        'YOUR_SERVICE_ID', // Înlocuiește cu Service ID de la EmailJS
-        'YOUR_TEMPLATE_ID', // Înlocuiește cu Template ID de la EmailJS
+        'YOUR_SERVICE_ID',
+        'YOUR_TEMPLATE_ID', 
         {
           fullName,
           email,
@@ -91,7 +86,7 @@ export default function ProposalWindowMobile({ onClose }) {
           goal,
           message,
         },
-        'YOUR_USER_ID' // Înlocuiește cu User ID de la EmailJS
+        'YOUR_USER_ID' 
       );
 
       if (emailJsResponse.status === 200) {
@@ -107,22 +102,22 @@ export default function ProposalWindowMobile({ onClose }) {
 
   if (isSubmitted) {
     return (
-      <div className="flex flex-col items-center justify-between h-[344px] bg-[#F9F9F9] rounded-lg text-center w-full font-heboo">
+      <div className="flex flex-col items-center justify-between max-h-[344px] bg-[#F9F9F9] rounded-lg text-center w-full font-heboo">
         <div className="flex justify-end items-center w-full">
           <button onClick={onClose} className="text-[#1E1E1E] text-5xl">
-            <Image src="/icons/closeBlack.svg" width={14} height={14} alt='close' className='mb-[20px] mr-2 text-[#1E1E1E]'/>
+            <Image src="/icons/Close.svg" width={14} height={14} alt='close' className='mb-[20px] text-[#1E1E1E]'/>
           </button>
         </div>
         <div className='flex flex-col items-center justify-center'>
         <h2 className="text-2xl text-[#1E1E1E] font-bold mb-10 leading-[1]">Thank You!</h2>
 
           <Image src='./imgs/select.svg' alt='select' width={27} height={27}/>
-          <p className="text-[16px] text-[#1E1E1E] mb-5 mt-5 leading-[1.2]">
-            Your Request Has Been Sent! We Will <br/>Contact You Soon.
+          <p className="text-[16px] text-[#1E1E1E] mb-[60px] mt-5 leading-[1.2] font-heboo font-normal">
+          Your request has been sent! We will <br/>contact you soon
           </p>
         </div>
         <button
-          className="bg-[#1E1E1E] text-white px-5 w-full py-3 rounded-lg hover:bg-gray-800 h-[48px] avenir-heavy"
+          className="bg-[#1E1E1E] text-white px-5 w-full py-3 rosunded-lg hover:bg-gray-800 h-[48px] font-avenirHeavy"
           onClick={() => window.location.href = '/'}
         >
           Back to Home
@@ -134,13 +129,12 @@ export default function ProposalWindowMobile({ onClose }) {
   return (
     <div className="text-[#1E1E1E] w-full font-heboo">
       <div className="flex justify-between items-center w-full mt-5">
-        <h2 className="text-[20px] text-[#1E1E1E] font-extrabold mb-5 flex items-center justify-center">Request a Proposal</h2>
+        <h2 className="text-[20px] text-[#1E1E1E] font-extrabold mb-5 flex items-center justify-center">Request a proposal</h2>
         <button onClick={onClose} className="text-[#1E1E1E] text-5xl">
           <Image src="/icons/closeBlack.svg" width={14} height={14} alt='close' className='mb-[20px] mr-2 text-[#1E1E1E]'/>
         </button>
       </div>
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Câmpul Full Name */}
         <div>
           <label className="block text-[16px] font-semibold mb-1 font-heboo" htmlFor="name">
             Name
@@ -163,7 +157,6 @@ export default function ProposalWindowMobile({ onClose }) {
           )}
         </div>
 
-        {/* Câmpul Email */}
         <div>
           <label className="block text-[16px] font-semibold mb-1" htmlFor="email">
             Contact
@@ -186,7 +179,6 @@ export default function ProposalWindowMobile({ onClose }) {
           )}
         </div>
 
-        {/* Câmpul Brand Name */}
         <div>
           <label className="block text-[16px] font-semibold mb-1" htmlFor="brand-name">
             Brand
@@ -209,18 +201,16 @@ export default function ProposalWindowMobile({ onClose }) {
           )}
         </div>
 
-        {/* GoalDropdown cu validare */}
         <div className='text-black'>
           <GoalDropdown
             onChange={(value) => {
               setGoal(value);
-              setGoalError(''); // Resetează mesajul de eroare când utilizatorul selectează o opțiune
+              setGoalError(''); 
             }}
-            error={goalError} // Trimite mesajul de eroare către GoalDropdown
+            error={goalError} 
           />
         </div>
 
-        {/* Câmpul Message (optional) */}
         <div className="relative">
           <label className="block text-[17px] font-medium text-[#1E1E1E] mb-1" htmlFor="message">
             Message <span className="text-[14px] text-[#6F6F6F]">(Optional)</span>
@@ -235,12 +225,11 @@ export default function ProposalWindowMobile({ onClose }) {
           ></textarea>
         </div>
 
-        {/* Butonul de submit */}
         <button
           type="submit"
           className="w-full bg-black text-white rounded-lg px-4 py-2 mt-2 hover:bg-gray-800 h-[48px] font-avenirHeavy"
         >
-          Get My Proposal
+          Get Proposal
         </button>
       </form>
     </div>
