@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import StageDescriptionMobile from './components/StageDescriptionMobile';
 // import DetailedStepsMobile from './components/DetailedStepsMobile';
 import { useSearchParams } from 'next/navigation';
@@ -19,6 +19,7 @@ const OverviewMobile = ({ products = [] }) => {
     console.log('Products:', products);
   }, [products]);
     return (
+      <Suspense>
         <div className="flex flex-col items-center justify-center h-full">
           <div>
             <StageDescriptionMobile />
@@ -26,6 +27,8 @@ const OverviewMobile = ({ products = [] }) => {
           </div>
           <Info/>
         </div>
+      </Suspense>
+       
     );
 }
 
