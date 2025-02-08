@@ -17,6 +17,22 @@ export default function Popup({ isOpen, onClose, children }) {
         setIsModalOpen(false);
     };
 
+
+    useEffect(() => {
+      if (isOpen) {
+          document.body.style.overflow = 'hidden'; // Blochează scroll-ul
+      } else {
+          document.body.style.overflow = ''; // Permite scroll-ul din nou
+      }
+
+      // Curăță stilurile la demontarea componentei
+      return () => {
+          document.body.style.overflow = '';
+      };
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
@@ -43,25 +59,25 @@ export default function Popup({ isOpen, onClose, children }) {
         };
     }, []);
 
-    useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-    }, [isOpen]);
+    // useEffect(() => {
+    //     if (isOpen) {
+    //         document.body.style.overflow = 'hidden';
+    //     } else {
+    //         document.body.style.overflow = '';
+    //     }
+    // }, [isOpen]);
 
-    if (!isOpen) return null;
+    // if (!isOpen) return null;
 
 
     return (
         <div className="fixed inset-0 bg-black flex flex-col items-center justify-start z-50 h-full overflow-auto">
-        <div className="relative h-screen w-full text-white">
+        <div className="relative h-[70vh] w-full text-white">
             <div
                 ref={headerRef}
-                className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto md:bg-[url('/imgs/Background.webp')] bg-[url('/imgs/mobile.webp')] max-md:background-fixed`}
+                className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto md:bg-[url('/imgs/Background.webp')] bg-[url('/imgs/mobile.png')] max-md:background-fixed`}
             ></div>
-            <div className={`absolute bottom-0 w-full md:h-1/5 h-[40%] -mb-2 bg-gradient-to-t `}
+            <div className={`absolute bottom-0 w-full md:h-1/5 h-[25%] -mb-2 bg-gradient-to-t `}
             style={{
                 background: 'linear-gradient(to top, rgba(0, 0, 0, 0.99) 10%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.01) 100%)',
             }}></div>

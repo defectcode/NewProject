@@ -8,7 +8,7 @@ import Modal from '/src/app/components/Header/components/Modal.jsx';
 import SupportForm from '/src/app/components/Header/components/Payment/SupportForm.jsx';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import ShareButton from './Share/ShareButton';
+import OpenPopUp from './Share/OpenPopUp';
 import Support from "@/app/crowdfunding/components/Support";
 
 
@@ -35,7 +35,7 @@ const ButonShere = ({ isShareFixed }) => {
                 <div className="flex-[2]">
                     <Support onClick={openModal} />
                 </div>
-                <ShareButton />
+                <OpenPopUp />
             </div>
 
             <Modal isOpen={isModalOpen} onClose={closeModal}>

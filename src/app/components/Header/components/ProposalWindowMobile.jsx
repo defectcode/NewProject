@@ -142,7 +142,7 @@ export default function ProposalWindowMobile({ onClose }) {
               type="text"
               id="name"
               placeholder="Full Name"
-              className="w-full border border-[#CDCDCD] h-[56px] rounded-[10px] px-10 py-2 bg-[#000000]"
+              className="w-full border border-[#CDCDCD] h-[48px] rounded-[10px] px-10 py-2 bg-[#000000]"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
             />
@@ -164,7 +164,7 @@ export default function ProposalWindowMobile({ onClose }) {
               type="email"
               id="email"
               placeholder="Your email"
-              className="w-full border border-[#CDCDCD] h-[56px] rounded-[10px] px-10 py-2 bg-[#000000]"
+              className="w-full border border-[#CDCDCD] h-[48px] rounded-[10px] px-10 py-2 bg-[#000000]"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -186,7 +186,7 @@ export default function ProposalWindowMobile({ onClose }) {
               type="text"
               id="brand-name"
               placeholder="Brand name"
-              className="w-full border border-[#CDCDCD] h-[56px] rounded-[10px] px-10 py-2 bg-[#000000]"
+              className="w-full border border-[#CDCDCD] h-[48px] rounded-[10px] px-10 py-2 bg-[#000000]"
               value={brandName}
               onChange={(e) => setBrandName(e.target.value)}
             />
