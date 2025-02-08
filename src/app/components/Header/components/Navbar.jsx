@@ -24,24 +24,16 @@ export default function Navbar({ openModal }) {
   };
 
   return (
-    <nav className="bg-transparent fixed top-0 w-full h-10 md:h-11 z-50 font-avenirRoman">
-      <div className="max-w-[1200px] flex justify-between items-center h-[20px] mx-5 md:mx-auto relative z-50 mt-5">
-        <div className="flex items-center h-[20px]">
-            <Link href="/"><Image src="/imgs/Valery Fain.svg" alt='logo' className='md:w-200 h-auto' width={131} height={20} /></Link>
+    <nav className="bg-transparent top-0 w-full h-10 md:h-11 z-50 font-avenirRoman mt-5">
+      <div className="flex items-center gap-5 max-lg:gap-1 text-[#979797] max-lg:flex-col max-md:space-y-0 max-md:mb-[15px]">
+          <div className="flex items-end justify-between gap-5 px-[25px]">
+            <Image src="/imgs/dior.svg" width={37} height={1} alt="dior" className=" h-auto" />
+            <Image src="/imgs/hermes.svg" width={48} height={1} alt="hermes" className="h-auto  " />
+            <Image src="/imgs/cartier.svg" width={45} height={12.46} alt="cartier" className=" h-auto" />
+            <Image src="/imgs/lamer.svg" width={45} height={1} alt="lamer" className="h-auto" />
+            <Image src="/imgs/four.svg" width={85} height={1} alt="four" className="h-auto" />
+          </div>
         </div>
-
-        <div className='flex gap-10 items-center justify-center'>
-          <Link href='https://www.tiktok.com/@valery.fain14'>
-            <Image src='./imgs/tiktok.svg' width={21} height={24} alt='tiktok'/>
-          </Link>
-          <Link href='https://www.instagram.com/valery.fain'>
-            <Image src='./imgs/instagram.svg' width={20} height={20} alt='instagram'/>
-          </Link>
-          <Link href='https://www.youtube.com/@valery.fine3'>
-            <Image src='./imgs/youtube.svg' width={26.93} height={19.97} alt='youtube'/>
-          </Link>
-        </div>
-      </div>
     </nav>
   );
 }

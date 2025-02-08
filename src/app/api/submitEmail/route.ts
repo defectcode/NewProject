@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
 
   try {
     // const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSep6g27u3tQvHY8j4q3FU8jR7DK93qrqIGcIl8Q_0SSE3LzGA/formResponse';
-    const formUrl = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSep6g27u3tQvHY8j4q3FU8jR7DK93qrqIGcIl8Q_0SSE3LzGA/formResponse';
+    const formUrl = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdF9zUfle8zlyw3CEUTi6D9jnn7tOUn6Zd1Aj5l2byO2xXa7w/formResponse';
     const formData = new URLSearchParams();
     formData.append('entry.200719805', fullName);
     formData.append('entry.783419390', contact);

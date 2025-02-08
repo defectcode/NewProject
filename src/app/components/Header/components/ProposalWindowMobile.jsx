@@ -55,14 +55,14 @@ export default function ProposalWindowMobile({ onClose }) {
 
     try {
       const formUrl =
-        'https://docs.google.com/forms/d/e/1FAIpQLSep6g27u3tQvHY8j4q3FU8jR7DK93qrqIGcIl8Q_0SSE3LzGA/formResponse';
+        'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdF9zUfle8zlyw3CEUTi6D9jnn7tOUn6Zd1Aj5l2byO2xXa7w/formResponse';
 
       const formData = new URLSearchParams();
-      formData.append('entry.1898953536', fullName);
-      formData.append('entry.757255050', email);
-      formData.append('entry.66712416', brandName);
-      formData.append('entry.770977173', goal);
-      formData.append('entry.1965389912', message);
+      formData.append('entry.200719805', fullName);
+      formData.append('entry.783419390', email);
+      formData.append('entry.1586475598', brandName);
+      formData.append('entry.212391582', goal);
+      formData.append('entry.2105910764', message);
 
       const response = await fetch(formUrl, {
         method: 'POST',
@@ -102,7 +102,7 @@ export default function ProposalWindowMobile({ onClose }) {
 
   if (isSubmitted) {
     return (
-      <div className="flex flex-col items-center justify-between max-h-[344px] bg-[#F9F9F9] rounded-lg text-center w-full font-heboo">
+      <div className="flex flex-col items-center justify-between max-h-[344px] rounded-lg text-center w-full font-heboo">
         <div className="flex justify-end items-center w-full">
           <button onClick={onClose} className="text-[#1E1E1E] text-5xl">
             <Image src="/icons/Close.svg" width={14} height={14} alt='close' className='mb-[20px] text-[#1E1E1E]'/>
@@ -127,27 +127,22 @@ export default function ProposalWindowMobile({ onClose }) {
   }
 
   return (
-    <div className="text-[#1E1E1E] w-full font-heboo">
-      <div className="flex justify-between items-center w-full mt-5">
-        <h2 className="text-[20px] text-[#1E1E1E] font-extrabold mb-5 flex items-center justify-center">Request a proposal</h2>
-        <button onClick={onClose} className="text-[#1E1E1E] text-5xl">
-          <Image src="/icons/closeBlack.svg" width={14} height={14} alt='close' className='mb-[20px] mr-2 text-[#1E1E1E]'/>
-        </button>
-      </div>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="text-[#FFFFFF] w-full font-heboo px-5">
+  
+      <form onSubmit={handleSubmit} className="space-y-5 mb-5">
         <div>
           <label className="block text-[16px] font-semibold mb-1 font-heboo" htmlFor="name">
             Name
           </label>
-          <div className="relative w-full">
-            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+          <div className="relative w-full ">
+            <span className="absolute left-5 top-1/2 transform -translate-y-1/2 text-[#979797]">
               <Image src="/imgs/user.svg" width={18} height={18} alt="User Icon" />
             </span>
             <input
               type="text"
               id="name"
               placeholder="Full Name"
-              className="w-full border border-[#6F6F6F] h-[56px] rounded-[10px] px-10 py-2"
+              className="w-full border border-[#CDCDCD] h-[56px] rounded-[10px] px-10 py-2 bg-[#000000]"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
             />
@@ -162,14 +157,14 @@ export default function ProposalWindowMobile({ onClose }) {
             Contact
           </label>
           <div className="relative w-full">
-            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+            <span className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-500">
               <Image src="/imgs/naruto.svg" width={20} height={20} alt="Email Icon" />
             </span>
             <input
               type="email"
               id="email"
               placeholder="Your email"
-              className="w-full border border-[#6F6F6F] h-[56px] rounded-[10px] px-10 py-2"
+              className="w-full border border-[#CDCDCD] h-[56px] rounded-[10px] px-10 py-2 bg-[#000000]"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -184,14 +179,14 @@ export default function ProposalWindowMobile({ onClose }) {
             Brand
           </label>
           <div className="relative w-full">
-            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+            <span className="absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-500">
               <Image src="/imgs/element.svg" width={15} height={18} alt="Tag Icon" />
             </span>
             <input
               type="text"
               id="brand-name"
               placeholder="Brand name"
-              className="w-full border border-[#6F6F6F] h-[56px] rounded-[10px] px-10 py-2"
+              className="w-full border border-[#CDCDCD] h-[56px] rounded-[10px] px-10 py-2 bg-[#000000]"
               value={brandName}
               onChange={(e) => setBrandName(e.target.value)}
             />
@@ -212,13 +207,14 @@ export default function ProposalWindowMobile({ onClose }) {
         </div>
 
         <div className="relative">
-          <label className="block text-[17px] font-medium text-[#1E1E1E] mb-1" htmlFor="message">
-            Message <span className="text-[14px] text-[#6F6F6F]">(Optional)</span>
+          <label className="block text-[17px] font-medium text-[#FFFFFF] mb-1" htmlFor="message">
+          How can You contribute? 
+          {/* <span className="text-[14px] text-[#6F6F6F]">(Optional)</span> */}
           </label>
           <textarea
             id="message"
             placeholder="Share any details"
-            className="w-full border border-gray-300 rounded-lg h-[100px] text-start px-5 placeholder-gray-500 focus:outline-none resize-none pt-[35px]"
+            className="w-full border border-[#CDCDCD] rounded-lg h-[100px] text-start px-5 bg-[#000000] focus:outline-none resize-none pt-[35px]"
             rows="4"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -227,9 +223,9 @@ export default function ProposalWindowMobile({ onClose }) {
 
         <button
           type="submit"
-          className="w-full bg-black text-white rounded-lg px-4 py-2 mt-2 hover:bg-gray-800 h-[48px] font-avenirHeavy"
+          className="w-full bg-white text-[#1E1E1E] rounded-lg px-4 py-2 mt-2 cursor-pointer h-[48px] font-avenir-heavy"
         >
-          Get Proposal
+          Apply for Collaboration
         </button>
       </form>
     </div>

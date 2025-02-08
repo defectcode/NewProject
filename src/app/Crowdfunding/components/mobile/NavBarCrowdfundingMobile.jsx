@@ -65,7 +65,7 @@ const NavBarCrowdfundingMobile = ({ setActiveSection }) => {
                     isVisible ? 'translate-y-0' : '-translate-y-full'
                 }`} // Bara de navigare va coborî și urca lin
             >
-                <div className="flex items-center justify-center h-[40px]">
+                <div className="flex items-center justify-center h-[40px] bg-[#000000]">
                     <div className="flex items-center justify-center gap-[30px] w-full px-5">
                         <a className={linkClasses('#overview')} onClick={() => handleClick('#overview')}>Overview</a>
                         <a className={linkClasses('#rewards')} onClick={() => handleClick('#rewards')}>Rewards</a>

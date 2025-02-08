@@ -2,21 +2,20 @@ import { useState } from 'react';
 import Select, { components } from 'react-select';
 
 const options = [
-  { value: 'brand-visibility', label: 'Brand Visibility' },
-  { value: 'sales-conversions', label: 'Sales & Conversions' },
-  { value: 'premium-content', label: 'Premium Content' },
-  { value: 'custom-collaboration', label: 'Custom Collaboration' },
+  { value: 'product-contribution', label: 'Product Contribution' },
+  { value: 'sponsorship', label: 'Sponsorship' },
+  { value: 'strategic-collaboration', label: 'Strategic Collaboration' },
 ];
 
 const customStyles = {
-  control: (provided) => ({
+  control: (provided, state) => ({
     ...provided,
-    border: '1px solid #6F6F6F',
+    border: state.isFocused ? '1px solid #CDCDCD' : '1px solid #CDCDCD',
     borderRadius: '10px',
     minHeight: '56px',
     padding: '0 1rem',
-    backgroundColor: 'white',
-    boxShadow: 'none',
+    backgroundColor: '#000000',
+    boxShadow: state.isFocused ? '0 0 0 2px rgba(205, 205, 205, 0.5)' : 'none',
     width: '100%',
     display: 'flex',
     alignItems: 'center',
@@ -58,8 +57,8 @@ const customStyles = {
   menu: (provided) => ({
     ...provided,
     borderRadius: '10px',
-    border: '1px solid #E0E0E0',
-    backgroundColor: 'white',
+    border: '1px solid #CDCDCD',
+    backgroundColor: '#212121',
     zIndex: '20',
     width: '300px',
     position: 'absolute',
@@ -69,11 +68,11 @@ const customStyles = {
     ...provided,
     padding: '10px',
     borderBottom: '1px solid #E0E0E0',
-    backgroundColor: state.isSelected ? '#1E1E1E' : 'white',
-    color: state.isSelected ? 'white' : 'black',
+    backgroundColor: state.isFocused ? '#212121' : state.isSelected ? '#212121' : '#212121',
+    color: state.isSelected || state.isFocused ? '#FFFFFF' : '#FFFFFF',
     cursor: 'pointer',
     '&:hover': {
-      backgroundColor: '#F0F0F0',
+      backgroundColor: '#333333',
     },
   }),
 };
@@ -95,7 +94,7 @@ const DropdownIndicator = (props) => {
   );
 };
 
-export default function MultiSelectDropdown({ onChange, error }) {
+export default function GoalDropdown({ onChange, error }) {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleChange = (selected) => {
@@ -104,12 +103,15 @@ export default function MultiSelectDropdown({ onChange, error }) {
   };
 
   return (
-    <div className="relative text-[#1E1E1E] font-heboo">
-      <label className="block text-[16px] font-semibold text-[#1E1E1E] leading-[1] mb-[10px]">
+    <div className="relative text-[#FFFFFF] font-heboo">
+      <label className="block text-[16px] font-semibold text-[#FFFFFF] leading-[1] mb-[10px]">
         Goals
       </label>
       <Select
         isMulti
+        isSearchable={false}
+        closeMenuOnSelect={false}
+        blurInputOnSelect={false}
         options={options}
         value={selectedOptions}
         onChange={handleChange}
@@ -124,3 +126,4 @@ export default function MultiSelectDropdown({ onChange, error }) {
     </div>
   );
 }
+
