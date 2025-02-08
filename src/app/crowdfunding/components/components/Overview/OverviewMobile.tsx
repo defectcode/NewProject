@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect } from 'react';
 import StageDescriptionMobile from './components/StageDescriptionMobile';
 // import DetailedStepsMobile from './components/DetailedStepsMobile';

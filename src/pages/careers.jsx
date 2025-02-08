@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../app/components/Header/components/Navbar'
+import Image from 'next/image';
 
 const Careers = () => {
     return (
@@ -9,7 +10,7 @@ const Careers = () => {
             <div className='overlay'></div>
             <div className='content'>
                 <div className='iconWrapper'>
-                    <img src="/imgs/Crowdfunding/Community/progress.svg" alt="Work In Progress Icon" />
+                    <Image width={30} height={30} src="/imgs/Crowdfunding/Community/progress.svg" alt="Work In Progress Icon" />
                 </div>
             </div>
         </div>
