@@ -9,7 +9,7 @@ import SupportForm from '/src/app/components/Header/components/Payment/SupportFo
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import OpenPopUp from './Share/OpenPopUp';
-import Support from "@/app/crowdfunding/components/Support";
+import Support from "@/app/wish/components/Support";
 
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
@@ -31,12 +31,25 @@ const ButonShere = ({ isShareFixed }) => {
                 isShareFixed ? 'fixed bottom-0 left-0 right-0' : 'relative'
             } flex items-center justify-center w-full h-auto bg-transparent z-50`}
         >
-            <div className="flex items-center justify-center w-full px-5 gap-4 bg-transparent shadow-lg mb-2">
+
+            {isShareFixed ? (
+                <div className="flex items-center justify-center w-full px-5 gap-5 bg-transparent shadow-lg mb-5">
                 <div className="flex-[2]">
                     <Support onClick={openModal} />
                 </div>
                 <OpenPopUp />
             </div>
+
+             ) : (
+                <div className="flex items-center justify-center w-full px-5 gap-5 bg-transparent shadow-lg mt-[10px]">
+                <div className="flex-[2]">
+                    <Support onClick={openModal} />
+                </div>
+                <OpenPopUp />
+            </div>
+
+             )}
+            
 
             <Modal isOpen={isModalOpen} onClose={closeModal}>
                 <Elements stripe={stripePromise}>

@@ -14,8 +14,8 @@ const Title = ({ contentIndex = 0 }) => {
         {content.title}
       </h1>
       <p 
-      className="md:text-[#DBDBDB] text-[#FFFFFF] text-[16px] md:font-normal font-light w-full lg:w-[60%] lg:px-0 md:px-1 leading-[1.2]">
-        {content.description}
+      className="md:text-[#DBDBDB] text-[#B7B7B7] text-[16px] md:font-normal font-extralight w-full lg:w-[60%] lg:px-0 md:px-1 leading-[1.2]">
+        Better content, better experience! This camera <br/> helps me create high-quality, engaging videos for you.
       </p>
 
     </div>

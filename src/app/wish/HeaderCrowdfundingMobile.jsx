@@ -5,8 +5,8 @@ import Title from './components/Title';
 import VideoPlayer from './components/VideoMobile/VideoPlayer';
 import Icons from './components/VideoMobile/Icons';
 import { images } from './constants/carouselData';
-import styles from './style/Header.module.css';  // Importăm stilurile din modulul CSS
-import ButonShere from '../../app/Crowdfunding/components/mobile/ButonShere';
+import styles from './style/Header.module.css';  
+import ButonShere from '../Crowdfunding/components/mobile/ButonShere';
 import Image from "next/image";
 import NavbarHome from "../components/Header/components/NavbarHome";
 
@@ -15,8 +15,8 @@ const HeaderCrowdfundingMobile = () => {
     const currentData = images[0];
     const [isVideoVisible, setIsVideoVisible] = useState(false);
     const containerRef = useRef(null);
-    const buttonRef = useRef(null); // Referință pentru butonul Share
-    const [isShareFixed, setIsShareFixed] = useState(false); // Stare pentru fixarea butonului
+    const buttonRef = useRef(null); 
+    const [isShareFixed, setIsShareFixed] = useState(false); 
 
     const handleScreenClick = () => {
         setIsVideoVisible(true);
@@ -45,14 +45,13 @@ const HeaderCrowdfundingMobile = () => {
         };
     }, []);
 
-    // Detectăm când butonul iese din vizor și îl fixăm
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 const entry = entries[0];
-                setIsShareFixed(!entry.isIntersecting); // Fixăm butonul doar când acesta nu mai este în vizor
+                setIsShareFixed(!entry.isIntersecting); 
             },
-            { threshold: 0 } // Detectăm imediat ce butonul nu mai este vizibil
+            { threshold: 0 } 
         );
 
         if (buttonRef.current) {
@@ -71,41 +70,36 @@ const HeaderCrowdfundingMobile = () => {
             ref={containerRef}
             className={`${styles.header} relative w-auto text-white font-ekMukta overflow-hidden`}
         >
-                        <NavbarHome/>
+            <NavbarHome/>
 
-            {/* Fundalul absolut, ocupă întregul ecran */}
             <div
-                className={`absolute inset-0 w-full h-[100vh] bg-center bg-[#000000] bg-no-repeat max-md:w-auto ${isVideoVisible ? 'bg-opacity-50 blur-sm' : ''}`}
+                className="absolute inset-0 w-full h-[100vh] bg-no-repeat bg-cover"
                 style={{
                     backgroundImage: `url('/imgs/Crowdfunding/mobileB.png')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    width: '100vw', // Asigură că imaginea ocupă întreaga lățime a viewport-ului
-                    height: '100vh',
+                    backgroundSize: 'contain', 
+                    backgroundPosition: 'top center', 
+                    backgroundAttachment: 'scroll',
                 }}
             ></div>
 
-            {/* Gradient aplicat deasupra conținutului, ocupă 40% din înălțime */}
             <div
                 className={`${styles.gradient} absolute w-full h-[272px] bottom-0 z-20 pointer-events-none`}
                 style={{
-                    background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 57%, rgba(0, 0, 0, 0) 100%)',
+                    background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 0.8) 75%, rgba(0, 0, 0, 0.7) 80%, rgba(0, 0, 0, 0.4) 90%, rgba(0, 0, 0, 0) 100%), rgba(0, 0, 0, 0) 90%)',
                 }}
             ></div>
 
-            {/* Conținutul componentei */}
             <div className={`${styles.contentWrapper} relative z-30 h-full flex flex-col justify-end px-5`}>
                 <Title title={currentData.title} description={currentData.description} />
                 <FundraisingProgress data={currentData} />
             </div>
 
-            {/* Butonul de Play */}
             {!isVideoVisible && (
                 <button
                     onClick={handleScreenClick}
                     className={`${styles.playButton} absolute flex items-center justify-center z-40 bg-transparent`}
                     style={{
-                        top: '40%',
+                        top: '35%',
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
                     }}
@@ -114,7 +108,6 @@ const HeaderCrowdfundingMobile = () => {
                     </button>
             )}
 
-            {/* Afișare VideoPlayer dacă isVideoVisible este true */}
             {isVideoVisible && (
                 <VideoPlayer
                     videoSrc="https://www.dropbox.com/scl/fi/bqxswhnitds5u6pqcd9wq/Video.mp4?rlkey=v3rni8n6k9xj05ydyxq9f10xk&st=zpz57pts&raw=1"
@@ -122,11 +115,10 @@ const HeaderCrowdfundingMobile = () => {
                 />
             )}
 
-            {/* Icons pentru controlul sunetului */}
             <Icons handleScreenClick={handleScreenClick} />
 
             <div ref={buttonRef} className="relative w-full mb-5">
-                <ButonShere isShareFixed={true} />
+                <ButonShere isShareFixed={isShareFixed} />
             </div>
         </div>
     );
