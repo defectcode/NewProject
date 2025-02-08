@@ -1,3 +1,5 @@
+
+'use client'
 import React, { useState, useEffect, useRef } from "react";
 import Support from './Support';
 import { RiShare2Line } from "react-icons/ri";

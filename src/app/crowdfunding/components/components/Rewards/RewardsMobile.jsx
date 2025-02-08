@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import { rewards } from "./constants/rewardsData";

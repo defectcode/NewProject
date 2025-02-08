@@ -1,3 +1,5 @@
+
+'use client'
 import React, { useState } from 'react';
 import { rewards } from './constants/rewardsData';
 import { Elements } from "@stripe/react-stripe-js";

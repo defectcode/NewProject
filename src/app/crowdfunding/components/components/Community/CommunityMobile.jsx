@@ -1,3 +1,5 @@
+
+'use client'
 import React from 'react';
 import styles from './style/Community.module.css'; // Importăm CSS-ul specific
 import Image from 'next/image';

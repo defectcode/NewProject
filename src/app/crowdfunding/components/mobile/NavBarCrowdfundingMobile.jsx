@@ -1,3 +1,6 @@
+
+'use client'
+
 import React, { useState, useEffect, useRef } from "react";
 
 const NavBarCrowdfundingMobile = ({ setActiveSection, activeSection }) => {
