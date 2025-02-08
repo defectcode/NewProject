@@ -82,12 +82,8 @@ const HeaderCrowdfundingMobile = () => {
                 }}
             ></div>
 
-            <div
-                className={`${styles.gradient} absolute w-full h-[272px] bottom-0 z-20 pointer-events-none`}
-                style={{
-                    background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 0.8) 75%, rgba(0, 0, 0, 0.7) 80%, rgba(0, 0, 0, 0.4) 90%, rgba(0, 0, 0, 0) 100%), rgba(0, 0, 0, 0) 90%)',
-                }}
-            ></div>
+            <div className={`${styles.gradientBackground} absolute w-full h-[272px] bottom-0`}></div>
+
 
             <div className={`${styles.contentWrapper} relative z-30 h-full flex flex-col justify-end px-5`}>
                 <Title title={currentData.title} description={currentData.description} />

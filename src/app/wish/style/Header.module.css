@@ -335,3 +335,20 @@
     opacity: 1;
   }
 }
+
+
+
+
+.gradientBackground {
+  background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 1) 60%,
+      rgba(0, 0, 0, 1) 65%,
+      rgba(0, 0, 0, 0.8) 75%,
+      rgba(0, 0, 0, 0.7) 80%,
+      rgba(0, 0, 0, 0.4) 90%,
+      rgba(0, 0, 0, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 20;
+}
