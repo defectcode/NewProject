@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Networking from "./Components/Networking";
 import { IoIosArrowForward } from "react-icons/io";
-import Popup from './Components/PopUp'
+import Popup from './Components/PopUp';
 
 
 export default function FooterMobile() {
@@ -94,18 +94,18 @@ export default function FooterMobile() {
             </div>
 
       <Popup isOpen={isPopupOpen} onClose={closePopup}>
-                <h2 className="text-[20px] font-bold mb-4">Brands & Collaborations</h2>
-                <p className="text-[14px] text-gray-700 mb-4">
-                    Contact us for brand partnerships and collaborations. We are open to working
-                    with creative and innovative brands worldwide.
-                </p>
-                <p className="text-[14px] text-gray-700">
-                    <strong>Phone:</strong> +373 60 877 733
-                </p>
-                <p className="text-[14px] text-gray-700">
-                    <strong>Email:</strong> Valery@fyne.pro
-                </p>
-            </Popup>
+          <h2 className="text-[20px] font-bold mb-4">Brands & Collaborations</h2>
+          <p className="text-[14px] text-gray-700 mb-4">
+              Contact us for brand partnerships and collaborations. We are open to working
+              with creative and innovative brands worldwide.
+          </p>
+          <p className="text-[14px] text-gray-700">
+              <strong>Phone:</strong> +373 60 877 733
+          </p>
+          <p className="text-[14px] text-gray-700">
+              <strong>Email:</strong> Valery@fyne.pro
+          </p>
+      </Popup>
 
       <div className="relative w-full">
         <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
