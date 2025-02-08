@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect, useRef } from "react";
 import FundraisingProgress from './components/Progres';
 import Title from './components/Title';

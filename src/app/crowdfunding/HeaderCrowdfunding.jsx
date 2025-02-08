@@ -1,3 +1,4 @@
+'use client'
 // HeaderSeriesConcept.jsx
 import React, { useRef, useState } from "react";
 import FundraisingProgress from './components/Progres';
