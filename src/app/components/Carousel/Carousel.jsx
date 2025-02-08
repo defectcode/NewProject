@@ -7,6 +7,7 @@ import FundraisingProgress from './Components/Progres';
 import Dots from './Components/Dots';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 import style from '../Carousel/Components/style/Progres.module.css'; // Verifică importul stilurilor
+import Image from 'next/image';
 
 const Carousel = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -135,9 +136,11 @@ const Carousel = () => {
             )}
             <FundraisingProgress raisedAmount={image.raisedAmount} goalAmount={image.goalAmount} contentIndex={index} />
           </div>
-          <img
+          <Image
             src={isMobile ? image.src.mobile : isTablet ? image.src.tablet : image.src.desktop}
             alt={image.alt}
+            width={750}
+            height={100}
             className={`w-full h-full object-cover max-h-[750px] custom-image-width ${isMobile ? "max-width-image w-full min-w-[240px] max-height-image mt-36 rounded-lg" : "rounded-lg"} ${index !== currentIndex && isMobile ? style.blurred : ''}`} // Folosește stilul din module CSS
           />
         </div>

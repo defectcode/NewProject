@@ -1,50 +1,65 @@
 import React from "react";
-import { stageDescriptionData, stageDescription } from '../constants/stagerData';
-import DetailedStepsMobile from './DetailedStepsMobile';
+import Image from "next/image";
+import { stageDescriptionData } from "../constants/stagerData";
+import DetailedStepsMobile from "./DetailedStepsMobile";
 
 const StageDescriptionMobile = () => {
     return (
-        <div id="overview" className="bg-black px-[20px] w-full flex flex-col items-start lg:items-center">
+        <div id="overview" className="bg-black px-[20px] w-full flex flex-col items-start lg:items-center mt-5">
             <div>
-                <h2 className="text-3xl text-[#FFFFFF] mb-4 font-ekMukta font-semibold">
+                <h2 className="text-[24px] text-[#FFFFFF] mb-5 font-ekMukta font-semibold">
                     {stageDescriptionData.stageTitle}
                 </h2>
-                <p className="text-[#CDCDCD] max-w-[764px] w-auto font-ekMukta">
-                    {stageDescriptionData.stageHistory}
+                <p className="text-[#CDCDCD] max-w-[764px] w-full font-ekMukta text-[16px] leading-[1.6]">
+                    {stageDescriptionData.stageHistory.replace(/'/g, "&apos;")}
                 </p>
-                <img src={stageDescriptionData.imageUrl_1} alt="Stage Description" className="mt-5 mb-10 w-full h-auto"/>
+                <Image 
+                    src={stageDescriptionData.imageUrl_1} 
+                    alt="Stage Description" 
+                    width={800}
+                    height={450}
+                    className="mt-5 mb-10 w-full h-auto object-cover"
+                />
             </div>
-            <div className="">
-                <h2 className="text-lg text-[#FFFFFF] font-ekMukta font-semibold">
+            <div>
+                <h2 className="text-[24px] text-[#FFFFFF] font-ekMukta font-semibold mb-5">
                     {stageDescriptionData.fundingTitle}
                 </h2>
-                <div className="font-ekMukta text-[#CDCDCD]">
-                    <p className="mt-4">
-                        {stageDescriptionData.fundingProgress}
+                <div className="font-ekMukta text-[#CDCDCD] text-[16px] leading-[1.6]">
+                    <p className="mb-4">
+                        <span className="text-[#FFFFFF] font-semibold text-[16px]">Current Progress:</span> {stageDescriptionData.fundingProgress}
                         <br />
-                        {stageDescriptionData.requiredAmount}
+                        <span className="text-[#FFFFFF] font-semibold text-[16px]">Required Amount:</span> {stageDescriptionData.requiredAmount}
                         <br />
-                        {stageDescriptionData.monthlyCostsTitle}
+                        <span className="text-[#FFFFFF] font-semibold text-[16px]">{stageDescriptionData.monthlyCostsTitle}</span>
                     </p>
-                    <ul className="list-disc list-inside list-small ml-2">
-                        {stageDescriptionData.monthlyCosts ? stageDescriptionData.monthlyCosts.map((cost, index) => (
-                            <li key={index}>{cost.item}: {cost.cost}</li>
-                        )) : null}
+                    <ul className="list-disc list-inside list-small ml-5 text-[15px]">
+                        {stageDescriptionData.monthlyCosts.map((cost, index) => (
+                            <li key={`${cost.item}-${cost.cost}`} className="mb-2">
+                                {cost.item}: {cost.cost}
+                            </li>
+                        ))}
                     </ul>
                     <p className="mt-4">
-                        {stageDescriptionData.totalMonthlyCosts}
+                        <span className="text-[#FFFFFF] font-semibold text-[16px]">Total Monthly Costs: </span>{stageDescriptionData.totalMonthlyCosts}
                     </p>
                 </div>
-                <img src={stageDescriptionData.imageUrl_2} alt="Stage Description" className="mt-5 mb-10 w-full h-auto"/>
+                <Image 
+                    src={stageDescriptionData.imageUrl_2} 
+                    alt="Stage Description" 
+                    width={800}
+                    height={450}
+                    className="mt-5 mb-10 w-full h-auto object-cover"
+                />
             </div>
-            <DetailedStepsMobile/>
+            <DetailedStepsMobile />
             <style jsx>{`
                 ul.list-small li::marker {
-                    font-size: 0.7em; /* Ajustează dimensiunea după cum este necesar */
+                    font-size: 0.7em;
                 }
             `}</style>
         </div>
-    )
-}
+    );
+};
 
 export default StageDescriptionMobile;

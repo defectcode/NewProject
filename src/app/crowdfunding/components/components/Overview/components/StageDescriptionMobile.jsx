@@ -1,6 +1,7 @@
 import React from "react";
 import { stageDescriptionData } from '../constants/stagerData';
 import DetailedStepsMobile from './DetailedStepsMobile';
+import Image from "next/image";
 
 const StageDescriptionMobile = () => {
     return (
@@ -10,11 +11,13 @@ const StageDescriptionMobile = () => {
                     {stageDescriptionData.stageTitle}
                 </h2>
                 <p className="text-[#CDCDCD] w-full text-[16px] leading-[1.7] font-ekMukta">
-                    <span className="text-[#D8D7D7] font-bold">For the past seven years</span>, I have dedicated myself to content creation. Thousands of hours, thousands of videos, and countless stories told.But now, I want to <span className="text-[#CDCDCD] font-bold">elevate everything</span>.This camera is not just a tool—it’s the key to <span className="text-[#CDCDCD] font-bold">creating content that lasts</span>, that isn’t just consumed and forgotten but <span className="text-[#CDCDCD] font-bold">continues to inspire and impact lives</span>.<br/><span className="text-[#CDCDCD] font-bold">By supporting this wish, you're not just funding equipment. You’re investing in a movement that we are building together.</span>
+                    <span className="text-[#D8D7D7] font-bold">For the past seven years</span>, I have dedicated myself to content creation. Thousands of hours, thousands of videos, and countless stories told.But now, I want to <span className="text-[#CDCDCD] font-bold">elevate everything</span>.This camera is not just a tool—it`s the key to <span className="text-[#CDCDCD] font-bold">creating content that lasts</span>, that isn`t just consumed and forgotten but <span className="text-[#CDCDCD] font-bold">continues to inspire and impact lives</span>.<br/><span className="text-[#CDCDCD] font-bold">By supporting this wish, you`re not just funding equipment. You`re investing in a movement that we are building together.</span>
                 </p>
-                <img 
+                <Image 
                     src={stageDescriptionData.imageUrl_1} 
                     alt="Stage Description" 
+                    width={344.96}
+                    height={361}
                     className="mt-5 mb-10 w-full h-auto object-cover"
                 />
             </div>
@@ -26,15 +29,17 @@ const StageDescriptionMobile = () => {
                     <p className="mb-4">
                         {stageDescriptionData.fundingProgress}
                         <br />
-                        This isn't just a camera; it's the foundation for creating <span className="text-[#CDCDCD] font-bold">content that truly lasts</span>—content that educates, inspires, and builds something bigger than just social media trends. With this upgrade, I can produce <span className="text-[#CDCDCD] font-bold">high-quality, immersive videos</span> that remain relevant for years to come.
+                        This isn`t just a camera; it`s the foundation for creating <span className="text-[#CDCDCD] font-bold">content that truly lasts</span>—content that educates, inspires, and builds something bigger than just social media trends. With this upgrade, I can produce <span className="text-[#CDCDCD] font-bold">high-quality, immersive videos</span> that remain relevant for years to come.
                         <br />
-                        By supporting this project, you're not just helping me get better gear—you're <span className="text-[#CDCDCD] font-bold">fueling content that empowers, educates, and connects us all</span>.                    
+                        By supporting this project, you`re not just helping me get better gear—you`re <span className="text-[#CDCDCD] font-bold">fueling content that empowers, educates, and connects us all</span>.                    
                     </p>
                    
                 </div>
-                <img 
+                <Image
                     src={stageDescriptionData.imageUrl_2} 
                     alt="Stage Description" 
+                    width={344.96}
+                    height={361}
                     className="mt-5 mb-10 w-full h-auto object-cover"
                 />
 
@@ -82,9 +87,11 @@ const StageDescriptionMobile = () => {
 
                 </div>
 
-                <img 
+                <Image 
                     src={stageDescriptionData.imageUrl_3} 
                     alt="Stage Description" 
+                    width={344.96}
+                    height={361}
                     className="mt-5 mb-10 w-full h-auto object-cover"
                 />
             </div>

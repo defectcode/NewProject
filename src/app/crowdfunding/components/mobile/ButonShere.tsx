@@ -2,10 +2,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import Support from '../Support';
-import SupportCenter from '../SupportCenter';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import ShareButton from './Share/ShareButton';
+// import ShareButton from './Share/ShareButton';
 import Modal from "@/app/checkout/components/order/ModalPayPal";
 import SupportForm from "@/app/components/Header/components/Payment/SupportForm";
 
@@ -52,7 +51,7 @@ const ButonShere: React.FC<ButonShereProps> = ({ isShareFixed }) => {
                 <div className="flex-[2]">
                     <Support onClick={openModal} />
                 </div>
-                <ShareButton url={undefined} />
+                {/* <ShareButton url={undefined} /> */}
             </div>
 
             <Modal isOpen={isModalOpen} onClose={closeModal}>

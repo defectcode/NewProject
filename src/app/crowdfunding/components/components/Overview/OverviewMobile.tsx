@@ -24,7 +24,6 @@ const OverviewMobile = ({ products = [] }) => {
             <FundingBreakdownMobile />
           </div>
           <Info/>
-
         </div>
     );
 }

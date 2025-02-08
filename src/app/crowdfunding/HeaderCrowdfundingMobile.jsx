@@ -6,6 +6,7 @@ import Icons from './components/VideoMobile/Icons';
 import { images } from './constants/carouselData';
 import styles from './style/Header.module.css';  // Importăm stilurile din modulul CSS
 import ButonShere from '../../app/Crowdfunding/components/mobile/ButonShere';
+import Image from "next/image";
 
 const HeaderCrowdfundingMobile = () => {
     const currentData = images[0];
@@ -51,20 +52,15 @@ const HeaderCrowdfundingMobile = () => {
             { threshold: 0 } // Detectăm imediat ce butonul nu mai este vizibil
         );
 
-        useEffect(() => {
-            const currentButtonRef = buttonRef.current; // Salvează valoarea curentă a referinței
-        
-            if (currentButtonRef) {
-                observer.observe(currentButtonRef);
+        if (buttonRef.current) {
+            observer.observe(buttonRef.current);
+        }
+
+        return () => {
+            if (buttonRef.current) {
+                observer.unobserve(buttonRef.current);
             }
-        
-            return () => {
-                if (currentButtonRef) {
-                    observer.unobserve(currentButtonRef);
-                }
-            };
-        }, []);
-        
+        };
     }, []);
 
     return (

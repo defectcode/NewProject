@@ -1,5 +1,6 @@
 import React from "react";
 import { stageDescriptionData, stageDescription } from '../constants/stagerData';
+import Image from "next/image";
 
 const DetailedStepsMobile = () => {
     const images = [
@@ -30,9 +31,11 @@ const DetailedStepsMobile = () => {
                             </ul>
                             {/* Imaginea corespunzătoare fiecărui pas */}
                             {images[index] && (
-                                <img 
+                                <Image
                                     src={images[index]} 
                                     alt={`Stage Description ${index + 1}`} 
+                                    width={1}
+                                    height={1}
                                     className="mt-5 w-full h-auto"
                                     style={{ objectFit: 'cover' }}
                                 />
@@ -44,9 +47,11 @@ const DetailedStepsMobile = () => {
             <div className="mt-10">
                 <h2 className="text-[#FFFFFF] font-ekMukta font-semibold text-[26px]">{stageDescription.helpTitle}</h2>
                 <p className="text-[#CDCDCD] w-full text-[16px] mt-5">{stageDescription.helpInfo}</p>
-                <img 
+                <Image 
                     src={stageDescriptionData.imageUrl_8} 
                     alt="Stage Description" 
+                    width={1}
+                    height={1}
                     className="mt-5 w-full h-auto"
                     style={{ objectFit: 'cover' }}
                 />

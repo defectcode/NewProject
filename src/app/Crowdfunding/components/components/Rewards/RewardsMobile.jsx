@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './style/Rewards.module.css'; // Importăm CSS-ul specific
+import Image from 'next/image';
 
 const RewardsMobile = () => {
     return (
@@ -7,7 +8,7 @@ const RewardsMobile = () => {
             <div className={styles.overlay}></div>
             <div className={styles.content}>
                 <div className={styles.iconWrapper}>
-                    <img src="/imgs/Crowdfunding/Community/progress.svg" alt="Work In Progress Icon" />
+                    <Image width={1} height={1} src="/imgs/Crowdfunding/Community/progress.svg" alt="Work In Progress Icon" />
                 </div>
             </div>
         </div>

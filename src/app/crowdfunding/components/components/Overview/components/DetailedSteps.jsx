@@ -1,5 +1,6 @@
 import React from "react";
 import { stageDescription, stageDescriptionData } from '../constants/stagerData';
+import Image from "next/image";
 
 const DetailedSteps = () => {
     const images = [
@@ -20,10 +21,12 @@ const DetailedSteps = () => {
             <div className="my-10">
                 <h2 className="text-[#FFFFFF] font-semibold text-[26px]">{stageDescription.helpTitle}</h2>
                 <p className="text-[#CDCDCD] w-[764px] text-[16px]">{stageDescription.helpInfo}</p>
-                <img 
+                <Image 
                     src={stageDescriptionData.imageUrl_8} 
                     alt="Stage Description" 
                     className="mt-10 ml-5" 
+                    width={624}
+                    height={624}
                     style={{ width: '624px', height: '624px', objectFit: 'cover' }}
                 />
             </div>

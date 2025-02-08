@@ -5,6 +5,7 @@ import Title from "./components/Title";
 import VideoPlayer from './components/Video/VideoPlayer';  // Asigură-te că calea către VideoPlayer este corectă
 import Icons from './components/Video/Icons';  // Asigură-te că calea către Icons este corectă
 import { images } from './constants/carouselData';
+import Image from "next/image";
 
 const HeaderSeriesConcept = () => {
     const currentData = images[0];
@@ -37,7 +38,7 @@ const HeaderSeriesConcept = () => {
                     onClick={handleScreenClick} 
                     className="absolute inset-0 flex items-center justify-center z-20 bg-transparent xl:mr-[550px] lg:mr-[450px] md:mr-[350px]"
                 >
-                    <img src="/imgs/pause.svg" alt="Play Video" className="w-[100px] h-[100px]" />
+                    <Image width={100} height={100} src="/imgs/pause.svg" alt="Play Video" className="w-[100px] h-[100px]" />
                 </button>
             </div>
 

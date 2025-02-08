@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useState } from 'react';
 import Select, { components } from 'react-select';
 
@@ -83,9 +84,11 @@ const DropdownIndicator = (props) => {
 
   return (
     <components.DropdownIndicator {...props}>
-      <img
+      <Image
         src="/imgs/arrow.svg"
         alt="Dropdown icon"
+        width={11}
+        height={6}
         className={`w-[11px] h-[6px] transition-transform duration-200 ${
           open ? 'rotate-180' : 'rotate-0'
         }`}

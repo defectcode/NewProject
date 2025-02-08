@@ -1,6 +1,7 @@
 import React from "react";
 import { stageDescriptionData, stageDescription } from '../constants/stagerData';
 import DetailedSteps from "./DetailedSteps";
+import Image from "next/image";
 
 const StageDescription = () => {
     return (
@@ -12,10 +13,12 @@ const StageDescription = () => {
                 <p className="text-[#CDCDCD] max-w-[704px] w-auto font-ekMukta">
                     {stageDescriptionData.stageHistory}
                 </p>
-                <img 
+                <Image 
                     src={stageDescriptionData.imageUrl_1} 
                     alt="Stage Description" 
                     className="mt-10 ml-5" 
+                    width={624}
+                    height={624}
                     style={{ width: '624px', height: '624px', objectFit: 'cover' }}
                 />
             </div>
@@ -28,10 +31,12 @@ const StageDescription = () => {
                         {stageDescriptionData.fundingProgress}
                     </p>
                 </div>
-                <img 
+                <Image 
                     src={stageDescriptionData.imageUrl_2} 
                     alt="Stage Description" 
                     className="mt-10 ml-5" 
+                    width={624}
+                    height={624}
                     style={{ width: '624px', height: '624px', objectFit: 'cover' }}
                 />
             </div>

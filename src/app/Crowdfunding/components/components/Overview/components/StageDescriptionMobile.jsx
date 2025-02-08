@@ -1,6 +1,7 @@
 import React from "react";
-import { stageDescriptionData } from '../constants/stagerData';
-import DetailedStepsMobile from './DetailedStepsMobile';
+import Image from "next/image";
+import { stageDescriptionData } from "../constants/stagerData";
+import DetailedStepsMobile from "./DetailedStepsMobile";
 
 const StageDescriptionMobile = () => {
     return (
@@ -10,11 +11,13 @@ const StageDescriptionMobile = () => {
                     {stageDescriptionData.stageTitle}
                 </h2>
                 <p className="text-[#CDCDCD] max-w-[764px] w-full font-ekMukta text-[16px] leading-[1.6]">
-                    {stageDescriptionData.stageHistory}
+                    {stageDescriptionData.stageHistory.replace(/'/g, "&apos;")}
                 </p>
-                <img 
+                <Image 
                     src={stageDescriptionData.imageUrl_1} 
                     alt="Stage Description" 
+                    width={800}
+                    height={450}
                     className="mt-5 mb-10 w-full h-auto object-cover"
                 />
             </div>
@@ -32,23 +35,27 @@ const StageDescriptionMobile = () => {
                     </p>
                     <ul className="list-disc list-inside list-small ml-5 text-[15px]">
                         {stageDescriptionData.monthlyCosts.map((cost, index) => (
-                            <li key={index} className="mb-2">{cost.item}: {cost.cost}</li>
+                            <li key={`${cost.item}-${cost.cost}`} className="mb-2">
+                                {cost.item}: {cost.cost}
+                            </li>
                         ))}
                     </ul>
                     <p className="mt-4">
                         <span className="text-[#FFFFFF] font-semibold text-[16px]">Total Monthly Costs: </span>{stageDescriptionData.totalMonthlyCosts}
                     </p>
                 </div>
-                <img 
+                <Image 
                     src={stageDescriptionData.imageUrl_2} 
                     alt="Stage Description" 
+                    width={800}
+                    height={450}
                     className="mt-5 mb-10 w-full h-auto object-cover"
                 />
             </div>
             <DetailedStepsMobile />
             <style jsx>{`
                 ul.list-small li::marker {
-                    font-size: 0.7em; /* Ajustează dimensiunea marker-ului în funcție de preferințe */
+                    font-size: 0.7em;
                 }
             `}</style>
         </div>

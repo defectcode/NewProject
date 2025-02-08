@@ -35,7 +35,7 @@ export default function Info() {
                         className="flex items-start gap-2 text-[#CDCDCD] text-[16px]"
                     >
                         {/* Cerculeț */}
-                        <span className="w-[8px] h-[8px] mt-[6px] rounded-full bg-[#FFFFFF] flex-shrink-0"></span>
+                        <span className="w-[4px] h-[4px] mt-[8px] rounded-full bg-[#FFFFFF] flex-shrink-0"></span>
                         {/* Conținut */}
                         <div>
                             <h3 className="text-[#CDCDCD] font-bold text-[16px]">
