@@ -11,8 +11,7 @@ const NavBarCrowdfundingMobileStatic = ({ setActiveSection, activeSection }) => 
 
     const linkClasses = (section) => {
         const baseClasses = "px-1 py-[6px] text-[14px] flex justify-center items-center mt-1 w-full relative";
-        const activeClasses =
-            'text-[#F1F1F1] border-b-2 border-[#F1F1F1] font-avenir-heavy after:absolute after:content-[""] after:h-[1px] after:w-full after:left-0 after:bottom-[3px]';
+        const activeClasses = 'text-[#F1F1F1] border-b-2 border-[#F1F1F1] font-avenir-heavy after:absolute after:content-[""] after:h-[1px] after:w-full after:left-0 after:bottom-[3px]';
         const inactiveClasses = "text-[#979797] border-b-4 border-transparent font-avenir";
 
         return `${baseClasses} ${activeSection === section ? activeClasses : inactiveClasses}`;

@@ -7,6 +7,7 @@ import { images } from './constants/carouselData';
 import styles from './style/Header.module.css';  // Importăm stilurile din modulul CSS
 import ButonShere from '../../app/Crowdfunding/components/mobile/ButonShere';
 import Image from "next/image";
+import NavbarHome from "../components/Header/components/NavbarHome";
 
 const HeaderCrowdfundingMobile = () => {
     const currentData = images[0];
@@ -68,6 +69,7 @@ const HeaderCrowdfundingMobile = () => {
             ref={containerRef}
             className={`${styles.header} relative w-auto text-white font-ekMukta overflow-hidden`}
         >
+            <NavbarHome/>
             {/* Fundalul absolut, ocupă întregul ecran */}
             <div
                 className={`absolute inset-0 w-full h-[100vh] bg-center bg-white bg-no-repeat max-md:w-auto ${isVideoVisible ? 'bg-opacity-50 blur-sm' : ''}`}
@@ -122,7 +124,7 @@ const HeaderCrowdfundingMobile = () => {
 
             {/* Butonul Share/Support */}
             <div ref={buttonRef} className="relative w-full mb-5">
-                <ButonShere isShareFixed={isShareFixed} />
+                <ButonShere isShareFixed={true} />
             </div>
         </div>
     );

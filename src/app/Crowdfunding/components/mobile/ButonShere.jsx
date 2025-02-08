@@ -9,6 +9,8 @@ import SupportForm from '/src/app/components/Header/components/Payment/SupportFo
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import ShareButton from './Share/ShareButton';
+import Support from "@/app/crowdfunding/components/Support";
+
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
@@ -24,27 +26,17 @@ const ButonShere = ({ isShareFixed }) => {
     };
 
     return (
-        <div 
-            className={`flex items-center justify-center w-full h-[0px] bg-transparent z-50 ${
+        <div
+            className={`${
                 isShareFixed ? 'fixed bottom-0 left-0 right-0' : 'relative'
-            }`}
-            style={{ bottom: isShareFixed ? '0' : 'auto' }}
+            } flex items-center justify-center w-full h-auto bg-transparent z-50`}
         >
-            {isShareFixed ? (
-                // Butonul Support când este fixat
-                <div className="flex items-center justify-center w-[209px] h-[80px] bg-transparent mb-10">
-                    <SupportCenter onClick={openModal} />
+            <div className="flex items-center justify-center w-full px-5 gap-4 bg-transparent shadow-lg mb-2">
+                <div className="flex-[2]">
+                    <Support onClick={openModal} />
                 </div>
-            ) : (
-                // Ambele butoane în poziția inițială
-                // <div className="flex items-center justify-center w-full px-5 gap-4">
-                //     <div className="flex-[2]">
-                //         <Support onClick={openModal} />
-                //     </div>
-                //     <ShareButton />
-                // </div>
-                ''
-            )}
+                <ShareButton />
+            </div>
 
             <Modal isOpen={isModalOpen} onClose={closeModal}>
                 <Elements stripe={stripePromise}>
