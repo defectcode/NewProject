@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Networking from "./Components/Networking";
 import { IoIosArrowForward } from "react-icons/io";
-import Popup from './Components/PopUp';
+// import Popup from './Components/PopUp';
 
 
 export default function FooterMobile() {
@@ -69,31 +69,31 @@ export default function FooterMobile() {
       </div>
 
       <div className="p-5">
-                <div
-                    className="flex justify-between items-center cursor-pointer text-[#1E1E1E]"
-                    onClick={openPopup} // Deschide pop-up-ul
-                >
-                    <h2 className="text-[16px] font-ekMukta font-semibold leading-none">
-                        Brands & Collaborations
-                    </h2>
-                    <span
-                        className="text-xl transform transition-transform duration-200 leading-none"
-                        style={{
-                            transform: isOpenContact ? 'rotate(180deg)' : 'rotate(0deg)',
-                        }}
-                    >
-                        <Image
-                            src="/imgs/Footer/arrow.svg"
-                            alt="arrow"
-                            width={14}
-                            height={6}
-                            className="w-[14px] h-[8px]"
-                        />
-                    </span>
-                </div>
-            </div>
+          <div
+              className="flex justify-between items-center cursor-pointer text-[#1E1E1E]"
+              onClick={openPopup} // Deschide pop-up-ul
+          >
+              <h2 className="text-[16px] font-ekMukta font-semibold leading-none">
+                  Brands & Collaborations
+              </h2>
+              <span
+                  className="text-xl transform transition-transform duration-200 leading-none"
+                  style={{
+                      transform: isOpenContact ? 'rotate(180deg)' : 'rotate(0deg)',
+                  }}
+              >
+                  <Image
+                      src="/imgs/Footer/arrow.svg"
+                      alt="arrow"
+                      width={14}
+                      height={6}
+                      className="w-[14px] h-[8px]"
+                  />
+              </span>
+          </div>
+      </div>
 
-      <Popup isOpen={isPopupOpen} onClose={closePopup}>
+      {/* <Popup isOpen={isPopupOpen} onClose={closePopup}>
           <h2 className="text-[20px] font-bold mb-4">Brands & Collaborations</h2>
           <p className="text-[14px] text-gray-700 mb-4">
               Contact us for brand partnerships and collaborations. We are open to working
@@ -105,7 +105,7 @@ export default function FooterMobile() {
           <p className="text-[14px] text-gray-700">
               <strong>Email:</strong> Valery@fyne.pro
           </p>
-      </Popup>
+      </Popup> */}
 
       <div className="relative w-full">
         <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
