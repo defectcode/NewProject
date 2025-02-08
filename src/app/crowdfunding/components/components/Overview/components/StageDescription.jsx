@@ -31,11 +31,11 @@ const StageDescription = () => {
                         <br />
                         {stageDescriptionData.monthlyCostsTitle}
                     </p>
-                    <ul className="list-disc list-inside list-small ml-2">
+                    {/* <ul className="list-disc list-inside list-small ml-2">
                         {stageDescriptionData.monthlyCosts.map((cost, index) => (
                             <li key={index}>{cost.item}: {cost.cost}</li>
                         ))}
-                    </ul>
+                    </ul> */}
                     <p className="mt-4">
                         {stageDescriptionData.monthlyCostsTitle} {stageDescriptionData.totalMonthlyCosts}
                     </p>

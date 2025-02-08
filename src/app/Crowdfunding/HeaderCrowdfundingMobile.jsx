@@ -6,6 +6,7 @@ import Icons from './components/VideoMobile/Icons';
 import { images } from './constants/carouselData';
 import styles from './style/Header.module.css';  // Importăm stilurile din modulul CSS
 import ButonShere from '../../app/Crowdfunding/components/mobile/ButonShere';
+import Image from "next/image";
 
 const HeaderCrowdfundingMobile = () => {
     const currentData = images[0];
@@ -104,7 +105,7 @@ const HeaderCrowdfundingMobile = () => {
                         transform: 'translate(-50%, -50%)',
                     }}
                 >
-                    <img src="/imgs/pause.svg" alt="Play Video" className="w-[50px] h-[50px]" />
+                    <Image src="/imgs/pause.svg" alt="Play Video" width={50} height={50} className="w-[50px] h-[50px]" />
                 </button>
             )}
 

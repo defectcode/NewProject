@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Support from './Support';
 import Modal from '/src/app/components/Header/components/Modal.jsx';
-import SupportForm from '../../components/Header/components/Payment/SupportForm';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import SupportForm from '@/app/components/Header/components/Payment/SupportForm';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 

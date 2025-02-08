@@ -51,15 +51,20 @@ const HeaderCrowdfundingMobile = () => {
             { threshold: 0 } // Detectăm imediat ce butonul nu mai este vizibil
         );
 
-        if (buttonRef.current) {
-            observer.observe(buttonRef.current);
-        }
-
-        return () => {
-            if (buttonRef.current) {
-                observer.unobserve(buttonRef.current);
+        useEffect(() => {
+            const currentButtonRef = buttonRef.current; // Salvează valoarea curentă a referinței
+        
+            if (currentButtonRef) {
+                observer.observe(currentButtonRef);
             }
-        };
+        
+            return () => {
+                if (currentButtonRef) {
+                    observer.unobserve(currentButtonRef);
+                }
+            };
+        }, []);
+        
     }, []);
 
     return (
@@ -104,8 +109,8 @@ const HeaderCrowdfundingMobile = () => {
                         transform: 'translate(-50%, -50%)',
                     }}
                 >
-                    <img src="/imgs/pause.svg" alt="Play Video" className="w-[50px] h-[50px]" />
-                </button>
+                    <Image src="/imgs/pause.svg" alt="Play Video" width={50} height={50} className="w-[50px] h-[50px]" />
+                    </button>
             )}
 
             {/* Afișare VideoPlayer dacă isVideoVisible este true */}
