@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from "react";
 import Static from "../app/components/Header/components/Static";
 import HeaderSeriesConcept from '../app/SeriesConcept/HeaderSeriesConcept';

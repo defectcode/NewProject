@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect, useRef } from "react";
 import Static from "../app/components/Header/components/Static";
 import StaticMobile from "../app/components/Header/components/StaticMobile";

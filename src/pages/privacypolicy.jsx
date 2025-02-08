@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from "react";
 import NavBar from "../app/components/Header/components/Navbar"
 import PrivacyPolicy from '../app/PrivacyPolicy/PrivacyPolicy'
