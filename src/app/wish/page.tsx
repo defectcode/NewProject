@@ -37,7 +37,7 @@ export default function Crowdfunding() {
     };
 
     return (
-        <div className="mb-10 md:mb-0 h-auto bg-[#000000]">
+        <div className="mb-5 md:mb-0 h-auto bg-[#000000]">
             {isMobile ? <HeaderCrowdfundingMobile /> : <HeaderCrowdfunding />}
             {isMobile ? (
                 <div>
@@ -45,10 +45,10 @@ export default function Crowdfunding() {
                         setActiveSection={setActiveSection} 
                         activeSection={activeSection} 
                     />
-                    <NavBarCrowdfundingMobileStatic
+                    {/* <NavBarCrowdfundingMobileStatic
                         setActiveSection={setActiveSection}
                         activeSection={activeSection}
-                    />
+                    /> */}
 
                 </div>
             ) : (
