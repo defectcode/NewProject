@@ -73,16 +73,23 @@ const HeaderCrowdfundingMobile = () => {
             <NavbarHome/>
 
             <div
-                className="absolute inset-0 w-full h-[100vh] bg-no-repeat bg-cover"
+                className={`absolute inset-0 w-full h-[100vh] bg-center bg-[#000000] bg-no-repeat max-md:w-auto ${isVideoVisible ? 'bg-opacity-50 blur-sm' : ''}`}
                 style={{
                     backgroundImage: `url('/imgs/Crowdfunding/mobileB.png')`,
-                    backgroundSize: 'contain', 
-                    backgroundPosition: 'top center', 
-                    backgroundAttachment: 'scroll',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    width: '100vw', // Asigură că imaginea ocupă întreaga lățime a viewport-ului
+                    height: '100vh',
                 }}
             ></div>
 
-            <div className={`${styles.gradientBackground} absolute w-full h-[272px] bottom-0`}></div>
+            {/* Gradient aplicat deasupra conținutului, ocupă 40% din înălțime */}
+            <div
+                className={`${styles.gradient} absolute w-full h-[272px] bottom-0 z-20 pointer-events-none bg-[#000000]`}
+                style={{
+                    background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 57%, rgba(0, 0, 0, 0) 100%)',
+                }}
+            ></div>
 
 
             <div className={`${styles.contentWrapper} relative z-30 h-full flex flex-col justify-end px-5`}>
