@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useStripe, useElements, PaymentRequestButtonElement } from '@stripe/react-stripe-js';
+import { useStripe, useElements } from '@stripe/react-stripe-js';
 import PayPalButton from './PayPal/PayPalButton';
 import Image from 'next/image';
-import CheckoutButton from "@/components/checkout";
-
+import CheckoutButton from '@/components/checkout';
 
 const SupportForm = () => {
-  const [amount, setAmount] = useState(50); // Setare valoare inițială la 50
+  const [amount, setAmount] = useState(50);
   const [paymentMethod, setPaymentMethod] = useState('stripe');
   const [customAmount, setCustomAmount] = useState('');
   const [isCustomAmount, setIsCustomAmount] = useState(false);
   const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
-  const [paymentRequest, setPaymentRequest] = useState(null);
+  const [fullWishAmount, setFullWishAmount] = useState(1895); // Amount for "Gift the Full Wish Amount"
 
   const stripe = useStripe();
   const elements = useElements();
-
-  // Valoare hardcodată pentru CLIENT_SECRET (Numai pentru testare)
-  const CLIENT_SECRET = 'sk_test_4eC39HqLyjWDarjtT1zdp7dc'; // Înlocuiește cu cheia ta de test
 
   useEffect(() => {
     if (stripe && amount > 0) {
@@ -28,7 +24,6 @@ const SupportForm = () => {
           label: 'Support Amount',
           amount: amount * 100,
         },
-        
         requestPayerName: true,
         requestPayerEmail: true,
       });
@@ -40,25 +35,14 @@ const SupportForm = () => {
       });
 
       pr.on('paymentmethod', async (event) => {
-        const { error } = await stripe.confirmCardPayment(
-          CLIENT_SECRET, // Înlocuiește cu valoarea hardcodată sau obținută din backend
-          {
-            payment_method: event.paymentMethod.id,
-          },
-          {
-            handleActions: false,
-          }
-        );
+        const { error } = await stripe.confirmCardPayment(CLIENT_SECRET, {
+          payment_method: event.paymentMethod.id,
+        });
         if (error) {
           event.complete('fail');
         } else {
           event.complete('success');
-          const { error: confirmError } = await stripe.confirmCardPayment(CLIENT_SECRET);
-          if (confirmError) {
-            console.log('Payment failed', confirmError);
-          } else {
-            handlePaymentSuccess();
-          }
+          handlePaymentSuccess();
         }
       });
     }
@@ -86,124 +70,74 @@ const SupportForm = () => {
 
   const handleSupportClick = async () => {
     if (paymentMethod === 'stripe') {
-      const width = 600;
-      const height = 800;
-      const left = (window.screen.width / 2) - (width / 2);
-      const top = (window.screen.height / 2) - (height / 2);
-
-      const stripeDonateUrl = `https://donate.stripe.com/14kaFlb407Nu76weUV?amount=`;
-
-      window.open(
-        stripeDonateUrl,
-        'Stripe Donation',
-        `width=${width},height=${height},top=${top},left=${left}`,
-      );
+      const stripeDonateUrl = `https://donate.stripe.com/14kaFlb407Nu76weUV?amount=${amount * 100}`;
+      window.open(stripeDonateUrl, '_blank');
     } else if (paymentMethod === 'paypal') {
       document.querySelector('.paypal-button-container button').click();
     }
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-[350px] h-auto w-full ">
+    <div className="flex flex-col justify-center items-center min-h-[350px] h-auto w-full">
       <div className='w-full max-w-md'>
         <p className="mb-4 text-[#B7B7B7] text-[13px] font-inter ml-1">Select your support amount:</p>
-        <div className="flex justify-between gap-2 mb-5 text-sm">
-          <button
-            onClick={() => handleAmountChange(1)}
-            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 1 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
-          >
-            $
-            <span style={{ fontWeight: amount === 1 && !isCustomAmount ? 700 : 400 }}>1</span>
-          </button>
-
-          <button
-            onClick={() => handleAmountChange(50)}
-            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 50 && !isCustomAmount ? 'bg-white text-black font-extrabold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
-          >
-            $
-            <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 50 && !isCustomAmount ? 700 : 400 }}>50</span>
-          </button>
-
-          <button
-            onClick={() => handleAmountChange(500)}
-            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${amount === 500 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
-          >
-            $
-            <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 500 && !isCustomAmount ? 700 : 400 }}>500</span>
-          </button>
-
-          <div className="relative flex items-center flex-grow">
-            <div className='absolute left-[12px] top-1/2 transform -translate-y-1/2 w-[7px] mb-[2px] font-ekMukta'>
-              $
+        <div className="flex flex-wrap justify-between mb-5 text-sm">
+          <div className="flex justify-between w-full gap-2">
+            <button
+              onClick={() => handleAmountChange(1)}
+              className={`flex items-center justify-center rounded-xl max-w-[80px] w-full flex-grow h-[45px] ${amount === 1 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+            >
+              £1
+            </button>
+            <button
+              onClick={() => handleAmountChange(50)}
+              className={`flex items-center justify-center rounded-xl max-w-[80px] w-full flex-grow h-[45px] ${amount === 50 && !isCustomAmount ? 'bg-white text-black font-extrabold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+            >
+              £50
+            </button>
+            <button
+              onClick={() => handleAmountChange(500)}
+              className={`flex items-center justify-center rounded-xl max-w-[80px] w-full flex-grow h-[45px] ${amount === 500 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+            >
+              £500
+            </button>
+            <div className="relative flex items-center flex-grow">
+              <div className='absolute left-[12px] top-1/2 transform -translate-y-1/2'>£</div>
+              <input
+                type="number"
+                value={customAmount}
+                onClick={handleCustomAmountClick}
+                onChange={handleCustomAmountChange}
+                className={`pl-5 pr-2 py-[10px] rounded-xl max-w-[80px] w-full flex-grow h-[45px] ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+                placeholder="Other"
+              />
             </div>
-            <input
-              type="number"
-              pattern="\d*"
-              value={customAmount}
-              onClick={handleCustomAmountClick}
-              onChange={handleCustomAmountChange}
-              className={`pl-5 pr-2 py-[10px] rounded-xl font-normal max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
-              placeholder="Other"
-              style={{
-                appearance: 'textfield',
-                height: 'auto',
-                fontSize: '16px', // Adăugat pentru a preveni zoom-ul pe iOS
-                scrollbarWidth: 'none',
-                overflow: 'hidden',
-              }}
-            />
-            <style jsx>{`
-              input::-webkit-outer-spin-button,
-              input::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-              }
-
-              input[type='number'] {
-                -moz-appearance: textfield;
-              }
-
-              input::placeholder {
-                color: #5B5B5B;
-              }
-
-              @media screen and (max-width: 380px) {
-                input[type='number'] {
-                  padding-top: 7px;
-                  padding-bottom: 7px;
-                }
-              }
-
-              @media screen and (min-width: 381px) {
-                input[type='number'] {
-                  padding-top: 10px;
-                  padding-bottom: 10px;
-                }
-              }
-            `}</style>
           </div>
+          <button
+            onClick={() => handleAmountChange(fullWishAmount)}
+            className={`flex items-center justify-between px-[10px] rounded-xl max-w-full text-[14px] font-ekMukta w-full flex-grow h-[45px] mt-5 ${amount === fullWishAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+          >
+            <p>Gift the Full Wish Amount </p>
+            <p className='text-[15px] font-ekMukta'>£1,895</p>
+          </button>
         </div>
         <div className="my-5 mt-10 flex justify-between items-center w-full mx-auto">
           <p className="text-white font-ek-mukta text-[14px]">Total:</p>
           <div className="flex-grow border-t border-dotted border-gray-600 mx-6"></div>
-          <p className="text-white font-ek-mukta mr-1 flex gap-[3px] font-ekMukta">${amount}</p>
+          <p className="text-white font-ek-mukta mr-1 flex gap-[3px]">£{amount}</p>
         </div>
-        <p className="mt-10 mb-4 text-[#B7B7B7] text-[13px] font-inter flex justify-start ml-1">Select a Payment Method:</p>
-        <div className="flex items-center justify-between mb-4 gap-4"> {/* Modificat gap la 4 (16px) */}
+        <p className="mt-10 mb-4 text-[#B7B7B7] text-[13px] font-inter">Select a Payment Method:</p>
+        <div className="flex items-center justify-between mb-4 gap-4">
           {['stripe', 'paypal'].map((method) => (
             <button
               key={method}
               onClick={() => setPaymentMethod(method)}
-              className={`rounded-xl font-bold flex items-center justify-center flex-grow h-[45px] mb-5 ${paymentMethod === method ? 'bg-black text-white ' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+              className={`rounded-xl font-bold flex items-center justify-center flex-grow h-[45px] ${paymentMethod === method ? 'bg-black text-white' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
             >
               {method === 'paypal' ? (
-                <div className='flex items-center px-5 max-md:px-2'>
-                  <Image src="/icons/paypal.svg" width={48} height={1} alt="paypal" className="w-[48px]" />
-                </div>
+                <Image src="/icons/paypal.svg" width={48} height={1} alt="paypal" className="w-[48px]" />
               ) : (
-                <div className="flex items-center justify-center gap-2 h-[45px]">
-                  <Image src="/icons/card.svg" width={64} height={1} alt="card"/>
-                </div>
+                <Image src="/icons/card.svg" width={64} height={1} alt="card" />
               )}
             </button>
           ))}
@@ -219,7 +153,6 @@ const SupportForm = () => {
             <CheckoutButton amount={amount} />
           </div>
         )}
-        
       </div>
     </div>
   );
