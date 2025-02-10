@@ -17,7 +17,7 @@ const OpenPopUp = () => {
 
             <button 
                 onClick={openPopup} 
-                className="flex-[1] h-[40px] w-[117px] w-full flex items-center justify-center gap-2 text-white bg-black border border-white rounded-[10px]  font-avenir">
+                className="flex-[1] h-[40px] min-w-[110px] w-full flex items-center justify-center gap-2 text-white bg-black border border-white rounded-[10px]  font-avenir">
                 Collaborate
             </button>    
 
