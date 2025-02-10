@@ -15,8 +15,8 @@ const RewardsMobile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedReward, setSelectedReward] = useState(null); 
 
-  const cardWidth = 80; 
-  const gapWidth = 5; 
+  const cardWidth = 90; 
+  const gapWidth = 2.5; 
 
   const handleSwipeLeft = () => {
     if (currentIndex < rewards.length - 1) {
@@ -66,7 +66,7 @@ const RewardsMobile = () => {
           {rewards.map((reward, index) => (
             <div
               key={reward.id}
-              className={`flex-shrink-0 w-[${cardWidth}%] min-h-[270px] h-auto bg-[#212121] rounded-[10px] flex flex-col items-center justify-between shadow-md p-5 ${
+              className={`flex-shrink-0 w-[${cardWidth}%]  bg-[#212121] rounded-[10px] flex flex-col items-center justify-between shadow-md p-5 ${
                 index === currentIndex ? "border-transparent" : ""
               } transition-transform duration-300`}
               style={{

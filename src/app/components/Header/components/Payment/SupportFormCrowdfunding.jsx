@@ -131,30 +131,30 @@ const SupportFormCrowdfunding = ({selectedRewardName, selectedRewardPrice}) => {
   return (
     <div className="flex flex-col justify-center items-center min-h-[350px] h-auto w-full font-heebo">
       <div className='w-full max-w-md'>
-        <p className="text-[#6F6F6F] text-[12px] font-light">Reward</p>
+        <p className="text-[#B7B7B7] text-[12px] font-light">You’ve selected</p>
         <div className="flex flex-col justify-between gap-2 mb-5 text-sm">
 
-          <div className='flex items-center justify-between text-[15px]'>
-            <h2 className='text-[#1E1E1E] font-semibold '>{selectedRewardName}</h2>
-            <button className='bg-[#1E1E1E] text-[#FFFFFF] h-[45px] w-[98px] rounded-[10px] font-bold'>
-              <span style={{ marginRight: '2px' }}>$</span>{selectedRewardPrice.replace('$', '').trim()}
+          <div className='flex items-center justify-between text-[15px] bg-[#000000] rounded-[10px] px-5 mt-5 h-[45px]'>
+            <h2 className='text-[#FFFFFF] font-semibold font-ekMukta text-[14px]'>{selectedRewardName}</h2>
+            <button className='bg-none text-[#FFFFFF]  rounded-[10px] font-bold'>
+              <span style={{ marginRight: '2px' }}>£</span>{selectedRewardPrice.replace('$', '').trim()}
             </button>
           </div>
 
           <div className="relative flex items-center justify-between flex-grow mt-[26px]">
-            <h2 className='text-[#6F6F6F] font-light'>Bonus Support</h2>
+            <h2 className='text-[#FFFFFF] text-[14px] font-semibold'>Want to add an extra gift?</h2>
             <input
               type="number"
               pattern="\d*"
               value={customAmount}
               onClick={handleCustomAmountClick} 
               onChange={handleCustomAmountChange}
-              className={`px-3 py-[10px] border-[#979797]/50 rounded-xl font-normal max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${
+              className={`px-3 py-[10px] border-[#979797]/50 rounded-xl font-normal max-w-[85px] w-full max-sm:w-[70px] flex-grow h-[45px] ${
                 isCustomAmount
-                  ? 'bg-[#1E1E1E] border-transparent' 
-                  : 'bg-[#E8E8ED] border-2' 
+                  ? 'bg-[#252525] border-transparent' 
+                  : 'bg-[#252525] border-2' 
               }`}
-              placeholder="$Other"
+              placeholder="£Other"
               style={{
                 appearance: 'textfield',
                 fontSize: '16px',
