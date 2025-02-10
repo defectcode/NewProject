@@ -121,7 +121,7 @@ const HeaderCrowdfundingMobile = () => {
 
             {isVideoVisible && (
                 <VideoPlayer
-                    videoSrc="https://www.dropbox.com/scl/fi/bqxswhnitds5u6pqcd9wq/Video.mp4?rlkey=v3rni8n6k9xj05ydyxq9f10xk&st=zpz57pts&raw=1"
+                    videoSrc="https://valeryfain.com/video/NewVideo.webm"
                     onClose={handleClose}
                 />
             )}

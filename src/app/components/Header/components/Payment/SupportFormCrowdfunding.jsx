@@ -12,6 +12,8 @@ const SupportFormCrowdfunding = ({selectedRewardName, selectedRewardPrice}) => {
   const [isCustomAmount, setIsCustomAmount] = useState(false);
   const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
   const [paymentRequest, setPaymentRequest] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false); // Pentru a bloca scroll-ul
+
 
 
   const stripe = useStripe();
@@ -149,7 +151,7 @@ const SupportFormCrowdfunding = ({selectedRewardName, selectedRewardPrice}) => {
               value={customAmount}
               onClick={handleCustomAmountClick} 
               onChange={handleCustomAmountChange}
-              className={`px-3 py-[10px] border-[#979797]/50 rounded-xl font-normal max-w-[85px] w-full max-sm:w-[70px] flex-grow h-[45px] ${
+              className={`px-3 py-[10px] border-[#5B5B5B] rounded-xl font-normal max-w-[85px] w-full max-sm:w-[70px] flex-grow h-[45px] ${
                 isCustomAmount
                   ? 'bg-[#252525] border-transparent' 
                   : 'bg-[#252525] border-2' 
@@ -178,35 +180,28 @@ const SupportFormCrowdfunding = ({selectedRewardName, selectedRewardPrice}) => {
 
         </div>
         <div className="my-5 mt-10 flex justify-between items-center w-full mx-auto">
-          <p className="text-[#1E1E1E] text-[14px]">Total:</p>
-          <div className="flex-grow border-t border-dotted border-gray-600 mx-6"></div>
-          <p className="text-[#1E1E1E] mr-1 flex gap-[3px]">${total.toFixed(2)}</p>
+          <p className="text-[#FFFFFF] text-[14px]">Total:</p>
+          <div className="flex-grow border-t border-dotted border-[#A1A1A1]/20 mx-6"></div>
+          <p className="text-[#FFFFFF] mr-1 flex gap-[3px]">£{total.toFixed(2)}</p>
         </div>
-        <p className="mt-10 mb-4 text-[#6F6F6F] text-[12px] font-light flex justify-start ml-1">Select a Payment Method:</p>
+        <p className="mt-10 mb-5 text-[#B7B7B7] text-[12px] font-light flex justify-start ml-1">Select a Payment Method:</p>
         <div className="flex items-center justify-between mb-4 gap-5">
           {['stripe', 'paypal'].map((method) => (
             <button
               key={method}
               onClick={() => setPaymentMethod(method)}
               className={`rounded-xl font-bold flex items-center justify-center flex-grow h-[45px] mb-5 ${
-                paymentMethod === method ? 'bg-[#1E1E1E] text-white ' : 'bg-[#E8E8ED] text-[#979797] border-2 border-[#979797]'
+                paymentMethod === method ? 'bg-[#000000] text-white ' : 'bg-transparent text-[#979797] border-2 border-[#F1F1F1]/5'
               }`}
             >
               {method === 'paypal' ? (
                 <div className="flex items-center px-5 max-md:px-2">
-                  {paymentMethod === 'paypal' ? (
                     <Image src="/icons/paypal.svg" width={48} height={1} alt="paypal" />
-                  ) : (
-                    <Image src="/icons/paypal-gray.svg" width={48} height={1} alt="paypal-gray" />
-                  )}
                 </div>
               ) : (
                 <div className="flex items-center justify-center gap-2">
-                  {paymentMethod === 'stripe' ? (
                     <Image src="/icons/card.svg" width={64} height={1} alt="card" />
-                  ) : (
-                    <Image src="/icons/card-gray.svg" width={64} height={1} alt="card-gray" />
-                  )}
+
                 </div>
               )}
             </button>
