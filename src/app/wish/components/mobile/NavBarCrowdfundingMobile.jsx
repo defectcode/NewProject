@@ -14,7 +14,7 @@ const NavBarCrowdfundingMobile = ({ setActiveSection, activeSection }) => {
 
             if (currentScrollY > lastScrollY && currentScrollY > 900) {
                 setIsVisible(true); 
-            } else if (currentScrollY < lastScrollY) {
+            } else if (currentScrollY < lastScrollY && currentScrollY < 900) {
                 setIsVisible(false); 
             }
 
@@ -34,8 +34,7 @@ const NavBarCrowdfundingMobile = ({ setActiveSection, activeSection }) => {
 
     const linkClasses = (section) => {
         const baseClasses = "px-1 py-[6px] text-[14px] flex justify-center items-center mt-1 w-full relative";
-        const activeClasses =
-            'text-[#1E1E1E] border-b-2 border-[#1E1E1E] font-avenir-heavy after:absolute after:content-[""] after:bg-[#F1F1F1] after:h-[1px] after:w-full after:left-0 after:bottom-[3px]';
+        const activeClasses = 'text-[#FFFFFF] border-b-[1px] border-[#FFFFFF] font-avenir-heavy after:absolute after:content-[""] after:h-[1px] after:w-full after:left-0 after:bottom-[3px]';
         const inactiveClasses = "text-[#979797] border-b-4 border-transparent font-avenir";
 
         return `${baseClasses} ${activeSection === section ? activeClasses : inactiveClasses}`;
@@ -46,11 +45,11 @@ const NavBarCrowdfundingMobile = ({ setActiveSection, activeSection }) => {
             <div
                 ref={navbarRef}
                 id="navbar-mobile-original"
-                className={`fixed top-0 left-0 right-0 bg-[#000000] transition-transform duration-500 ease-in-out ${
+                className={`fixed top-0 left-0 right-0 bg-[#1B1B1B] transition-transform duration-500 ease-in-out ${
                     isVisible ? "translate-y-0" : "-translate-y-full"
                 } z-50`} 
             >
-                <div className="flex items-center justify-center h-[40px]">
+                <div className="flex items-center justify-center h-[60px]">
                     <div className="flex items-center justify-center gap-[30px] w-full px-5">
                         <button
                             className={linkClasses("overview")}

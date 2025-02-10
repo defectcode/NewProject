@@ -150,3 +150,12 @@ export const detailedStepsData = {
     ],
     helpInfo2: "Getting advice from top industry experts to improve our ideas and ensure high quality."
 };
+
+
+
+
+export const images = [
+    { image: '/imgs/Crowdfunding/Overview/Element1.png'},
+    { image: '/imgs/Crowdfunding/Overview/Element2.png'},
+    { image: '/imgs/Crowdfunding/Overview/Element3.png'},
+]
