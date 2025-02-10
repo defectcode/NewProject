@@ -17,6 +17,7 @@ const HeaderCrowdfundingMobile = () => {
     const containerRef = useRef(null);
     const buttonRef = useRef(null); 
     const [isShareFixed, setIsShareFixed] = useState(false); 
+    const [isMobile, setIsMobile] = useState();
 
     const handleScreenClick = () => {
         setIsVideoVisible(true);
@@ -30,6 +31,21 @@ const HeaderCrowdfundingMobile = () => {
             document.exitFullscreen();
         }
     };
+
+    useEffect(() => {
+        // Detectează dacă este dispozitiv mobil
+        const checkMobile = () => {
+            setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+        };
+
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+
+        return () => {
+            window.removeEventListener("resize", checkMobile);
+        };
+    }, []);
+
 
     useEffect(() => {
         const updateHeight = () => {
@@ -78,7 +94,7 @@ const HeaderCrowdfundingMobile = () => {
                     backgroundImage: `url('/imgs/Crowdfunding/mobileB.png')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    width: '100vw', // Asigură că imaginea ocupă întreaga lățime a viewport-ului
+                    width: '100vw',
                     height: '100vh',
                 }}
             ></div>
@@ -90,14 +106,6 @@ const HeaderCrowdfundingMobile = () => {
                     background: "linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.9) 50%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.2) 90%, rgba(0, 0, 0, 0.1) 94%, rgba(0, 0, 0, 0) 100%)",
                 }}
             ></div>
-
-{/* 
-            <div
-                className="absolute w-full h-[272px] bottom-0 z-20 pointer-events-none"
-                style={{
-                    background: "linear-gradient(to top, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0.7) 70%, rgba(0, 0, 0, 0.6) 75%, rgba(0, 0, 0, 0.2) 90%, rgba(0, 0, 0, 0.1) 94%, rgba(0, 0, 0, 0) 100%)",
-                }}
-            ></div> */}
 
 
             <div className={`${styles.contentWrapper} relative z-30 h-full flex flex-col justify-end px-5`}>
@@ -119,7 +127,14 @@ const HeaderCrowdfundingMobile = () => {
                     </button>
             )}
 
-            {isVideoVisible && (
+            {isVideoVisible && !isMobile && (
+                <VideoPlayer
+                    videoSrc="https://valeryfain.com/video/desktop.webm"
+                    onClose={handleClose}
+                />
+            )}
+
+            {isMobile && (
                 <VideoPlayer
                     videoSrc="https://valeryfain.com/video/NewVideo.webm"
                     onClose={handleClose}
