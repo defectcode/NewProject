@@ -4,7 +4,7 @@ export const images = [
     {
       alt: 'Slide 1',
       title: 'Camera for Content',
-      raisedAmount: '690',
+      raisedAmount: '10',
       goalAmount: '1,895',
       subtitle: '200000',
       stageLabel: 'days left',
