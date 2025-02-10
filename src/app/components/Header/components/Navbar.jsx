@@ -29,7 +29,7 @@ export default function Navbar({ openModal }) {
           <div className="flex items-end justify-between gap-5 px-[25px]">
             <Image src="/imgs/dior.svg" width={37} height={1} alt="dior" className=" h-auto" />
             <Image src="/imgs/hermes.svg" width={48} height={1} alt="hermes" className="h-auto  " />
-            <Image src="/imgs/cartier.svg" width={45} height={12.46} alt="cartier" className=" h-auto" />
+            <Image src="/imgs/cartier.svg" width={45} height={12.46} alt="cartier" className="h-auto" />
             <Image src="/imgs/lamer.svg" width={45} height={1} alt="lamer" className="h-auto" />
             <Image src="/imgs/four.svg" width={85} height={1} alt="four" className="h-auto" />
           </div>

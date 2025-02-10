@@ -9,7 +9,7 @@ const Title = ({ contentIndex = 0 }) => {
   }
 
   return (
-    <div className="w-full text-center lg:text-start font-heebo md:space-y-5 space-y-2 md:mb-0 mb-5">
+    <div className="w-full text-center lg:text-start font-heebo md:space-y-5 space-y-2 md:mb-0 mb-[20px]">
       <h1 className="text-white md:text-[36px] text-[24px] md:font-semibold font-extrabold max-md:text-2xl leading-[1]">
         {content.title}
       </h1>

@@ -87,7 +87,7 @@ const HeaderCrowdfundingMobile = () => {
             <div
                 className={`${styles.gradient} absolute w-full h-[272px] bottom-0 z-20 pointer-events-none bg-[#000000]`}
                 style={{
-                    background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 57%, rgba(0, 0, 0, 0) 100%)',
+                    background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0.6) 70%,  rgba(0, 0, 0, 0.7) 80%, rgba(0, 0, 0, 0) 100%)',
                 }}
             ></div>
 

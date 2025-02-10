@@ -33,7 +33,7 @@ const ButonShere = ({ isShareFixed }) => {
         >
 
             {isShareFixed ? (
-                <div className="flex items-center justify-center w-full px-5 gap-5 bg-transparent shadow-lg mb-5">
+                <div className="flex items-center justify-center w-full px-5 gap-5 bg-transparent shadow-lg mb-5" >
                 <div className="flex-[2]">
                     <Support onClick={openModal} />
                 </div>
@@ -41,7 +41,7 @@ const ButonShere = ({ isShareFixed }) => {
             </div>
 
              ) : (
-                <div className="flex items-center justify-center w-full px-5 gap-5 bg-transparent shadow-lg mt-[10px]">
+                <div className="flex items-center justify-center w-full px-5 gap-5 bg-transparent shadow-lg mt-[18px]">
                 <div className="flex-[2]">
                     <Support onClick={openModal} />
                 </div>
