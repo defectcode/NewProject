@@ -22,7 +22,7 @@ export default function FooterMobile() {
 
   // max-h-[525px]
   return (
-    <div className="bg-[#EBEBF0] text-white px-5 pt-10 pb-5 w-full max-w-md mx-auto h-auto">
+    <div className="bg-[#EBEBF0] text-white px-5 pt-10 pb-10 w-full max-w-md mx-auto h-auto">
             <div className="relative w-full">
         <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
       </div>
@@ -92,20 +92,6 @@ export default function FooterMobile() {
               </span>
           </div>
       </div>
-
-      {/* <Popup isOpen={isPopupOpen} onClose={closePopup}>
-          <h2 className="text-[20px] font-bold mb-4">Brands & Collaborations</h2>
-          <p className="text-[14px] text-gray-700 mb-4">
-              Contact us for brand partnerships and collaborations. We are open to working
-              with creative and innovative brands worldwide.
-          </p>
-          <p className="text-[14px] text-gray-700">
-              <strong>Phone:</strong> +373 60 877 733
-          </p>
-          <p className="text-[14px] text-gray-700">
-              <strong>Email:</strong> Valery@fyne.pro
-          </p>
-      </Popup> */}
 
       <div className="relative w-full">
         <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>

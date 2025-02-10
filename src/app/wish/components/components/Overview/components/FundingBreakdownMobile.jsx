@@ -78,7 +78,7 @@ const FundingBreakdownMobile = () => {
 
     return (
         <div className="h-auto sticky top-0 flex flex-col items-center text-white font-heebo px-5 bg-[#000000] mb-10">
-            <h2 className="text-[24px] font-semibold mb-8 mt-10 text-[#FFFFFF]">Gift Breakdown</h2>
+            <h2 className="text-[24px] font-semibold mb-8 mt-10 text-[#FFFFFF] font-ekMukta">Gift Breakdown</h2>
             <div className="relative mb-10">
                 <DoughnutChart data={costData} />
                 <div className="absolute inset-0 flex items-center justify-center">

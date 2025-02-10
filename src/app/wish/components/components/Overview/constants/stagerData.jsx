@@ -155,7 +155,9 @@ export const detailedStepsData = {
 
 
 export const images = [
-    { image: '/imgs/Crowdfunding/Overview/Element1.png'},
-    { image: '/imgs/Crowdfunding/Overview/Element2.png'},
-    { image: '/imgs/Crowdfunding/Overview/Element3.png'},
+    { image: '/imgs/Crowdfunding/Overview/Element.JPG'},
+    { image: '/imgs/Crowdfunding/Overview/Element.PNG'},
+    { image: '/imgs/Crowdfunding/Overview/Element2.PNG'},
+    { image: '/imgs/Crowdfunding/Overview/Element.webp'},
+
 ]

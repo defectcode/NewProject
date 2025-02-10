@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 // import Support from '../../components/Support';
 import SupportCenter from '../../components/SupportCenter';
+import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
 
 import Modal from '/src/app/components/Header/components/Modal.jsx';
 import SupportForm from '/src/app/components/Header/components/Payment/SupportForm.jsx';
@@ -15,6 +16,16 @@ import Support from "@/app/wish/components/Support";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 const ButonShere = ({ isShareFixed }) => {
+    const [showButtons, setShowButtons] = useState(false);
+
+    useEffect(() => {
+        if (isShareFixed) {
+            setTimeout(() => setShowButtons(true), 50); // Delay scurt pentru o apariție naturală
+        } else {
+            setShowButtons(false);
+        }
+    }, [isShareFixed]);
+
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
@@ -24,7 +35,6 @@ const ButonShere = ({ isShareFixed }) => {
     const closeModal = () => {
         setIsModalOpen(false);
     };
-
     return (
         <div
             className={`${
@@ -33,15 +43,28 @@ const ButonShere = ({ isShareFixed }) => {
         >
 
             {isShareFixed ? (
-                <div className="flex items-center justify-center w-full px-5 gap-5 bg-transparent shadow-lg mb-5" >
-                <div className="flex-[2]">
-                    <Support onClick={openModal} />
-                </div>
-                <OpenPopUp />
-            </div>
+                <AnimatePresence>
+                {isShareFixed && showButtons && (
+                    <motion.div
+                        initial={{ y: 100, opacity: 0 }} // Încep de jos
+                        animate={{ y: 0, opacity: 1 }} // Se ridică și devin vizibile
+                        exit={{ y: 100, opacity: 0 }} // Coboară când devin nefixate
+                        transition={{ duration: 0.4, ease: "easeOut" }} // Tranziție smooth
+                        className="fixed bottom-0 left-0 right-0 flex items-center justify-center w-full h-auto bg-transparent z-50"
+                    >
+                        <div className="flex items-center justify-center w-full px-5 gap-5 bg-transparent mb-5">
+                            <div className="flex-[2]">
+                                <Support onClick={openModal} />
+                            </div>
+                            <OpenPopUp />
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
 
              ) : (
-                <div className="flex items-center justify-center w-full px-5 gap-5 bg-transparent shadow-lg mt-[18px]">
+                <div className="flex items-center justify-center w-full px-5 gap-5 bg-transparent mt-[18px] mb-5">
                 <div className="flex-[2]">
                     <Support onClick={openModal} />
                 </div>
