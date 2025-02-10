@@ -33,21 +33,6 @@ const HeaderCrowdfundingMobile = () => {
     };
 
     useEffect(() => {
-        // Detectează dacă este dispozitiv mobil
-        const checkMobile = () => {
-            setIsMobile(window.matchMedia("(max-width: 768px)").matches);
-        };
-
-        checkMobile();
-        window.addEventListener("resize", checkMobile);
-
-        return () => {
-            window.removeEventListener("resize", checkMobile);
-        };
-    }, []);
-
-
-    useEffect(() => {
         const updateHeight = () => {
             const viewportHeight = window.innerHeight;
             document.documentElement.style.setProperty('--viewport-height', `${viewportHeight}px`);
@@ -127,14 +112,7 @@ const HeaderCrowdfundingMobile = () => {
                     </button>
             )}
 
-            {isVideoVisible && !isMobile && (
-                <VideoPlayer
-                    videoSrc="https://valeryfain.com/video/desktop.webm"
-                    onClose={handleClose}
-                />
-            )}
-
-            {isMobile && (
+            {isVideoVisible && (
                 <VideoPlayer
                     videoSrc="https://valeryfain.com/video/NewVideo.webm"
                     onClose={handleClose}
