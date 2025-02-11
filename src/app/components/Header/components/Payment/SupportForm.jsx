@@ -10,7 +10,7 @@ const SupportForm = () => {
   const [customAmount, setCustomAmount] = useState('');
   const [isCustomAmount, setIsCustomAmount] = useState(false);
   const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
-  const [fullWishAmount, setFullWishAmount] = useState(1417); // Amount for "Gift the Full Wish Amount"
+  const [fullWishAmount, setFullWishAmount] = useState(1417); 
 
   const stripe = useStripe();
   const elements = useElements();
@@ -80,54 +80,56 @@ const SupportForm = () => {
   return (
     <div className="flex flex-col justify-center items-center min-h-[350px] h-auto w-full">
       <div className='w-full max-w-md'>
-        <p className="mb-4 text-[#B7B7B7] text-[13px] font-inter ml-1">Select your support amount:</p>
+        <p className="mb-5 text-[#B7B7B7] text-[12px] font-inter leading-[1]">Select your support amount</p>
         <div className="flex flex-wrap justify-between mb-5 text-sm">
-          <div className="flex justify-between w-full gap-2">
+          <div className="flex items-center justify-between w-full gap-2">
             <button
               onClick={() => handleAmountChange(1)}
-              className={`flex items-center justify-center rounded-xl max-w-[80px] w-full flex-grow h-[45px] ${amount === 1 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+              className={`flex items-center justify-center rounded-xl max-w-[82px] w-full flex-grow h-[45px] text-[15px] ${amount === 1 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
             >
               $1
             </button>
             <button
               onClick={() => handleAmountChange(50)}
-              className={`flex items-center justify-center rounded-xl max-w-[80px] w-full flex-grow h-[45px] ${amount === 50 && !isCustomAmount ? 'bg-white text-black font-extrabold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+              className={`flex items-center justify-center rounded-xl max-w-[82px] w-full flex-grow h-[45px] text-[15px] ${amount === 50 && !isCustomAmount ? 'bg-white text-black font-extrabold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
             >
               $50
             </button>
             <button
               onClick={() => handleAmountChange(500)}
-              className={`flex items-center justify-center rounded-xl max-w-[80px] w-full flex-grow h-[45px] ${amount === 500 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+              className={`flex items-center justify-center rounded-xl max-w-[82px] w-full flex-grow h-[45px] text-[15px] ${amount === 500 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
             >
               $500
             </button>
             <div className="relative flex items-center flex-grow">
-              <div className='absolute left-[12px] top-1/2 transform -translate-y-1/2'>$</div>
+              <div className={`absolute left-[12px] top-1/2 transform -translate-y-1/2 font-ekMukta text-[15px] ${isCustomAmount ? "text-black font-bold" : 'text-white'}`}>$</div>
               <input
                 type="number"
+                pattern="\d*"
+
                 value={customAmount}
                 onClick={handleCustomAmountClick}
                 onChange={handleCustomAmountChange}
-                className={`pl-5 pr-2 py-[10px] rounded-xl max-w-[80px] w-full flex-grow h-[45px] ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+                className={`pl-[18px] py-[10px] rounded-xl max-w-[82px] border-[#3e3d3d] w-full flex-grow h-[45px] bg-[#252525] border-2 text-black text-base focus:border-[#3e3d3d] focus:outline-none ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
                 placeholder="Other"
               />
             </div>
           </div>
           <button
             onClick={() => handleAmountChange(fullWishAmount)}
-            className={`flex items-center justify-between px-[10px] rounded-xl max-w-full text-[14px] font-ekMukta w-full flex-grow h-[45px] mt-5 ${amount === fullWishAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+            className={`flex items-center justify-between px-[14px] rounded-xl max-w-full text-[14px] font-ekMukta w-full flex-grow h-[45px] mt-5 ${amount === fullWishAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
           >
-            <p>Gift the Full Wish Amount </p>
-            <p className='text-[15px] font-ekMukta'>$1,417</p>
+            <p className='leading-[1]'>Gift the Full Wish Amount </p>
+            <p className='text-[15px] font-ekMukta leading-[1]'>$1,417</p>
           </button>
         </div>
-        <div className="my-5 mt-10 flex justify-between items-center w-full mx-auto">
-          <p className="text-white font-ek-mukta text-[14px]">Total:</p>
-          <div className="flex-grow border-t border-dotted border-gray-600 mx-6"></div>
+        <div className="my-5 mt-10 flex justify-between items-center w-full mx-auto leading-[1]">
+          <p className="text-white font-ek-mukta text-[14px]">Total</p>
+          <div className="flex-grow border-t border-dotted border-gray-600 mx-[33px]"></div>
           <p className="text-white font-ek-mukta mr-1 flex gap-[3px]">${amount}</p>
         </div>
-        <p className="mt-10 mb-4 text-[#B7B7B7] text-[13px] font-inter">Select a Payment Method:</p>
-        <div className="flex items-center justify-between mb-4 gap-4">
+        <p className="mt-10 mb-4 text-[#B7B7B7] text-[13px] font-inter leading-[1]">Select a Payment Method</p>
+        <div className="flex items-center justify-between mb-10 gap-[18px]">
           {['stripe', 'paypal'].map((method) => (
             <button
               key={method}

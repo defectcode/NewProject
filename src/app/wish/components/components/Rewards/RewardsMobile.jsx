@@ -16,7 +16,7 @@ const RewardsMobile = () => {
   const [selectedReward, setSelectedReward] = useState(null); 
 
   const cardWidth = 90; 
-  const gapWidth = 2.5; 
+  const gapWidth = 6; 
 
   const handleSwipeLeft = () => {
     if (currentIndex < rewards.length - 1) {
@@ -74,15 +74,17 @@ const RewardsMobile = () => {
               }}
             >
               <div className="w-full">
-                <p className="text-[#8B8B8C] font-bold text-lg">{reward.price}</p>
-                <h3 className="text-[24px] font-bold text-[#FFFFFF] mt-[10px]">{reward.name}</h3>
-                <p className="text-[#F1F1F1] text-[16px] mt-[10px]">{reward.description}</p>
-                <p className="text-[#979797] text-[16px] mt-[5px]">Includes</p>
+                <div className="flex items-center justify-between leading-[1]">
+                  <h3 className="text-[20px] font-bold font-ekMukta text-[#FFFFFF]">{reward.name}</h3>
+                  <p className="text-[#D9D9D9] font-ekMukta text-[16px]">{reward.price}</p>
+                </div>
+
+                <p className="text-[#BFBFBF] text-[16px] mt-[30px] font-ekMukta leading-[1]">Includes:</p>
                 <ul className="text-[#F1F1F1] text-[15px] mt-1">
                   {reward.includes.map((item, i) => (
                       <li
                           key={i}
-                          className={`flex items-center relative py-5 ${
+                          className={`flex items-center relative font-light font-ekMukta text-[#F1F1F1] py-5  leading-[1] ${
                               i !== reward.includes.length - 1 ? "after:border-gradient" : ""
                           }`}
                       >
@@ -96,6 +98,10 @@ const RewardsMobile = () => {
                       </li>
                   ))}
                 </ul>
+                <p className="text-[#DDDDDD] text-[16px] mt-[30px] font-ekMukta leading-[1]">Description:</p>
+
+                <p className="text-[#CDCDCD] text-[14px] font-light font-ekMukta mt-5">{reward.description}</p>
+
               </div>
               <button
                 onClick={() => {
@@ -111,8 +117,9 @@ const RewardsMobile = () => {
         </div>
       </div>
       <div className="w-full h-[40px] bg-[#1B1B1B] mt-5 flex items-center justify-center text-[#979797] text-[14px] font-ekMukta">
-        20 rewards
+        {`${currentIndex + 1} / ${rewards.length}`}
       </div>
+
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <Elements stripe={stripePromise}>
           {selectedReward && (

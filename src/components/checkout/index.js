@@ -34,7 +34,7 @@ const CheckoutButton = ({ amount }) => {
 
   return (
     <button
-      className="flex items-center justify-center w-full h-[45px] bg-white text-[#1E1E1E] text-[15px] rounded-lg gap-1 font-bold font-avenir-heavy"
+      className="flex items-center justify-center w-full h-[45px] bg-white text-[#1E1E1E] text-[15px] rounded-lg gap-1 font-bold leading-[1] font-avenir-heavy"
       onClick={handleClick}
     >
       {/* <Image src="/icons/heart.svg" width={16} height={1} alt="heart" className="w-[16px] h-auto" /> */}

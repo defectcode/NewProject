@@ -12,7 +12,7 @@ const SupportFormCrowdfunding = ({selectedRewardName, selectedRewardPrice}) => {
   const [isCustomAmount, setIsCustomAmount] = useState(false);
   const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
   const [paymentRequest, setPaymentRequest] = useState(null);
-    const [isModalOpen, setIsModalOpen] = useState(false); // Pentru a bloca scroll-ul
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
 
 
@@ -139,7 +139,7 @@ const SupportFormCrowdfunding = ({selectedRewardName, selectedRewardPrice}) => {
           <div className='flex items-center justify-between text-[15px] bg-[#000000] rounded-[10px] px-5 mt-5 h-[45px]'>
             <h2 className='text-[#FFFFFF] font-semibold font-ekMukta text-[14px]'>{selectedRewardName}</h2>
             <button className='bg-none text-[#FFFFFF]  rounded-[10px] font-bold'>
-              <span style={{ marginRight: '2px' }}>£</span>{selectedRewardPrice.replace('$', '').trim()}
+              <span style={{ marginRight: '2px' }}>$</span>{selectedRewardPrice.replace('$', '').trim()}
             </button>
           </div>
 
@@ -156,7 +156,7 @@ const SupportFormCrowdfunding = ({selectedRewardName, selectedRewardPrice}) => {
                   ? 'bg-[#252525] border-transparent' 
                   : 'bg-[#252525] border-2' 
               }`}
-              placeholder="£Other"
+              placeholder="$Other"
               style={{
                 appearance: 'textfield',
                 fontSize: '16px',
@@ -182,7 +182,7 @@ const SupportFormCrowdfunding = ({selectedRewardName, selectedRewardPrice}) => {
         <div className="my-5 mt-10 flex justify-between items-center w-full mx-auto">
           <p className="text-[#FFFFFF] text-[14px]">Total:</p>
           <div className="flex-grow border-t border-dotted border-[#A1A1A1]/20 mx-6"></div>
-          <p className="text-[#FFFFFF] mr-1 flex gap-[3px]">£{total.toFixed(2)}</p>
+          <p className="text-[#FFFFFF] mr-1 flex gap-[3px]">${total.toFixed(2)}</p>
         </div>
         <p className="mt-10 mb-5 text-[#B7B7B7] text-[12px] font-light flex justify-start ml-1">Select a Payment Method:</p>
         <div className="flex items-center justify-between mb-4 gap-5">

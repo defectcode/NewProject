@@ -74,21 +74,28 @@ const HeaderCrowdfundingMobile = () => {
             {/* <NavbarHome/> */}
 
             <div
-                className={`absolute inset-0 w-full h-[100vh] bg-center bg-[#000000] bg-white bg-no-repeat max-md:w-auto ${isVideoVisible ? 'bg-opacity-50 blur-sm' : ''}`}
+                className={`absolute inset-0 w-full bg-center bg-no-repeat max-md:w-auto ${isVideoVisible ? 'bg-opacity-50 blur-sm' : ''}`}
                 style={{
-                    backgroundImage: `url('/imgs/Crowdfunding/mobileB.png')`,
+                    backgroundImage: `url('/imgs/Crowdfunding/dsdse.png')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    width: '100vw',
-                    height: '100vh',
                 }}
             ></div>
+
+{/* 
+            <div
+                className={`absolute inset-0 w-full h-screen bg-black bg-no-repeat bg-cover bg-center ${isVideoVisible ? 'bg-opacity-50 blur-sm' : ''}`}
+                style={{
+                    backgroundImage: `url('/imgs/Crowdfunding/mobileB.webp')`,
+                }}
+            ></div> */}
+
 
 
             <div
                 className="absolute w-full h-[272px] bottom-0 z-20 pointer-events-none"
                 style={{
-                    background: "linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.9) 50%, rgba(0, 0, 0, 0.5) 75%, rgba(0, 0, 0, 0.2) 90%, rgba(0, 0, 0, 0.1) 94%, rgba(0, 0, 0, 0) 100%)",
+                    background: "linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.9) 50%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.1) 90%, rgba(0, 0, 0, 0) 100%)",
                 }}
             ></div>
 
@@ -103,7 +110,7 @@ const HeaderCrowdfundingMobile = () => {
                     onClick={handleScreenClick}
                     className={`${styles.playButton} absolute flex items-center justify-center z-40 bg-transparent`}
                     style={{
-                        top: '35%',
+                        top: '40%',
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
                     }}

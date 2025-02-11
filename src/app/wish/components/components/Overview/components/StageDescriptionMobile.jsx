@@ -78,7 +78,6 @@ const CustomCarousel = ({ images }) => {
                 ))}
             </div>
 
-            {/* Punctele de paginare cu dimensiuni variabile */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center justify-center space-x-2 h-4">
                 {images.map((_, index) => {
                     let size = "h-[4px] w-[4px]";
@@ -109,7 +108,7 @@ const StageDescriptionMobile = () => {
                 <h2 className="text-[24px] text-[#FFFFFF] mb-5 font-semibold mt-10 font-ekMukta leading-[1]">
                     {stageDescriptionData.stageTitle}
                 </h2>
-                <p className="text-[#CDCDCD] w-full text-[16px] leading-[1.7] font-ekMukta mb-5">
+                <p className="text-[#CDCDCD] w-full text-[16px] font-ekMukta mb-5 leading-[1.3]">
                     <span className="text-[#D8D7D7] font-bold">For the past seven years</span>, I have dedicated myself to content creation. Thousands of hours, thousands of videos, and countless stories told. But now, I want to <span className="text-[#CDCDCD] font-bold">elevate everything</span>. This camera is not just a tool—it`s the key to <span className="text-[#CDCDCD] font-bold">creating content that lasts</span>, that isn`t just consumed and forgotten but <span className="text-[#CDCDCD] font-bold">continues to inspire and impact lives</span>.<br/><span className="text-[#CDCDCD] font-bold">By supporting this wish, you`re not just funding equipment. You`re investing in a movement that we are building together.</span>
                 </p>
 
@@ -120,7 +119,7 @@ const StageDescriptionMobile = () => {
                 <h2 className="text-[24px] text-[#FFFFFF] font-semibold font-ekMukta mb-5 mt-10 leading-[1]">
                     {stageDescriptionData.fundingTitle}
                 </h2>
-                <div className="font-ekMukta text-[#CDCDCD] text-[16px] leading-[1.6]">
+                <div className="font-ekMukta text-[#CDCDCD] text-[16px] leading-[1.4]">
                     <p className="mb-5">
                         {stageDescriptionData.fundingProgress}
                         <br />
@@ -168,8 +167,7 @@ const StageDescriptionMobile = () => {
 
                         <FundingBreakdownMobile />
                         
-
-                        <h3 className="text-[#CDCDCD] text-[16px] mt-5 mb-5">{stageDescriptionData.info}</h3>
+                        <h3 className="text-[#CDCDCD] text-[16px] mt-5 mb-5 leading-[1.4]">{stageDescriptionData.info}</h3>
 
                         <CustomCarousel images={images} />
 
