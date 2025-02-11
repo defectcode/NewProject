@@ -20,9 +20,8 @@ const OverviewMobile = ({ products = [] }) => {
         <div className="flex flex-col items-center justify-center h-full">
           <div>
             <StageDescriptionMobile />
-            <FundingBreakdownMobile />
           </div>
-          <Info/>
+          {/* <Info/> */}
         </div>
     );
 }

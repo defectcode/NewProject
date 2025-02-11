@@ -8,31 +8,40 @@ import { useEffect, useState } from "react";
 import useDeviceType from '../app/Crowdfunding/components/hooks/useDeviceType';
 import FooterMobile from '../app/components/Footer/FooterMobile'
 import CarouselMobile from './components/Carousel/CarouselMobile'
+import { useRouter } from "next/navigation";
 
 
 export default function Home() {
 
-  const isMobile = useDeviceType();
-  const [activeSection, setActiveSection] = useState('overview');
+  const router = useRouter();
 
   useEffect(() => {
-      if (window.location.hash) {
-          setActiveSection(window.location.hash.substring(1));
-      }
+    router.push("/wish")
+  }, [])
 
-      const handleHashChange = () => {
-          setActiveSection(window.location.hash.substring(1));
-      };
+  // const isMobile = useDeviceType();
+  // const [activeSection, setActiveSection] = useState('overview');
 
-      window.addEventListener('hashchange', handleHashChange);
-      return () => {
-          window.removeEventListener('hashchange', handleHashChange);
-      };
-  }, []);
+  // useEffect(() => {
+  //     if (window.location.hash) {
+  //         setActiveSection(window.location.hash.substring(1));
+  //     }
 
-  return (
-    <main>
-      <Header/>
-    </main>
-  );
+  //     const handleHashChange = () => {
+  //         setActiveSection(window.location.hash.substring(1));
+  //     };
+
+  //     window.addEventListener('hashchange', handleHashChange);
+  //     return () => {
+  //         window.removeEventListener('hashchange', handleHashChange);
+  //     };
+  // }, []);
+
+  // return (
+  //   <main>
+  //     <Header/>
+  //   </main>
+  // );
+
+  return null
 }

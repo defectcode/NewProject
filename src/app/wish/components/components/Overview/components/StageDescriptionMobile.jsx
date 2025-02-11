@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { stageDescriptionData, images } from "../constants/stagerData";
+import FundingBreakdownMobile from "./FundingBreakdownMobile";
 
 const CustomCarousel = ({ images }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -44,9 +45,9 @@ const CustomCarousel = ({ images }) => {
         const imageWidth = event.target.clientWidth;
         const clickX = event.nativeEvent.offsetX;
         if (clickX < imageWidth / 2) {
-            handlePrev(); // Click pe partea stângă -> imagine anterioară
+            handlePrev();
         } else {
-            handleNext(); // Click pe partea dreaptă -> imagine următoare
+            handleNext();
         }
     };
 
@@ -71,26 +72,35 @@ const CustomCarousel = ({ images }) => {
                             width={345}
                             height={361}
                             className="w-full h-full object-cover cursor-pointer"
-                            onClick={handleImageClick} // Detectează click pe stânga/dreapta
+                            onClick={handleImageClick}
                         />
                     </div>
                 ))}
             </div>
 
-            {/* Punctele de paginare */}
+            {/* Punctele de paginare cu dimensiuni variabile */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center justify-center space-x-2 h-4">
-                {images.map((_, index) => (
-                    <span 
-                        key={index} 
-                        className={`h-[6px] w-[6px] rounded-full transition-all duration-300 cursor-pointer 
-                            ${index === currentIndex ? 'bg-[#000000] scale-125' : 'bg-[#D0D0D0] opacity-50'}`}
-                        onClick={() => handleDotClick(index)}
-                    />
-                ))}
+                {images.map((_, index) => {
+                    let size = "h-[4px] w-[4px]";
+                    if (index === currentIndex) {
+                        size = "h-[8px] w-[8px]";
+                    } else if (index === currentIndex - 1 || index === currentIndex + 1 || (currentIndex === 0 && index === images.length - 1) || (currentIndex === images.length - 1 && index === 0)) {
+                        size = "h-[6px] w-[6px]";
+                    }
+                    return (
+                        <span 
+                            key={index} 
+                            className={`${size} rounded-full transition-all duration-300 cursor-pointer 
+                                ${index === currentIndex ? 'bg-[#000000]' : 'bg-[#D0D0D0] opacity-50'}`}
+                            onClick={() => handleDotClick(index)}
+                        />
+                    );
+                })}
             </div>
         </div>
     );
 };
+
 
 const StageDescriptionMobile = () => {
     return (
@@ -123,9 +133,9 @@ const StageDescriptionMobile = () => {
                 <CustomCarousel images={images} />
 
                 <div className="font-ekMukta">
-                    <h2 className="text-[#FFFFFF] font-semibold text-[24px] mt-10 leading-[1]">{stageDescriptionData.includesItems}</h2>
-                    <div className="mt-5">
-                        <h4 className="text-[#FFFFFF] text-[16px] font-semibold">
+                    {/* <h2 className="text-[#FFFFFF] font-semibold text-[24px] mt-10 leading-[1]">{stageDescriptionData.includesItems}</h2> */}
+                    <div className="mt-5 mb-10">
+                        {/* <h4 className="text-[#FFFFFF] text-[16px] font-semibold">
                             {stageDescriptionData.objectName}
                         </h4>
                         <ul className="list-disc ml-7 text-[#CDCDCD] text-[16px]">
@@ -154,7 +164,10 @@ const StageDescriptionMobile = () => {
                             {stageDescriptionData.taxesList.map((accessory, index) => (
                                 <li key={index}>{accessory.items}</li>
                             ))}
-                        </ul>
+                        </ul> */}
+
+                        <FundingBreakdownMobile />
+                        
 
                         <h3 className="text-[#CDCDCD] text-[16px] mt-5 mb-5">{stageDescriptionData.info}</h3>
 

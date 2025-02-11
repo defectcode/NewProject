@@ -159,5 +159,7 @@ export const images = [
     { image: '/imgs/Crowdfunding/Overview/Element.PNG'},
     { image: '/imgs/Crowdfunding/Overview/Element2.PNG'},
     { image: '/imgs/Crowdfunding/Overview/Element.webp'},
+    { image: '/imgs/Crowdfunding/Overview/Header.webp'},
+
 
 ]

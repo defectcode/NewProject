@@ -16,15 +16,17 @@ Chart.register(ArcElement);
 
 
 const costData = [
-    { category: 'Camera', cost: 799 },
-    { category: 'Essential Accessories', cost: 553 },
-    { category: 'Shipping & Delivery', cost: 150 },
-    { category: 'Taxes & Import Fees', cost: 393 },
+    { category: 'Sony ZV-1 II', cost: 799 },
+    { category: 'SanDisk Extreme PRO SDXC 1TB (2x)', cost: 290 },
+    { category: 'Sony GP-VPT2BT Wireless Grip', cost: 143 },
+    { category: 'Sony NP-BX1 Batteries (2x)', cost: 100 },
+    { category: 'Sony Camera Bag ', cost: 50 },
+    { category: 'Godox LED6R RGB', cost: 35 },
 ];
 
 const generateColorGradient = (steps) => {
     const startColor = [255, 0, 0];
-    const endColor = [239, 157, 162];
+    const endColor = [255, 255, 255];
     const stepFactor = 1 / (steps - 1);
     const colorArray = [];
     for (let i = 0; i < steps; i++) {
@@ -77,13 +79,13 @@ const FundingBreakdownMobile = () => {
     }, []);
 
     return (
-        <div className="h-auto sticky top-0 flex flex-col items-center text-white font-heebo px-5 bg-[#000000] mb-10">
+        <div className="h-auto top-0 flex flex-col items-center text-white font-heebo px-5 bg-[#000000] mb-10">
             <h2 className="text-[24px] font-semibold mb-8 mt-10 text-[#FFFFFF] font-ekMukta">Gift Breakdown</h2>
             <div className="relative mb-10">
                 <DoughnutChart data={costData} />
                 <div className="absolute inset-0 flex items-center justify-center">
-                    {/* Înlocuiește $ cu £ */}
-                    <span className="text-xl text-[#FFFFFF] font-medium">£{totalCost.toLocaleString()}</span>
+                    {/* Înlocuiește $ cu $ */}
+                    <span className="text-xl text-[#FFFFFF] font-medium">${totalCost.toLocaleString()}</span>
                 </div>
             </div>
             <div className="mt-8 w-full max-w-[900px]">
@@ -93,12 +95,6 @@ const FundingBreakdownMobile = () => {
                     <div className="font-bold text-[14px] font-roboto text-[#F5F5F7] text-center">
                         <div className="relative flex items-center gap-1">
                             <span>Cost</span>
-                            <span
-                                style={{ transform: 'translateY(-7px)' }}
-                                title="Detailed explanation about cost."
-                            >
-                                <Image src="/icons/question.svg" alt="question" width={15} height={15} />
-                            </span>
                         </div>
                     </div>
                     <div className="font-bold text-[14px] font-roboto text-[#F5F5F7] text-center"></div>
@@ -128,8 +124,8 @@ const FundingBreakdownMobile = () => {
                                 <span className="ml-2 text-[#C4C4C4] text-[14px]">{item.category}</span>
                             </div>
                             <div className="text-[#C4C4C4] text-[14px] font-semibold text-center">
-                                {/* Înlocuiește $ cu £ */}
-                                £{item.cost.toLocaleString()}
+                                {/* Înlocuiește $ cu $ */}
+                                ${item.cost.toLocaleString()}
                             </div>
                             <div className="text-[#C4C4C4] text-[14px] text-center">
                                 {item.week}

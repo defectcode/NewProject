@@ -3,8 +3,8 @@
 import React, { useRef, useState } from "react";
 import FundraisingProgress from './components/Progres';
 import Title from "./components/Title";
-import VideoPlayer from './components/Video/VideoPlayer';  // Asigură-te că calea către VideoPlayer este corectă
-import Icons from './components/Video/Icons';  // Asigură-te că calea către Icons este corectă
+import VideoPlayer from './components/Video/VideoPlayer';  
+import Icons from './components/Video/Icons';  
 import { images } from './constants/carouselData';
 import Image from "next/image";
 
@@ -16,7 +16,7 @@ const HeaderSeriesConcept = () => {
 
     const handleScreenClick = () => {
         setIsVideoVisible(true);
-        document.body.classList.add('overflow-hidden'); // Previne scroll-ul în timpul redării video
+        document.body.classList.add('overflow-hidden'); 
     };
 
     const handleClose = () => {
@@ -34,7 +34,6 @@ const HeaderSeriesConcept = () => {
                     </div>
                 </div>
                 
-                {/* Buton de Play peste imaginea de fundal */}
                 <button 
                     onClick={handleScreenClick} 
                     className="absolute inset-0 flex items-center justify-center z-20 bg-transparent xl:mr-[550px] lg:mr-[450px] md:mr-[350px]"
@@ -45,23 +44,20 @@ const HeaderSeriesConcept = () => {
 
 
 {/* https://www.dropbox.com/scl/fi/93yq0hsq1ptdb6dlgico4/VideoAtelier.mp4?rlkey=c2zddkgjz05b05x3pi39rkenq&st=lauvesd1&raw=1 */}
-            {/* Afișare VideoPlayer dacă isVideoVisible este true */}
             {isVideoVisible && (
                 <VideoPlayer 
-                    videoSrc="https://valeryfain.com/video/desktop.webm"  // URL-ul videoclipului Dropbox
+                    videoSrc="https://valeryfain.com/video/desktop.webm" 
                     onClose={handleClose}
                     isMuted={isMuted}
                 />
             )}
 
-            {/* Icons pentru controlul sunetului */}
             <Icons 
                 isMuted={isMuted} 
                 setIsMuted={setIsMuted} 
                 handleScreenClick={handleScreenClick}
             />
 
-            {/* Stiluri CSS pentru gradient și responsive */}
             <style jsx>{`
                 @media (max-width: 640px) {
                     .bg-gradient-to-t {

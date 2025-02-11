@@ -47,7 +47,7 @@ const FundraisingProgress = ({ data }) => {
     return (
         <div className="text-white">
             <div className="flex items-center justify-between mb-2 w-full lg:w-[346px]">
-                <span className="text-[20px] lg:text-2xl font-ekmukta font-bold text-[#FFFFFF] leading-[1]">£{data.raisedAmount}</span>
+                <span className="text-[20px] lg:text-2xl font-ekmukta font-bold text-[#FFFFFF] leading-[1]">${data.raisedAmount}</span>
                 <span className="text-md block font-ekMukta text-[15px] md:text-[#E8E8ED] text-[#C1C1C1] leading-[1]">
                     <span className="text-[#FFFFFF] font-semibold font-ekMukta">{data.stageNumber}</span> {data.stageLabel} 
                 </span>
@@ -79,7 +79,7 @@ const FundraisingProgress = ({ data }) => {
                             {progressPercentage}<span className='text-[13px] font-ekMukta'>%</span>&nbsp;
                         </span>
                         <span className="text-[#C1C1C1] font-ekmukta text-[15px]">
-                            raised of £{data.goalAmount} goal
+                            raised of ${data.goalAmount} goal
                         </span>
                     </span>
                 </div>

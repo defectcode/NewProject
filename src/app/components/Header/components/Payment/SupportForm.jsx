@@ -10,7 +10,7 @@ const SupportForm = () => {
   const [customAmount, setCustomAmount] = useState('');
   const [isCustomAmount, setIsCustomAmount] = useState(false);
   const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
-  const [fullWishAmount, setFullWishAmount] = useState(1895); // Amount for "Gift the Full Wish Amount"
+  const [fullWishAmount, setFullWishAmount] = useState(1417); // Amount for "Gift the Full Wish Amount"
 
   const stripe = useStripe();
   const elements = useElements();
@@ -87,22 +87,22 @@ const SupportForm = () => {
               onClick={() => handleAmountChange(1)}
               className={`flex items-center justify-center rounded-xl max-w-[80px] w-full flex-grow h-[45px] ${amount === 1 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
             >
-              £1
+              $1
             </button>
             <button
               onClick={() => handleAmountChange(50)}
               className={`flex items-center justify-center rounded-xl max-w-[80px] w-full flex-grow h-[45px] ${amount === 50 && !isCustomAmount ? 'bg-white text-black font-extrabold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
             >
-              £50
+              $50
             </button>
             <button
               onClick={() => handleAmountChange(500)}
               className={`flex items-center justify-center rounded-xl max-w-[80px] w-full flex-grow h-[45px] ${amount === 500 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
             >
-              £500
+              $500
             </button>
             <div className="relative flex items-center flex-grow">
-              <div className='absolute left-[12px] top-1/2 transform -translate-y-1/2'>£</div>
+              <div className='absolute left-[12px] top-1/2 transform -translate-y-1/2'>$</div>
               <input
                 type="number"
                 value={customAmount}
@@ -118,13 +118,13 @@ const SupportForm = () => {
             className={`flex items-center justify-between px-[10px] rounded-xl max-w-full text-[14px] font-ekMukta w-full flex-grow h-[45px] mt-5 ${amount === fullWishAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
           >
             <p>Gift the Full Wish Amount </p>
-            <p className='text-[15px] font-ekMukta'>£1,895</p>
+            <p className='text-[15px] font-ekMukta'>$1,417</p>
           </button>
         </div>
         <div className="my-5 mt-10 flex justify-between items-center w-full mx-auto">
           <p className="text-white font-ek-mukta text-[14px]">Total:</p>
           <div className="flex-grow border-t border-dotted border-gray-600 mx-6"></div>
-          <p className="text-white font-ek-mukta mr-1 flex gap-[3px]">£{amount}</p>
+          <p className="text-white font-ek-mukta mr-1 flex gap-[3px]">${amount}</p>
         </div>
         <p className="mt-10 mb-4 text-[#B7B7B7] text-[13px] font-inter">Select a Payment Method:</p>
         <div className="flex items-center justify-between mb-4 gap-4">
