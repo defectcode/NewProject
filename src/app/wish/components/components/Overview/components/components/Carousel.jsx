@@ -1,11 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { carouselImages } from "../../constants/stagerData";
 
 export const CustomCarouselModule = ({ images }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isDarkImage, setIsDarkImage] = useState(false);
     const touchStartX = useRef(null);
     const touchEndX = useRef(null);
+    const imageRef = useRef(null); // 🔹 Referință pentru imagine
 
     // 🔹 Blochează navigarea la prima imagine
     const handlePrev = () => {
@@ -36,9 +38,9 @@ export const CustomCarouselModule = ({ images }) => {
         if (touchStartX.current !== null && touchEndX.current !== null) {
             const diff = touchStartX.current - touchEndX.current;
 
-            if (diff > 50 && currentIndex < images.length - 1) {  // Swipe Stânga ➡️ (doar dacă nu e ultima imagine)
+            if (diff > 50 && currentIndex < images.length - 1) {  
                 handleNext();
-            } else if (diff < -50 && currentIndex > 0) {  // Swipe Dreapta ⬅️ (doar dacă nu e prima imagine)
+            } else if (diff < -50 && currentIndex > 0) {  
                 handlePrev();
             }
         }
@@ -63,6 +65,44 @@ export const CustomCarouselModule = ({ images }) => {
         }
     };
 
+    // 🔹 Detectează luminozitatea imaginii curente
+    useEffect(() => {
+        const checkImageBrightness = () => {
+            const imageElement = imageRef.current;
+            if (!imageElement) return;
+
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+
+            canvas.width = imageElement.width;
+            canvas.height = imageElement.height;
+            ctx.drawImage(imageElement, 0, 0, canvas.width, canvas.height);
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const pixels = imageData.data;
+            let totalBrightness = 0;
+            const sampleSize = 100; // Număr de pixeli de eșantionat
+
+            for (let i = 0; i < pixels.length; i += 4 * Math.floor(pixels.length / sampleSize)) {
+                const r = pixels[i];
+                const g = pixels[i + 1];
+                const b = pixels[i + 2];
+                const brightness = (r + g + b) / 3;
+                totalBrightness += brightness;
+            }
+
+            const averageBrightness = totalBrightness / sampleSize;
+            setIsDarkImage(averageBrightness < 128); // Dacă luminozitatea medie e sub 128, e considerată "întunecată"
+        };
+
+        const imageElement = imageRef.current;
+        if (imageElement && imageElement.complete) {
+            checkImageBrightness();
+        } else {
+            imageElement.onload = checkImageBrightness;
+        }
+    }, [currentIndex]);
+
     return (
         <div className="relative w-full overflow-hidden h-[361px]" 
             onTouchStart={handleTouchStart}
@@ -80,6 +120,7 @@ export const CustomCarouselModule = ({ images }) => {
                         className="min-w-full h-full flex justify-center items-center"
                     >
                         <Image
+                            ref={index === currentIndex ? imageRef : null} // 🔹 Salvăm referința doar pentru imaginea curentă
                             src={img.image}
                             alt={`Image ${index + 1}`}
                             width={345}
@@ -105,11 +146,17 @@ export const CustomCarouselModule = ({ images }) => {
                     ) {
                         size = "h-[6px] w-[6px]";
                     }
+
                     return (
                         <span 
                             key={index} 
                             className={`${size} rounded-full transition-all duration-300 cursor-pointer 
-                                ${index === currentIndex ? 'bg-[#000000]' : 'bg-[#D0D0D0] opacity-50'}`}
+                                ${index === currentIndex 
+                                    ? isDarkImage 
+                                        ? 'bg-[#FFFFFF]' // Dacă imaginea este întunecată, punctele devin deschise
+                                        : 'bg-[#000000]' // Dacă imaginea este deschisă, punctele devin închise
+                                    : 'bg-[#D0D0D0] opacity-50'
+                                }`}
                             onClick={() => handleDotClick(index)}
                         />
                     );
