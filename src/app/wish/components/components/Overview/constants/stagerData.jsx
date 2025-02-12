@@ -156,8 +156,18 @@ export const detailedStepsData = {
 
 export const images = [
     { image: '/imgs/Crowdfunding/Overview/Element11.webp'},
-    { image: '/imgs/Crowdfunding/Overview/Element.PNG'},
-    { image: '/imgs/Crowdfunding/Overview/Element2.PNG'},
-    { image: '/imgs/Crowdfunding/Overview/Element.webp'},
-    { image: '/imgs/Crowdfunding/Overview/Header.webp'},
+    { image: '/imgs/Crowdfunding/Overview/Element14.webp'},
+    { image: '/imgs/Crowdfunding/Overview/Element12.webp'},
+    { image: '/imgs/Crowdfunding/Overview/Element13.webp'},
+]
+
+
+export const ModiuleElement = [
+    { image: '/imgs/Crowdfunding/Overview/ModuleElement.jpg'},
+]
+
+export const carouselImages = [
+    { image: '/imgs/Crowdfunding/Overview/Module.webp'},
+    { image: '/imgs/Crowdfunding/Overview/Module2.webp'},
+    
 ]

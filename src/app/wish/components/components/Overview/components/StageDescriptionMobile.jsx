@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image";
-import { stageDescriptionData, images } from "../constants/stagerData";
+import { stageDescriptionData, images, carouselImages, ModiuleElement } from "../constants/stagerData";
 import FundingBreakdownMobile from "./FundingBreakdownMobile";
+import { CustomCarouselModule } from "./components/Carousel";
 
 const CustomCarousel = ({ images }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -129,7 +130,16 @@ const StageDescriptionMobile = () => {
                     </p>
                 </div>
 
-                <CustomCarousel images={images} />
+                {/* <CustomCarousel images={images} /> */}
+
+                <Image
+                    src='/imgs/Crowdfunding/Overview/ModuleElement.jpg'
+                    alt={`Image`}
+                    width={345}
+                    height={361}
+                    className="w-full h-full object-cover cursor-pointer"
+                />
+
 
                 <div className="font-ekMukta">
                     {/* <h2 className="text-[#FFFFFF] font-semibold text-[24px] mt-10 leading-[1]">{stageDescriptionData.includesItems}</h2> */}
@@ -169,7 +179,7 @@ const StageDescriptionMobile = () => {
                         
                         <h3 className="text-[#CDCDCD] text-[16px] mt-5 mb-5 leading-[1.4]">{stageDescriptionData.info}</h3>
 
-                        <CustomCarousel images={images} />
+                        <CustomCarouselModule images={images} />
 
                     </div>
                 </div>

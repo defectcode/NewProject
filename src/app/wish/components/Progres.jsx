@@ -79,7 +79,7 @@ const FundraisingProgress = ({ data }) => {
                             {progressPercentage}<span className='text-[13px] font-ekMukta'>%</span>&nbsp;
                         </span>
                         <span className="text-[#C1C1C1] font-ekmukta text-[15px]">
-                            raised of ${data.goalAmount} goal
+                            raised of ${data.goalAmount} wish
                         </span>
                     </span>
                 </div>
