@@ -9,7 +9,7 @@ import ButonShere from '../../app/Crowdfunding/components/mobile/ButonShere';
 import Image from "next/image";
 import NavbarHome from "../components/Header/components/NavbarHome";
 
-const HeaderCrowdfundingMobile = () => {
+const HeaderCrowdfundingMobile = ({isPopupOpen}) => {
     const currentData = images[0];
     const [isVideoVisible, setIsVideoVisible] = useState(false);
     const containerRef = useRef(null);
@@ -124,7 +124,7 @@ const HeaderCrowdfundingMobile = () => {
 
             {/* Butonul Share/Support */}
             <div ref={buttonRef} className="relative w-full mb-5">
-                <ButonShere isShareFixed={true} />
+                <ButonShere isShareFixed={true} isPopupOpen={isPopupOpen} />
             </div>
         </div>
     );

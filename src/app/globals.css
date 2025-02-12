@@ -465,3 +465,15 @@ body {
       height: 100px; /* Icon pentru telefon */
   }
 }
+
+
+
+/* Ascunde scrollbar-ul în toate browserele */
+.scroll-hidden {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer și Edge */
+}
+
+.scroll-hidden::-webkit-scrollbar {
+  display: none; /* Chrome, Safari și Edge */
+}

@@ -102,7 +102,7 @@ export default function ProposalWindowMobile({ onClose }) {
 
   if (isSubmitted) {
     return (
-      <div className="flex flex-col items-center justify-between max-h-[344px] rounded-lg text-center w-full font-heboo">
+      <div className="flex flex-col items-center justify-between max-h-[344px] rounded-lg bg-black text-center w-full font-heboo">
         <div className="flex justify-end items-center w-full">
           <button onClick={onClose} className="text-[#1E1E1E] text-5xl">
             <Image src="/icons/Close.svg" width={14} height={14} alt='close' className='mb-[20px] text-[#1E1E1E]'/>
@@ -127,7 +127,7 @@ export default function ProposalWindowMobile({ onClose }) {
   }
 
   return (
-    <div className="text-[#FFFFFF] w-full font-heboo px-5">
+    <div className="text-[#FFFFFF] w-full font-heboo px-5 bg-black">
   
       <form onSubmit={handleSubmit} className="space-y-5 mb-5">
         <div>

@@ -76,7 +76,7 @@ const HeaderCrowdfundingMobile = () => {
             <div
                 className={`absolute inset-0 w-full bg-center bg-no-repeat max-md:w-auto ${isVideoVisible ? 'bg-opacity-50 blur-sm' : ''}`}
                 style={{
-                    backgroundImage: `url('/imgs/Crowdfunding/dsdse.png')`,
+                    backgroundImage: `url('/imgs/Crowdfunding/file.webp')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }}
@@ -129,7 +129,7 @@ const HeaderCrowdfundingMobile = () => {
             <Icons handleScreenClick={handleScreenClick} />
 
             <div ref={buttonRef} className="relative w-full">
-                <ButonShere isShareFixed={isShareFixed} />
+                <ButonShere isShareFixed={isShareFixed}  />
             </div>
         </div>
     );

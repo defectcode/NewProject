@@ -53,11 +53,11 @@ export default function Popup({ isOpen, onClose, children }) {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black flex flex-col items-center justify-start z-50 h-full overflow-auto">
-            <div className="relative h-[70vh] w-full text-white">
+        <div className="fixed inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-start  h-full overflow-auto">
+            <div className="relative h-[70vh] w-full text-white mt-5">
                 <div
                     ref={headerRef}
-                    className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+                    className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat rounded-[20px]"
                     style={{
                         backgroundImage: `url(${isMobile ? '/imgs/mobile.png' : '/imgs/Background.webp'})`,
                     }}
@@ -69,11 +69,13 @@ export default function Popup({ isOpen, onClose, children }) {
                     }}
                 ></div>
                 <div className="relative z-10 h-full">
-                    <div className="flex items-center justify-between h-[40px] mb-5">
-                        <Navbar showSupportInNavbar={false} />
-                        <button className="text-white text-xl mr-5 mb-1" onClick={onClose}>
-                            <Image src="./icons/Close.svg" width={14} height={14} alt="close" />
-                        </button>
+                    <div className='fixed top-5 right-0 left-0'>
+                        <div className="flex items-center justify-between h-[40px] mb-5">
+                            <Navbar showSupportInNavbar={false} />
+                            <button className="text-white text-xl mt-2 p-5" onClick={onClose}>
+                                <Image src="./icons/Close.svg" width={14} height={14} alt="close" />
+                            </button>
+                        </div>
                     </div>
                     <div className="max-w-[1200px] w-auto mx-auto h-full flex flex-col text-white max-md:p-0">
                         <div className="flex-grow flex flex-col justify-end header-content max-md:p-0">

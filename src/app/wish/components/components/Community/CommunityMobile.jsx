@@ -6,11 +6,11 @@ import Image from 'next/image';
 
 const CommunityMobile = () => {
     return (
-        <div id="rewards" className={`${styles.rewardsContainer} relative`}>
+        <div className={`${styles.rewardsContainer} relative`}>
             <div className={styles.overlay}></div>
             <div className={styles.content}>
                 <div className={styles.iconWrapper}>
-                    <Image width={1} height={1} src="/imgs/Crowdfunding/Community/progressBlack.svg" alt="Work In Progress Icon" />
+                    <Image width={1} height={1} src="/imgs/Crowdfunding/Community/work.svg" alt="Work In Progress Icon" />
                 </div>
                 {/* <div className={styles.textWrapper}>
                     <h2>Work in Progress</h2>
