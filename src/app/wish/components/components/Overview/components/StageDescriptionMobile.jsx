@@ -1,16 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { stageDescriptionData, images, carouselImages, ModiuleElement } from "../constants/stagerData";
 import FundingBreakdownMobile from "./FundingBreakdownMobile";
 import { CustomCarouselModule } from "./components/Carousel";
 
-
 const CustomCarousel = ({ images }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [isDarkImage, setIsDarkImage] = useState(false);
     const touchStartX = useRef(null);
     const touchEndX = useRef(null);
-    const imageRef = useRef(null); // 🔹 Referință pentru imaginea curentă
 
     const handlePrev = () => {
         setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
@@ -55,44 +52,6 @@ const CustomCarousel = ({ images }) => {
         }
     };
 
-    // 🔹 Detectează luminozitatea imaginii curente
-    useEffect(() => {
-        const checkImageBrightness = () => {
-            const imageElement = imageRef.current;
-            if (!imageElement) return;
-
-            const canvas = document.createElement("canvas");
-            const ctx = canvas.getContext("2d");
-
-            canvas.width = imageElement.width;
-            canvas.height = imageElement.height;
-            ctx.drawImage(imageElement, 0, 0, canvas.width, canvas.height);
-
-            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const pixels = imageData.data;
-            let totalBrightness = 0;
-            const sampleSize = 100; // Număr de pixeli de eșantionat
-
-            for (let i = 0; i < pixels.length; i += 4 * Math.floor(pixels.length / sampleSize)) {
-                const r = pixels[i];
-                const g = pixels[i + 1];
-                const b = pixels[i + 2];
-                const brightness = (r + g + b) / 3;
-                totalBrightness += brightness;
-            }
-
-            const averageBrightness = totalBrightness / sampleSize;
-            setIsDarkImage(averageBrightness < 128); // Dacă luminozitatea medie e sub 128, e considerată "întunecată"
-        };
-
-        const imageElement = imageRef.current;
-        if (imageElement && imageElement.complete) {
-            checkImageBrightness();
-        } else {
-            imageElement.onload = checkImageBrightness;
-        }
-    }, [currentIndex]);
-
     return (
         <div className="relative w-full overflow-hidden h-[361px]" 
             onTouchStart={handleTouchStart}
@@ -109,7 +68,6 @@ const CustomCarousel = ({ images }) => {
                         className="min-w-full h-full flex justify-center items-center"
                     >
                         <Image
-                            ref={index === currentIndex ? imageRef : null} // 🔹 Salvăm referința doar pentru imaginea curentă
                             src={img.image}
                             alt={`Image ${index + 1}`}
                             width={345}
@@ -121,39 +79,37 @@ const CustomCarousel = ({ images }) => {
                 ))}
             </div>
 
-            {/* 🔹 Indicatori sub formă de puncte */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center justify-center space-x-2 h-4">
-                {images.map((_, index) => {
-                    let size = "h-[4px] w-[4px]";
-                    if (index === currentIndex) {
-                        size = "h-[8px] w-[8px]";
-                    } else if (
-                        index === currentIndex - 1 ||
-                        index === currentIndex + 1 ||
-                        (currentIndex === 0 && index === images.length - 1) ||
-                        (currentIndex === images.length - 1 && index === 0)
-                    ) {
-                        size = "h-[6px] w-[6px]";
-                    }
-
-                    return (
+                {images.length > 3 ? (
+                    [0, 1, images.length - 1].map((index, dotIndex) => (
                         <span 
-                            key={index} 
-                            className={`${size} rounded-full transition-all duration-300 cursor-pointer 
-                                ${index === currentIndex 
-                                    ? isDarkImage 
-                                        ? 'bg-[#FFFFFF]' // Dacă imaginea este întunecată, punctele devin deschise
-                                        : 'bg-[#000000]' // Dacă imaginea este deschisă, punctele devin închise
-                                    : 'bg-[#D0D0D0] opacity-50'
+                            key={dotIndex} 
+                            className={`rounded-full transition-all duration-300 cursor-pointer 
+                                ${
+                                    (currentIndex === 0 && index === 0) || 
+                                    (currentIndex > 0 && currentIndex < images.length - 1 && index === 1) || 
+                                    (currentIndex === images.length - 1 && index === images.length - 1) 
+                                    ? 'bg-[#FFFFFF]/50 h-[8px] w-[8px]' 
+                                    : 'bg-[#E8E8ED] opacity-50 h-[6px] w-[6px]'
                                 }`}
                             onClick={() => handleDotClick(index)}
                         />
-                    );
-                })}
+                    ))
+                ) : (
+                    images.map((_, index) => (
+                        <span 
+                            key={index} 
+                            className={`h-[6px] w-[6px] rounded-full transition-all duration-300 cursor-pointer 
+                                ${index === currentIndex ? 'bg-[#FFFFFF]/50' : 'bg-[#E8E8ED] opacity-50'}`}
+                            onClick={() => handleDotClick(index)}
+                        />
+                    ))
+                )}
             </div>
         </div>
     );
 };
+
 
 const StageDescriptionMobile = () => {
     return (
@@ -232,7 +188,7 @@ const StageDescriptionMobile = () => {
                         
                         <h3 className="text-[#CDCDCD] text-[16px] mt-5 mb-5 leading-[1.4]">{stageDescriptionData.info}</h3>
 
-                        <CustomCarouselModule images={images} />
+                        <CustomCarouselModule carouselImages={carouselImages} />
 
                     </div>
                 </div>
