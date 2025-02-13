@@ -1,16 +1,10 @@
 import React, { useEffect } from 'react';
 import StageDescriptionMobile from './components/StageDescriptionMobile';
-// import DetailedStepsMobile from './components/DetailedStepsMobile';
-import FundingBreakdownMobile from './components/FundingBreakdownMobile';
 import Info from './components/Info'
+import DonationProgress from '../Overview/components/components/DonationProgress'
 
 
 const OverviewMobile = ({ products = [] }) => {
-
-  // const searchParams = useSearchParams();
-  // const searchTerm = searchParams?.get('searchTerm');
-
-
 
 
   useEffect(() => {
@@ -21,6 +15,7 @@ const OverviewMobile = ({ products = [] }) => {
           <div>
             <StageDescriptionMobile />
           </div>
+          <DonationProgress/>
           {/* <Info/> */}
         </div>
     );
