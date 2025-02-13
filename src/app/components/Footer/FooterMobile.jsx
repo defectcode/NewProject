@@ -69,7 +69,7 @@ export default function FooterMobile() {
         <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
       </div>
 
-      <div className="p-5">
+      {/* <div className="p-5">
           <div
               className="flex justify-between items-center cursor-pointer text-[#1E1E1E]"
               onClick={openPopup} // Deschide pop-up-ul
@@ -92,7 +92,7 @@ export default function FooterMobile() {
                   />
               </span>
           </div>
-      </div>
+      </div> */}
 
       <div className="relative w-full">
         <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
