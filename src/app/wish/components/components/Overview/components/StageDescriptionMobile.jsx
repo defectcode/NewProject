@@ -71,8 +71,8 @@ const CustomCarousel = ({ images }) => {
                             src={img.image}
                             alt={`Image ${index + 1}`}
                             width={345}
-                            height={361}
-                            className="w-full h-full object-cover cursor-pointer"
+                            height={390}
+                            className="w-full h-full object-cover cursor-pointer rounded-b-[10px]"
                             onClick={handleImageClick}
                         />
                     </div>
@@ -146,7 +146,7 @@ const StageDescriptionMobile = () => {
                     alt={`Image`}
                     width={345}
                     height={361}
-                    className="w-full h-full object-cover cursor-pointer"
+                    className="w-full h-full object-cover cursor-pointer rounded-b-[10px]"
                 />
 
 

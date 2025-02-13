@@ -7,11 +7,15 @@ export const ProgresCarousel = ({ carouselImages }) => {
         const touchEndX = useRef(null);
     
         const handlePrev = () => {
-            setCurrentIndex((prevIndex) => (prevIndex === 0 ? carouselImages.length - 1 : prevIndex - 1));
+            if (currentIndex > 0) {
+                setCurrentIndex((prevIndex) => prevIndex - 1);
+            }
         };
     
         const handleNext = () => {
-            setCurrentIndex((prevIndex) => (prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1));
+            if (currentIndex < carouselImages.length - 1) {
+                setCurrentIndex((prevIndex) => prevIndex + 1);
+            }
         };
     
         const handleTouchStart = (event) => {
@@ -25,9 +29,10 @@ export const ProgresCarousel = ({ carouselImages }) => {
         const handleTouchEnd = () => {
             if (touchStartX.current !== null && touchEndX.current !== null) {
                 const diff = touchStartX.current - touchEndX.current;
-                if (diff > 50) {
+    
+                if (diff > 50 && currentIndex < carouselImages.length - 1) {
                     handleNext();
-                } else if (diff < -50) {
+                } else if (diff < -50 && currentIndex > 0) {
                     handlePrev();
                 }
             }
@@ -42,6 +47,7 @@ export const ProgresCarousel = ({ carouselImages }) => {
         const handleImageClick = (event) => {
             const imageWidth = event.target.clientWidth;
             const clickX = event.nativeEvent.offsetX;
+    
             if (clickX < imageWidth / 2) {
                 handlePrev();
             } else {
@@ -68,7 +74,7 @@ export const ProgresCarousel = ({ carouselImages }) => {
                             src={img.image}
                             alt={`Image ${index + 1}`}
                             width={345}
-                            height={361}
+                            height={390}
                             className="w-full h-full object-cover cursor-pointer rounded-b-[16px]"
                             onClick={handleImageClick}
                         />

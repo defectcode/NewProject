@@ -169,5 +169,8 @@ export const ModiuleElement = [
 export const carouselImages = [
     { image: '/imgs/Crowdfunding/Overview/Module.webp'},
     { image: '/imgs/Crowdfunding/Overview/Module2.webp'},
-    
+    { image: '/imgs/Crowdfunding/Overview/Element15.webp'},
+    { image: '/imgs/Crowdfunding/Overview/Element16.webp'},
+    { image: '/imgs/Crowdfunding/Overview/Element17.webp'},
+    { image: '/imgs/Crowdfunding/Overview/Element18.webp'},
 ]

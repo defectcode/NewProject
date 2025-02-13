@@ -8,18 +8,21 @@ export const donationData = {
             id: 1,
             title: "Hero Foundation – 30%",
             description:
-                "Supporting our community members in need:",
+                "Supporting our community members in need.",
             items: [
                 { name: "Urgent assistance for those facing hardships" },
                 { name: "Helping fulfill dreams and life-changing goals"},
                 { name: "Funding talent development and education" },
-                // { name: "Supporting philanthropic projects and initiatives" },
             ],
             images: [
-                { image: '/imgs/Crowdfunding/Overview/Element11.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element14.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element12.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element13.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element19.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element20.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element21.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element22.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element23.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element24.webp'},
+
+
             ]
         },
         {
@@ -33,10 +36,12 @@ export const donationData = {
                 { name: "Canon EOS R50" }
             ],
             images: [
-                { image: '/imgs/Crowdfunding/Overview/Element11.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element14.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element12.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element13.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element25.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element26.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element27.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element28.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element29.webp'},
+
             ]
             
         },
@@ -52,10 +57,8 @@ export const donationData = {
                 { name: "Zoom H6 Recorder" },
             ],
             images: [
-                { image: '/imgs/Crowdfunding/Overview/Element11.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element14.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element12.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element13.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element30.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element31.webp'},
             ]
         },
         {
@@ -68,10 +71,7 @@ export const donationData = {
                 { name: "Reflectors & Softbox Setup" },
             ],
             images: [
-                { image: '/imgs/Crowdfunding/Overview/Element11.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element14.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element12.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element13.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element35.webp'},
             ]
         },
         {
@@ -85,10 +85,8 @@ export const donationData = {
                 { name: "Joby GorillaPod 5K" },
             ],
             images: [
-                { image: '/imgs/Crowdfunding/Overview/Element11.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element14.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element12.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element13.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element36.webp'},
+
             ]
         },
         {
@@ -101,10 +99,8 @@ export const donationData = {
                 { name: "Lexar CFexpress Type B 512GB" },
             ],
             images: [
-                { image: '/imgs/Crowdfunding/Overview/Element11.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element14.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element12.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element13.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element37.webp'},
+
             ]
         },
         {
@@ -118,10 +114,8 @@ export const donationData = {
                 { name: "Anker PowerCore 26800mAh" },
             ],
             images: [
-                { image: '/imgs/Crowdfunding/Overview/Element11.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element14.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element12.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element13.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element38.webp'},
+
             ]
         },
         {
@@ -134,19 +128,10 @@ export const donationData = {
                 { name: "DaVinci Resolve Studio" },
             ],
             images: [
-                { image: '/imgs/Crowdfunding/Overview/Element11.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element14.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element12.webp'},
-                { image: '/imgs/Crowdfunding/Overview/Element13.webp'},
+                { image: '/imgs/Crowdfunding/Overview/Element39.webp'},
+
             ]
         },
     ],
 };
 
-
-// export const images = [
-//     { image: '/imgs/Crowdfunding/Overview/Element11.webp'},
-//     { image: '/imgs/Crowdfunding/Overview/Element14.webp'},
-//     { image: '/imgs/Crowdfunding/Overview/Element12.webp'},
-//     { image: '/imgs/Crowdfunding/Overview/Element13.webp'},
-// ]
