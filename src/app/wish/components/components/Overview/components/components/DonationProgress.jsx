@@ -95,7 +95,7 @@ const DonationProgress = () => {
                         openSections[donationData.sections.length - 1] ? "pt-[30px]" : "pt-[40px]"
                     }`}
                 >
-                    <h2 className="text-[24px] font-semibold font-ekMukta leading-[1]">
+                    <h2 className="text-[20px] font-semibold font-ekMukta leading-[1]">
                         Total Expansion Plan
                     </h2>
                     <ul className="list-disc pl-6 text-[16px] font-ekMukta text-[#CDCDCD] px-5 pt-[10px]">
