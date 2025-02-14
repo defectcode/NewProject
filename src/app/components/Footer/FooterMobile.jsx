@@ -23,18 +23,18 @@ export default function FooterMobile() {
 
   // max-h-[525px]
   return (
-    <div className="bg-[#EBEBF0] text-white px-5 pt-5 w-full max-w-md mx-auto h-auto pb-20">
+    <div className="bg-[#000000] text-white px-5 pt-5 w-full max-w-md mx-auto h-auto pb-20">
       <Networking />
 
 
-      <ul className="text-[#646464] text-[14px] gap-4 font-ekMukta flex items-center justify-between px-5">
+      <ul className="text-white text-[14px] font-ekMukta flex items-center justify-center px-5 gap-5">
         <li><Link legacyBehavior href="/privacypolicy">Privacy Policy</Link></li>
         <li><Link legacyBehavior href="/cookiepolicy">Cookie Policy</Link></li>
         <li><Link legacyBehavior href="/terms">Tearm of Use</Link></li>
       </ul>
 
       <div className="mb-5 mt-10">
-        <p className="text-[#1E1E1E] text-[16px] text-center max-md:text-[10px] font-ekmukta-extralight">
+        <p className="text-white text-[16px] text-center max-md:text-[10px] font-ekmukta-extralight">
             Copyright © 2024 Fyne S.R.L. All right reserved.
         </p>
       </div>
