@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import StageDescriptionMobile from './components/StageDescriptionMobile';
 import Info from './components/Info'
-import DonationProgress from '../Overview/components/components/DonationProgress'
+import DonationProgress from './components/components/DonationProgress'
 
 
 const OverviewMobile = ({ products = [] }) => {

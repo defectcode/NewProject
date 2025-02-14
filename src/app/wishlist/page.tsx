@@ -16,6 +16,7 @@ import NavBarCrowdfunding from "./components/NavBarCrowdfunding";
 import useDeviceType from './components/hooks/useDeviceType';
 import Footer from "../components/Footer/Footer";
 import FooterMobile from "../components/Footer/FooterMobile";
+import DesktopWorkPage from "./DesktopWorkPage"
 
 export default function Crowdfunding() {
     const isMobile = useDeviceType();
@@ -39,7 +40,7 @@ export default function Crowdfunding() {
     return (
         <div className="h-auto bg-[#000000]">
             {isMobile && activeSection === 'overview' && <HeaderCrowdfundingMobile />}
-            {!isMobile && activeSection === 'overview' && <HeaderCrowdfunding />}
+            {/* {!isMobile && activeSection === 'overview' && <HeaderCrowdfunding />} */}
             
             {['rewards', 'community', 'extras'].includes(activeSection) && (
             <NavBarCrowdfundingMobileStatic
@@ -56,14 +57,12 @@ export default function Crowdfunding() {
                         activeSection={activeSection} 
                     />
                 </div>
-            ) : (
-                <NavBarCrowdfunding 
-                    setActiveSection={setActiveSection} 
-                    activeSection={activeSection} 
-                />
-            )}
-            <div>{renderSection()}</div>
-            {isMobile && activeSection != 'rewards' && activeSection != 'community' && activeSection != 'extras' ? <FooterMobile/> : ''}
+                ) : (
+                    null
+                )
+            }
+            {isMobile ? <div>{renderSection()}</div> : <DesktopWorkPage/>}
+            {isMobile && activeSection != 'rewards' && activeSection != 'community' && activeSection != 'extras' ? <FooterMobile/> : null}
         </div>
     );
 }

@@ -4,7 +4,7 @@ import { stageDescriptionData, images, icons, carouselImages, ModiuleElement } f
 import FundingBreakdownMobile from "./FundingBreakdownMobile";
 import { CustomCarouselModule } from "./components/Carousel";
 import { ProgresCarousel } from "./components/ProgresCarousel";
-import Carousel, { CarouselModal } from "@/app/wish/components/components/Overview/components/components/CarouselModal";
+import Carousel, { CarouselModal } from "@/app/wishlist/components/components/Overview/components/components/CarouselModal";
 
 
 export const CustomCarousel = ({ images }) => {
