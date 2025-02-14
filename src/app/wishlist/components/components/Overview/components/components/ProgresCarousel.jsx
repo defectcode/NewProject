@@ -83,31 +83,36 @@ export const ProgresCarousel = ({ carouselImages }) => {
             </div>
 
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center justify-center space-x-2 h-4">
-                {carouselImages.length > 3 ? (
-                    [0, 1, carouselImages.length - 1].map((index, dotIndex) => (
-                        <span 
-                            key={dotIndex} 
-                            className={`rounded-full transition-all duration-300 cursor-pointer 
-                                ${
-                                    (currentIndex === 0 && index === 0) || 
-                                    (currentIndex > 0 && currentIndex < carouselImages.length - 1 && index === 1) || 
-                                    (currentIndex === carouselImages.length - 1 && index === carouselImages.length - 1) 
-                                    ? 'bg-[#FFFFFF]/50 h-[8px] w-[8px]' 
-                                    : 'bg-[#E8E8ED] opacity-50 h-[6px] w-[6px]'
-                                }`}
-                            onClick={() => handleDotClick(index)}
-                        />
-                    ))
-                ) : (
-                    carouselImages.map((_, index) => (
-                        <span 
-                            key={index} 
-                            className={`h-[6px] w-[6px] rounded-full transition-all duration-300 cursor-pointer 
-                                ${index === currentIndex ? 'bg-[#FFFFFF]/50' : 'bg-[#E8E8ED] opacity-50'}`}
-                            onClick={() => handleDotClick(index)}
-                        />
-                    ))
+                {carouselImages.length > 1 && (
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center justify-center space-x-2 h-4">
+                        {carouselImages.length > 3 ? (
+                            [0, 1, carouselImages.length - 1].map((index, dotIndex) => (
+                                <span 
+                                    key={dotIndex} 
+                                    className={`rounded-full transition-all duration-300 cursor-pointer 
+                                        ${
+                                            (currentIndex === 0 && index === 0) || 
+                                            (currentIndex > 0 && currentIndex < carouselImages.length - 1 && index === 1) || 
+                                            (currentIndex === carouselImages.length - 1 && index === carouselImages.length - 1) 
+                                            ? 'bg-[#FFFFFF]/50 h-[8px] w-[8px]' 
+                                            : 'bg-[#E8E8ED] opacity-50 h-[6px] w-[6px]'
+                                        }`}
+                                    onClick={() => handleDotClick(index)}
+                                />
+                            ))
+                        ) : (
+                            carouselImages.map((_, index) => (
+                                <span 
+                                    key={index} 
+                                    className={`h-[6px] w-[6px] rounded-full transition-all duration-300 cursor-pointer 
+                                        ${index === currentIndex ? 'bg-[#FFFFFF]/50' : 'bg-[#E8E8ED] opacity-50'}`}
+                                    onClick={() => handleDotClick(index)}
+                                />
+                            ))
+                        )}
+                    </div>
                 )}
+
             </div>
         </div>
     );

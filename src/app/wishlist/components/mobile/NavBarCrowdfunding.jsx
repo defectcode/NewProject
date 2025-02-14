@@ -2,7 +2,7 @@
 'use client'
 import React, { useRef } from "react";
 
-const NavBarCrowdfundingMobileStatic = ({ setActiveSection, activeSection }) => {
+const NavBarCrowdfunding = ({ setActiveSection, activeSection }) => {
     const navbarRef = useRef(null);
 
     const handleClick = (section) => {
@@ -18,7 +18,7 @@ const NavBarCrowdfundingMobileStatic = ({ setActiveSection, activeSection }) => 
     };
 
     return (
-        <div className="bg-[#000000] w-full z-[999]">
+        <div className="bg-[#1B1B1B] fixed w-full z-[999]">
             <div
                 ref={navbarRef}
                 id="navbar-mobile-original"
@@ -57,4 +57,4 @@ const NavBarCrowdfundingMobileStatic = ({ setActiveSection, activeSection }) => 
     );
 };
 
-export default NavBarCrowdfundingMobileStatic;
+export default NavBarCrowdfunding;

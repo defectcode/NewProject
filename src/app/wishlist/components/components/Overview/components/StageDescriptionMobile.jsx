@@ -123,12 +123,13 @@ export const CustomCarousel = ({ images }) => {
 const StageDescriptionMobile = () => {
     return (
         <div id="overview" className="bg-[#000000] px-[20px] w-full flex flex-col items-start lg:items-center font-heebo">
+            
             <div>
                 <h2 className="text-[24px] text-[#FFFFFF] mb-5 font-semibold mt-10 font-ekMukta leading-[1]">
                     {stageDescriptionData.stageTitle}
                 </h2>
                 <p className="text-[#CDCDCD] w-full text-[16px] font-ekMukta mb-5 leading-[1.3]">
-                    <span className="text-[#D8D7D7] font-bold">For the past seven years</span>, I have dedicated myself to content creation. Thousands of hours, thousands of videos, and countless stories told. But now, I want to <span className="text-[#CDCDCD] font-bold">elevate everything</span>. This camera is not just a tool—it`s the key to <span className="text-[#CDCDCD] font-bold">creating content that lasts</span>, that isn`t just consumed and forgotten but <span className="text-[#CDCDCD] font-bold">continues to inspire and impact lives</span>.<br/><span className="text-[#CDCDCD] font-bold">By supporting this wish, you`re not just funding equipment. You`re investing in a movement that we are building together.</span>
+                    {stageDescriptionData.stageHistory}
                 </p>
 
                 <CustomCarousel images={images} />

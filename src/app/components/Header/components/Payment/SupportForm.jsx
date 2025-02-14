@@ -109,7 +109,7 @@ const SupportForm = () => {
             </button>
 
             <div className="relative flex items-center w-1/4 md:flex-grow">
-              <div className={`absolute left-[12px] top-1/2 transform -translate-y-1/2 font-ekMukta text-[16px] ${isCustomAmount ? "text-black font-bold" : 'text-white'}`}>
+              <div className={`absolute left-[15px] ml- top-1/2 transform -translate-y-1/2 font-ekMukta text-[16px] ${isCustomAmount ? "text-black font-bold" : 'text-white'}`}>
                 $
               </div>
               <input
@@ -118,7 +118,7 @@ const SupportForm = () => {
                 value={customAmount}
                 onClick={handleCustomAmountClick}
                 onChange={handleCustomAmountChange}
-                className={`pl-[19px] py-[10px] placeholder-[#5B5B5B] rounded-xl w-full h-[45px] bg-[#252525] text-black text-base focus:border-[#3e3d3d] focus:outline-none ${
+                className={`pl-[25px] py-[10px] placeholder-[#5B5B5B] rounded-xl w-full h-[45px] bg-[#252525] text-black text-base focus:border-[#3e3d3d] focus:outline-none ${
                   isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-[1px] border-[#F1F1F1]/10'
                 }`}
                 placeholder="Other"

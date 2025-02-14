@@ -1,33 +1,14 @@
-
-import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import Networking from "./Components/Networking";
-import { IoIosArrowForward } from "react-icons/io";
-// import Popup from './Components/PopUp';
 
 
 export default function FooterMobile() {
-  const [isOpenSupport, setIsOpenSupport] = useState(false);
-  const [isOpenLegal, setIsOpenLegal] = useState(false);
-  const [isOpenContact, setIsOpenContact] = useState(false);
 
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-  const openPopup = () => setIsPopupOpen(true);
-  const closePopup = () => setIsPopupOpen(false);
-
-  const toggleSupport = () => setIsOpenSupport(!isOpenSupport);
-  const toggleLegal = () => setIsOpenLegal(!isOpenLegal);
-  const toggleContact = () => setIsOpenContact(!isOpenContact);
-
-  // max-h-[525px]
   return (
     <div className="bg-[#000000] text-white px-5 w-full max-w-md mx-auto h-auto pb-20">
       <Networking />
 
-
-      <ul className="text-white text-[14px] font-ekMukta flex items-center justify-center px-5 gap-5">
+      <ul className="text-[#979797] text-[14px] font-ekMukta flex items-center justify-center px-5 gap-5">
         <li><Link legacyBehavior href="/privacypolicy">Privacy Policy</Link></li>
         <li><Link legacyBehavior href="/cookiepolicy">Cookie Policy</Link></li>
         <li><Link legacyBehavior href="/terms">Tearm of Use</Link></li>

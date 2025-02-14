@@ -6,7 +6,7 @@ const Networking = () => {
     return (
         <div className="w-full max-lg:h-auto mt-14 max-md:mt-5 rounded-xl flex flex-col lg:flex-row items-center justify-between mb-10">
             <div className="flex gap-10 text-[#] items-center">
-                <Link href='https://tiktok.com/@valery.fain'>
+                <Link href='https://tiktok.com/@valery.fain14'>
                     <Image 
                         src='/imgs/Crowdfunding/Footer/Tiktok.svg' 
                         alt="tiktok" 
@@ -47,11 +47,6 @@ const Networking = () => {
                     />
                 </Link>
             </div>
-            {/* <div className="mb-5 lg:mb-0">
-                <p className="text-[#1E1E1E] text-[16px] text-center max-md:text-[10px] font-ekmukta-extralight">
-                    Copyright © 2024 Fyne S.R.L. All right reserved.
-                </p>
-            </div> */}
         </div>
     )
 }

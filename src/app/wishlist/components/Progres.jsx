@@ -54,7 +54,7 @@ const FundraisingProgress = ({ data }) => {
             </div>
 
             <div className="relative w-auto lg:w-[380px]">
-                <div className="h-1 bg-[#FFFFFF] rounded-full w-full lg:w-[346px] relative">
+                <div className="h-1 bg-[#FFFFFF]/50 rounded-full w-full lg:w-[346px] relative">
                     <div
                         className="h-full rounded-full bg-gradient-to-r from-[#E50815] via-[#E50815] to-white"
                         style={{ width: `${progressPercentage}%` }}

@@ -1,6 +1,6 @@
 export const stageDescriptionData = {
     stageTitle: "About This Wish",
-    stageHistory: "For the past seven years, I have dedicated myself to content creation. Thousands of hours, thousands of videos, and countless stories told.But now, I want to elevate everything.This camera is not just a tool—it’s the key to creating content that lasts, that isn’t just consumed and forgotten but continues to inspire and impact lives.By supporting this wish, you're not just funding equipment. You're investing in a movement that we are building together.",
+    stageHistory: "Your gift isn’t just about content—it’s about making a real difference. Every extra contribution enhances production quality and helps us give back. By exceeding our goal, we’ll be able to provide even better content for you, while also supporting our Hero Foundation with 30% of the extra funds going directly to help members of our community.",
     stageHistory2: 'The idea for "Paradise Problems" is to show life in a perfect city without money, where people still face real human problems. We aim to demonstrate how love, loyalty, and kindness can solve these problems.',
     fundingTitle: "Why It Matters",
     fundingProgress: " Content isn’t just about creating videos—it’s about leaving a lasting impact. For seven years, I’ve been crafting stories, producing high-quality content, and building a community that thrives on authenticity and value. But without the right tools, great ideas often get lost.",
