@@ -1,20 +1,22 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { stageDescriptionData, images, carouselImages, ModiuleElement } from "../constants/stagerData";
 import FundingBreakdownMobile from "./FundingBreakdownMobile";
 import { CustomCarouselModule } from "./components/Carousel";
 
-const CustomCarousel = ({ images }) => {
+
+export const CustomCarousel = ({ images }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const touchStartX = useRef(null);
     const touchEndX = useRef(null);
+    const carouselRef = useRef(null);
 
     const handlePrev = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + carouselImages.length) % carouselImages.length);
     };
 
     const handleNext = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
     };
 
     const handleTouchStart = (event) => {
@@ -42,18 +44,24 @@ const CustomCarousel = ({ images }) => {
         setCurrentIndex(index);
     };
 
-    const handleImageClick = (event) => {
-        const imageWidth = event.target.clientWidth;
-        const clickX = event.nativeEvent.offsetX;
-        if (clickX < imageWidth / 2) {
-            handlePrev();
-        } else {
-            handleNext();
-        }
-    };
+    // 🔥 Blochează scroll-ul vertical când utilizatorul atinge caruselul
+    useEffect(() => {
+        const preventScroll = (e) => {
+            if (carouselRef.current && carouselRef.current.contains(e.target)) {
+                e.preventDefault();
+            }
+        };
+
+        document.addEventListener("touchmove", preventScroll, { passive: false });
+        return () => {
+            document.removeEventListener("touchmove", preventScroll);
+        };
+    }, []);
 
     return (
-        <div className="relative w-full overflow-hidden h-[361px]" 
+        <div
+            ref={carouselRef}
+            className="relative w-full overflow-hidden h-[361px] touch-pan-x"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -72,13 +80,13 @@ const CustomCarousel = ({ images }) => {
                             alt={`Image ${index + 1}`}
                             width={345}
                             height={390}
-                            className="w-full h-full object-cover cursor-pointer rounded-b-[10px]"
-                            onClick={handleImageClick}
+                            className="w-full h-full object-cover cursor-pointer rounded-b-[16px]"
                         />
                     </div>
                 ))}
             </div>
 
+            {/* 🔹 Puncte de navigare */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center justify-center space-x-2 h-4">
                 {images.length > 3 ? (
                     [0, 1, images.length - 1].map((index, dotIndex) => (
@@ -96,7 +104,7 @@ const CustomCarousel = ({ images }) => {
                         />
                     ))
                 ) : (
-                    images.map((_, index) => (
+                    carouselImages.map((_, index) => (
                         <span 
                             key={index} 
                             className={`h-[6px] w-[6px] rounded-full transition-all duration-300 cursor-pointer 
@@ -109,6 +117,7 @@ const CustomCarousel = ({ images }) => {
         </div>
     );
 };
+
 
 
 const StageDescriptionMobile = () => {

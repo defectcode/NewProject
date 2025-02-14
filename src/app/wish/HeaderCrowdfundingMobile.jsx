@@ -76,7 +76,7 @@ const HeaderCrowdfundingMobile = () => {
             <div
                 className={`absolute inset-0 w-full bg-center bg-no-repeat max-md:w-auto ${isVideoVisible ? 'bg-opacity-50 blur-sm' : ''}`}
                 style={{
-                    backgroundImage: `url('/imgs/Crowdfunding/file.webp')`,
+                    backgroundImage: `url('/imgs/Crowdfunding/5294511292218891886.webp')`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }}
@@ -121,7 +121,7 @@ const HeaderCrowdfundingMobile = () => {
 
             {isVideoVisible && (
                 <VideoPlayer
-                    videoSrc="https://valeryfain.com/video/NewVideo.webm"
+                    videoSrc="https://valeryfain.com/video/Video.webm"
                     onClose={handleClose}
                 />
             )}

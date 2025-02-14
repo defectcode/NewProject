@@ -27,27 +27,7 @@ export default function FooterMobile() {
             <div className="relative w-full">
         <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
       </div>
-      <div className="p-5">
-        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E] " onClick={toggleSupport}>
-          <h2 className="text-[16px] font-ekMukta font-semibold leading-none">Support & Donations</h2>
-          <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenSupport ? 'rotate(180deg)' : 'rotate(0deg)' }}>
-          <Image src='/imgs/Footer/arrow.svg' alt='arrow' width={14} height={6}  className='w-[14px] h-[8px]'/>
-          </span>
-        </div>
-        {isOpenSupport && (
-          <ul className="space-y-4 text-[#646464] text-[14px] font-ekMukta gap-4 mt-5 px-5 mb-2">
-            <li><Link legacyBehavior href="#"><a>Donation Link</a></Link></li>
-            <li><Link legacyBehavior href="#"><a>How Your Contributions Help</a></Link></li>
-            <li><Link legacyBehavior href="#"><a>FAQ</a></Link></li>
-            <li><Link legacyBehavior href="#"><a>Help Center</a></Link></li>
-          </ul>
-        )}
-      </div>
-
-      <div className="relative w-full">
-        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
-      </div>
-
+      
       <div className="p-5">
         <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E] " onClick={toggleLegal}>
           <h2 className="text-[16px] font-ekMukta font-semibold leading-none">Legal Information</h2>
@@ -56,11 +36,10 @@ export default function FooterMobile() {
           </span>
         </div>
         {isOpenLegal && (
-          <ul className="space-y-4 text-[#646464] text-[14px] gap-4 font-ekMukta mt-5 px-5 mb-2">
-            <li><Link legacyBehavior href="/privacypolicy"><a>Privacy Policy</a></Link></li>
-            <li><Link legacyBehavior href="/cookiepolicy"><a>Cookie Policy</a></Link></li>
-            <li><Link legacyBehavior href="#"><a>Tearm of Use</a></Link></li>
-            <li><Link legacyBehavior href="#"><a>Copyright Information</a></Link></li>
+          <ul className="text-[#646464] text-[14px] gap-4 font-ekMukta mt-5 px-5 flex items-center justify-between">
+            <li><Link legacyBehavior href="/privacypolicy">Privacy Policy</Link></li>
+            <li><Link legacyBehavior href="/cookiepolicy">Cookie Policy</Link></li>
+            <li><Link legacyBehavior href="/terms">Tearm of Use</Link></li>
           </ul>
         )}
       </div>
@@ -69,30 +48,10 @@ export default function FooterMobile() {
         <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
       </div>
 
-      {/* <div className="p-5">
-          <div
-              className="flex justify-between items-center cursor-pointer text-[#1E1E1E]"
-              onClick={openPopup} // Deschide pop-up-ul
-          >
-              <h2 className="text-[16px] font-ekMukta font-semibold leading-none">
-                  Brands & Collaborations
-              </h2>
-              <span
-                  className="text-xl transform transition-transform duration-200 leading-none"
-                  style={{
-                      transform: isOpenContact ? 'rotate(180deg)' : 'rotate(0deg)',
-                  }}
-              >
-                  <Image
-                      src="/imgs/Footer/arrow.svg"
-                      alt="arrow"
-                      width={14}
-                      height={6}
-                      className="w-[14px] h-[8px]"
-                  />
-              </span>
-          </div>
-      </div> */}
+
+      <div className="relative w-full">
+        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
+      </div>
 
       <div className="relative w-full">
         <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
