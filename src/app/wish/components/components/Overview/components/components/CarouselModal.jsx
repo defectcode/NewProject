@@ -1,0 +1,115 @@
+import React, { useRef, useState, useEffect } from "react";
+import Image from "next/image";
+
+export const CarouselModal = ({ icons }) => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const touchStartX = useRef(null);
+    const touchEndX = useRef(null);
+    const carouselRef = useRef(null);
+
+    const handlePrev = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + icons.length) % icons.length);
+    };
+
+    const handleNext = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % icons.length);
+    };
+
+    const handleTouchStart = (event) => {
+        touchStartX.current = event.touches[0].clientX;
+    };
+
+    const handleTouchMove = (event) => {
+        touchEndX.current = event.touches[0].clientX;
+    };
+
+    const handleTouchEnd = () => {
+        if (touchStartX.current !== null && touchEndX.current !== null) {
+            const diff = touchStartX.current - touchEndX.current;
+            if (diff > 50) {
+                handleNext();
+            } else if (diff < -50) {
+                handlePrev();
+            }
+        }
+        touchStartX.current = null;
+        touchEndX.current = null;
+    };
+
+    const handleDotClick = (index) => {
+        setCurrentIndex(index);
+    };
+
+    // 🔥 Blochează scroll-ul vertical când utilizatorul atinge caruselul
+    useEffect(() => {
+        const preventScroll = (e) => {
+            if (carouselRef.current && carouselRef.current.contains(e.target)) {
+                e.preventDefault();
+            }
+        };
+
+        document.addEventListener("touchmove", preventScroll, { passive: false });
+        return () => {
+            document.removeEventListener("touchmove", preventScroll);
+        };
+    }, []);
+
+    return (
+        <div
+            ref={carouselRef}
+            className="relative w-full overflow-hidden h-[361px] touch-pan-x"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+        >
+            <div 
+                className="flex transition-transform duration-500 ease-in-out h-full"
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+                {icons.map((img, index) => (
+                    <div 
+                        key={index} 
+                        className="min-w-full h-full flex justify-center items-center"
+                    >
+                        <Image
+                            src={img.image}
+                            alt={`Image ${index + 1}`}
+                            width={345}
+                            height={390}
+                            className="w-full h-full object-cover cursor-pointer rounded-b-[16px]"
+                        />
+                    </div>
+                ))}
+            </div>
+
+            {/* 🔹 Puncte de navigare */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center justify-center space-x-2 h-4">
+                {icons.length > 3 ? (
+                    [0, 1, icons.length - 1].map((index, dotIndex) => (
+                        <span 
+                            key={dotIndex} 
+                            className={`rounded-full transition-all duration-300 cursor-pointer 
+                                ${
+                                    (currentIndex === 0 && index === 0) || 
+                                    (currentIndex > 0 && currentIndex < icons.length - 1 && index === 1) || 
+                                    (currentIndex === icons.length - 1 && index === icons.length - 1) 
+                                    ? 'bg-[#FFFFFF]/50 h-[8px] w-[8px]' 
+                                    : 'bg-[#E8E8ED] opacity-50 h-[6px] w-[6px]'
+                                }`}
+                            onClick={() => handleDotClick(index)}
+                        />
+                    ))
+                ) : (
+                    icons.map((_, index) => (
+                        <span 
+                            key={index} 
+                            className={`h-[6px] w-[6px] rounded-full transition-all duration-300 cursor-pointer 
+                                ${index === currentIndex ? 'bg-[#FFFFFF]/50' : 'bg-[#E8E8ED] opacity-50'}`}
+                            onClick={() => handleDotClick(index)}
+                        />
+                    ))
+                )}
+            </div>
+        </div>
+    );
+};

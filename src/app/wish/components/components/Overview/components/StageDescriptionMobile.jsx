@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { stageDescriptionData, images, carouselImages, ModiuleElement } from "../constants/stagerData";
+import { stageDescriptionData, images, icons, carouselImages, ModiuleElement } from "../constants/stagerData";
 import FundingBreakdownMobile from "./FundingBreakdownMobile";
 import { CustomCarouselModule } from "./components/Carousel";
+import { ProgresCarousel } from "./components/ProgresCarousel";
+import Carousel, { CarouselModal } from "@/app/wish/components/components/Overview/components/components/CarouselModal";
 
 
 export const CustomCarousel = ({ images }) => {
@@ -44,7 +46,6 @@ export const CustomCarousel = ({ images }) => {
         setCurrentIndex(index);
     };
 
-    // 🔥 Blochează scroll-ul vertical când utilizatorul atinge caruselul
     useEffect(() => {
         const preventScroll = (e) => {
             if (carouselRef.current && carouselRef.current.contains(e.target)) {
@@ -86,7 +87,6 @@ export const CustomCarousel = ({ images }) => {
                 ))}
             </div>
 
-            {/* 🔹 Puncte de navigare */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center justify-center space-x-2 h-4">
                 {images.length > 3 ? (
                     [0, 1, images.length - 1].map((index, dotIndex) => (
@@ -148,50 +148,11 @@ const StageDescriptionMobile = () => {
                     </p>
                 </div>
 
-                {/* <CustomCarousel images={images} /> */}
-
-                <Image
-                    src='/imgs/Crowdfunding/Overview/ModuleElement.jpg'
-                    alt={`Image`}
-                    width={345}
-                    height={361}
-                    className="w-full h-full object-cover cursor-pointer rounded-b-[10px]"
-                />
+                <CarouselModal icons={icons} />
 
 
                 <div className="font-ekMukta">
-                    {/* <h2 className="text-[#FFFFFF] font-semibold text-[24px] mt-10 leading-[1]">{stageDescriptionData.includesItems}</h2> */}
                     <div className="mt-5 mb-10">
-                        {/* <h4 className="text-[#FFFFFF] text-[16px] font-semibold">
-                            {stageDescriptionData.objectName}
-                        </h4>
-                        <ul className="list-disc ml-7 text-[#CDCDCD] text-[16px]">
-                            <li>{stageDescriptionData.objectDescription}</li>
-                        </ul>
-
-                        <h4 className="text-[#FFFFFF] text-[16px] font-semibold mt-5">
-                            {stageDescriptionData.accessoriesName}
-                        </h4>
-                        <ul className="list-disc ml-7 text-[#CDCDCD] text-[16px]">
-                            {stageDescriptionData.accessoriesList.map((accessory, index) => (
-                                <li key={index}>{accessory.item}</li>
-                            ))}
-                        </ul>
-
-                        <h4 className="text-[#FFFFFF] text-[16px] font-semibold mt-5">
-                            {stageDescriptionData.deliveryPrice}
-                        </h4>
-                        <ul className="list-disc ml-7 text-[#CDCDCD] text-[16px]">
-                            <li>{stageDescriptionData.deliveryItems}</li>
-                        </ul>
-
-                        <h4 className="text-[#FFFFFF] text-[16px] font-semibold mt-5">
-                            {stageDescriptionData.taxes}</h4>
-                        <ul className="list-disc ml-7 text-[#CDCDCD] text-[16px]">
-                            {stageDescriptionData.taxesList.map((accessory, index) => (
-                                <li key={index}>{accessory.items}</li>
-                            ))}
-                        </ul> */}
 
                         <FundingBreakdownMobile />
                         

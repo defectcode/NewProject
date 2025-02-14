@@ -162,6 +162,16 @@ export const images = [
 ]
 
 
+export const icons = [
+    // { image: '/imgs/Crowdfunding/Overview/Element11.webp'},
+    { image: '/imgs/Crowdfunding/Overview/5294128365819683211.webp'},
+    // { image: '/imgs/Crowdfunding/Overview/5294128365819683212.webp'},
+    { image: '/imgs/Crowdfunding/Overview/5294128365819683213.webp'},
+    { image: '/imgs/Crowdfunding/Overview/5294128365819683220.webp'},
+]
+
+
+
 export const ModiuleElement = [
     { image: '/imgs/Crowdfunding/Overview/ModuleElement.jpg'},
 ]
