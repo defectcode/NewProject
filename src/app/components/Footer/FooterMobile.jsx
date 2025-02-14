@@ -35,7 +35,7 @@ export default function FooterMobile() {
 
       <div className="mb-5 mt-10">
         <p className="text-white text-[16px] text-center max-md:text-[10px] font-ekmukta-extralight">
-            Copyright © 2024 Fyne S.R.L. All right reserved.
+            Copyright © 2024 Fynely S.R.L. All right reserved.
         </p>
       </div>
 
