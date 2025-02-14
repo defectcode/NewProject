@@ -5,59 +5,58 @@ export const CarouselModal = ({ icons }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const touchStartX = useRef(null);
     const touchEndX = useRef(null);
-    const carouselRef = useRef(null);
-
+    
     const handlePrev = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + icons.length) % icons.length);
+        if (currentIndex > 0) {
+            setCurrentIndex((prevIndex) => prevIndex - 1);
+        }
     };
-
+    
     const handleNext = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % icons.length);
+        if (currentIndex < carouselImages.length - 1) {
+            setCurrentIndex((prevIndex) => prevIndex + 1);
+        }
     };
-
+    
     const handleTouchStart = (event) => {
         touchStartX.current = event.touches[0].clientX;
     };
-
+    
     const handleTouchMove = (event) => {
         touchEndX.current = event.touches[0].clientX;
     };
-
+    
     const handleTouchEnd = () => {
         if (touchStartX.current !== null && touchEndX.current !== null) {
             const diff = touchStartX.current - touchEndX.current;
-            if (diff > 50) {
+
+            if (diff > 50 && currentIndex < carouselImages.length - 1) {
                 handleNext();
-            } else if (diff < -50) {
+            } else if (diff < -50 && currentIndex > 0) {
                 handlePrev();
             }
         }
         touchStartX.current = null;
         touchEndX.current = null;
     };
-
+    
     const handleDotClick = (index) => {
         setCurrentIndex(index);
     };
+    
+    const handleImageClick = (event) => {
+        const imageWidth = event.target.clientWidth;
+        const clickX = event.nativeEvent.offsetX;
 
-    // 🔥 Blochează scroll-ul vertical când utilizatorul atinge caruselul
-    useEffect(() => {
-        const preventScroll = (e) => {
-            if (carouselRef.current && carouselRef.current.contains(e.target)) {
-                e.preventDefault();
-            }
-        };
-
-        document.addEventListener("touchmove", preventScroll, { passive: false });
-        return () => {
-            document.removeEventListener("touchmove", preventScroll);
-        };
-    }, []);
+        if (clickX < imageWidth / 2) {
+            handlePrev();
+        } else {
+            handleNext();
+        }
+    };
 
     return (
-        <div
-            ref={carouselRef}
-            className="relative w-full overflow-hidden h-[361px] touch-pan-x"
+        <div className="relative w-full overflow-hidden h-[361px]"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -77,12 +76,12 @@ export const CarouselModal = ({ icons }) => {
                             width={345}
                             height={390}
                             className="w-full h-full object-cover cursor-pointer rounded-b-[16px]"
+                            onClick={handleImageClick}
                         />
                     </div>
                 ))}
             </div>
 
-            {/* 🔹 Puncte de navigare */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center justify-center space-x-2 h-4">
                 {icons.length > 3 ? (
                     [0, 1, icons.length - 1].map((index, dotIndex) => (

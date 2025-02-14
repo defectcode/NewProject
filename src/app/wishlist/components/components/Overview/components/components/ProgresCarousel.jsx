@@ -3,57 +3,57 @@ import Image from "next/image";
 
 export const ProgresCarousel = ({ carouselImages }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-        const touchStartX = useRef(null);
-        const touchEndX = useRef(null);
+    const touchStartX = useRef(null);
+    const touchEndX = useRef(null);
     
-        const handlePrev = () => {
-            if (currentIndex > 0) {
-                setCurrentIndex((prevIndex) => prevIndex - 1);
-            }
-        };
+    const handlePrev = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex((prevIndex) => prevIndex - 1);
+        }
+    };
     
-        const handleNext = () => {
-            if (currentIndex < carouselImages.length - 1) {
-                setCurrentIndex((prevIndex) => prevIndex + 1);
-            }
-        };
+    const handleNext = () => {
+        if (currentIndex < carouselImages.length - 1) {
+            setCurrentIndex((prevIndex) => prevIndex + 1);
+        }
+    };
     
-        const handleTouchStart = (event) => {
-            touchStartX.current = event.touches[0].clientX;
-        };
+    const handleTouchStart = (event) => {
+        touchStartX.current = event.touches[0].clientX;
+    };
     
-        const handleTouchMove = (event) => {
-            touchEndX.current = event.touches[0].clientX;
-        };
+    const handleTouchMove = (event) => {
+        touchEndX.current = event.touches[0].clientX;
+    };
     
-        const handleTouchEnd = () => {
-            if (touchStartX.current !== null && touchEndX.current !== null) {
-                const diff = touchStartX.current - touchEndX.current;
-    
-                if (diff > 50 && currentIndex < carouselImages.length - 1) {
-                    handleNext();
-                } else if (diff < -50 && currentIndex > 0) {
-                    handlePrev();
-                }
-            }
-            touchStartX.current = null;
-            touchEndX.current = null;
-        };
-    
-        const handleDotClick = (index) => {
-            setCurrentIndex(index);
-        };
-    
-        const handleImageClick = (event) => {
-            const imageWidth = event.target.clientWidth;
-            const clickX = event.nativeEvent.offsetX;
-    
-            if (clickX < imageWidth / 2) {
-                handlePrev();
-            } else {
+    const handleTouchEnd = () => {
+        if (touchStartX.current !== null && touchEndX.current !== null) {
+            const diff = touchStartX.current - touchEndX.current;
+
+            if (diff > 50 && currentIndex < carouselImages.length - 1) {
                 handleNext();
+            } else if (diff < -50 && currentIndex > 0) {
+                handlePrev();
             }
-        };
+        }
+        touchStartX.current = null;
+        touchEndX.current = null;
+    };
+    
+    const handleDotClick = (index) => {
+        setCurrentIndex(index);
+    };
+    
+    const handleImageClick = (event) => {
+        const imageWidth = event.target.clientWidth;
+        const clickX = event.nativeEvent.offsetX;
+
+        if (clickX < imageWidth / 2) {
+            handlePrev();
+        } else {
+            handleNext();
+        }
+    };
 
     return (
         <div className="relative w-full overflow-hidden h-[361px]"

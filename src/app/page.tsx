@@ -16,7 +16,7 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push("/wish")
+    router.push("/wishlist")
   }, [])
 
   // const isMobile = useDeviceType();
