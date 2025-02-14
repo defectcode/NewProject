@@ -23,7 +23,7 @@ export default function FooterMobile() {
 
   // max-h-[525px]
   return (
-    <div className="bg-[#000000] text-white px-5 pt-5 w-full max-w-md mx-auto h-auto pb-20">
+    <div className="bg-[#000000] text-white px-5 w-full max-w-md mx-auto h-auto pb-20">
       <Networking />
 
 
@@ -33,7 +33,7 @@ export default function FooterMobile() {
         <li><Link legacyBehavior href="/terms">Tearm of Use</Link></li>
       </ul>
 
-      <div className="mb-5 mt-10">
+      <div className="mb-5 mt-5">
         <p className="text-white text-[16px] text-center max-md:text-[10px] font-ekmukta-extralight">
             Copyright © 2024 Fynely S.R.L. All right reserved.
         </p>
