@@ -5,17 +5,14 @@ export const CustomCarouselModule = ({ carouselImages }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const touchStartX = useRef(null);
     const touchEndX = useRef(null);
+    const containerRef = useRef(null);
     
     const handlePrev = () => {
-        if (currentIndex > 0) {
-            setCurrentIndex((prevIndex) => prevIndex - 1);
-        }
+        setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
     };
     
     const handleNext = () => {
-        if (currentIndex < carouselImages.length - 1) {
-            setCurrentIndex((prevIndex) => prevIndex + 1);
-        }
+        setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, carouselImages.length - 1));
     };
     
     const handleTouchStart = (event) => {
@@ -30,9 +27,9 @@ export const CustomCarouselModule = ({ carouselImages }) => {
         if (touchStartX.current !== null && touchEndX.current !== null) {
             const diff = touchStartX.current - touchEndX.current;
 
-            if (diff > 50 && currentIndex < carouselImages.length - 1) {
+            if (diff > 50) {
                 handleNext();
-            } else if (diff < -50 && currentIndex > 0) {
+            } else if (diff < -50) {
                 handlePrev();
             }
         }
@@ -44,19 +41,10 @@ export const CustomCarouselModule = ({ carouselImages }) => {
         setCurrentIndex(index);
     };
     
-    const handleImageClick = (event) => {
-        const imageWidth = event.target.clientWidth;
-        const clickX = event.nativeEvent.offsetX;
-
-        if (clickX < imageWidth / 2) {
-            handlePrev();
-        } else {
-            handleNext();
-        }
-    };
-
     return (
-        <div className="relative w-full overflow-hidden h-[361px]"
+        <div 
+            ref={containerRef}
+            className="relative w-full overflow-hidden h-[361px]"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -76,7 +64,6 @@ export const CustomCarouselModule = ({ carouselImages }) => {
                             width={345}
                             height={390}
                             className="w-full h-full object-cover cursor-pointer rounded-b-[16px]"
-                            onClick={handleImageClick}
                         />
                     </div>
                 ))}
