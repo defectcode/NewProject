@@ -139,14 +139,8 @@ const StageDescriptionMobile = () => {
                 <h2 className="text-[24px] text-[#FFFFFF] font-semibold font-ekMukta mb-5 mt-10 leading-[1]">
                     {stageDescriptionData.fundingTitle}
                 </h2>
-                <div className="font-ekMukta text-[#CDCDCD] text-[16px] leading-[1.4]">
-                    <p className="mb-5">
-                        {stageDescriptionData.fundingProgress}
-                        <br />
-                        This isn`t just a camera; it`s the foundation for creating <span className="text-[#CDCDCD] font-bold">content that truly lasts</span>—content that educates, inspires, and builds something bigger than just social media trends. With this upgrade, I can produce <span className="text-[#CDCDCD] font-bold">high-quality, immersive videos</span> that remain relevant for years to come.
-                        <br />
-                        By supporting this project, you`re not just helping me get better gear—you`re <span className="text-[#CDCDCD] font-bold">fueling content that empowers, educates, and connects us all</span>.
-                    </p>
+                <div className="font-ekMukta text-[#CDCDCD] text-[16px] leading-[1.4] mb-5">
+                    {stageDescriptionData.fundingProgress}
                 </div>
 
                 <CarouselModal icons={icons} />
