@@ -4,12 +4,12 @@ import Link from "next/link";
 
 const Networking = () => {
     return (
-        <div className="bg-transparent max-w-[1200px] w-[1300px] max-xl:w-auto mx-10 h-[120px] max-lg:h-auto max-md:w-auto mt-14 max-md:mt-5 rounded-xl flex flex-col lg:flex-row items-center justify-between md:mb-0 mb-14">
+        <div className="bg-transparent w-full max-xl:w-auto h-[120px] max-lg:h-auto max-md:w-auto mt-14 max-md:mt-5 rounded-xl flex flex-col lg:flex-row items-center justify-between md:mb-0 mb-10">
             
             <div className="flex gap-10 text-[#949494] items-center">
                 <Link href='https://tiktok.com/@valery.fain'>
                     <Image 
-                        src='/icons/tiktok.svg' 
+                        src='/icons/Tiktok.svg' 
                         alt="tiktok" 
                         width={20} 
                         height={20} 
@@ -18,7 +18,7 @@ const Networking = () => {
                 </Link>
                 <Link href='https://instagram.com/valery.fain'>
                     <Image 
-                        src='/icons/instagram.svg' 
+                        src='/icons/Instagram.svg' 
                         alt="instagram" 
                         width={20} 
                         height={20} 
@@ -27,7 +27,7 @@ const Networking = () => {
                 </Link>
                 <Link href='https://www.youtube.com/'>
                     <Image 
-                        src='/icons/youtube.svg' 
+                        src='/icons/Youtube.svg' 
                         alt="youtube" 
                         width={20} 
                         height={20} 
@@ -36,7 +36,7 @@ const Networking = () => {
                 </Link>
                 <Link href='https://x.com/'>
                     <Image 
-                        src='/icons/x.svg' 
+                        src='/icons/X.svg' 
                         alt="twitter" 
                         width={20} 
                         height={20} 
@@ -45,7 +45,7 @@ const Networking = () => {
                 </Link>
                 <Link href='https://facebook.com/ValreyFine'>
                     <Image 
-                        src='/icons/facebook.svg' 
+                        src='/icons/Facebook.svg' 
                         alt="facebook" 
                         width={13} 
                         height={13} 

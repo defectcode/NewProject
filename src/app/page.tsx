@@ -19,29 +19,6 @@ export default function Home() {
     router.push("/wishlist")
   }, [])
 
-  // const isMobile = useDeviceType();
-  // const [activeSection, setActiveSection] = useState('overview');
-
-  // useEffect(() => {
-  //     if (window.location.hash) {
-  //         setActiveSection(window.location.hash.substring(1));
-  //     }
-
-  //     const handleHashChange = () => {
-  //         setActiveSection(window.location.hash.substring(1));
-  //     };
-
-  //     window.addEventListener('hashchange', handleHashChange);
-  //     return () => {
-  //         window.removeEventListener('hashchange', handleHashChange);
-  //     };
-  // }, []);
-
-  // return (
-  //   <main>
-  //     <Header/>
-  //   </main>
-  // );
 
   return null
 }

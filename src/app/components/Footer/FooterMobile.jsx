@@ -23,43 +23,22 @@ export default function FooterMobile() {
 
   // max-h-[525px]
   return (
-    <div className="bg-[#EBEBF0] text-white px-5 pt-10 pb-10 w-full max-w-md mx-auto h-auto">
-            <div className="relative w-full">
-        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
-      </div>
-      
-      <div className="p-5">
-        <div className="flex justify-between items-center cursor-pointer text-[#1E1E1E] " onClick={toggleLegal}>
-          <h2 className="text-[16px] font-ekMukta font-semibold leading-none">Legal Information</h2>
-          <span className="text-xl transform transition-transform duration-200 leading-none" style={{ transform: isOpenLegal ? 'rotate(180deg)' : 'rotate(0deg)' }}>
-          <Image src='/imgs/Footer/arrow.svg' alt='arrow' width={14} height={6}  className='w-[14px] h-[8px]'/>
-          </span>
-        </div>
-        {isOpenLegal && (
-          <ul className="text-[#646464] text-[14px] gap-4 font-ekMukta mt-5 px-5 flex items-center justify-between">
-            <li><Link legacyBehavior href="/privacypolicy">Privacy Policy</Link></li>
-            <li><Link legacyBehavior href="/cookiepolicy">Cookie Policy</Link></li>
-            <li><Link legacyBehavior href="/terms">Tearm of Use</Link></li>
-          </ul>
-        )}
-      </div>
-
-      <div className="relative w-full">
-        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
-      </div>
+    <div className="bg-[#EBEBF0] text-white px-5 pt-5 w-full max-w-md mx-auto h-auto pb-20">
+      <Networking />
 
 
-      <div className="relative w-full">
-        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
+      <ul className="text-[#646464] text-[14px] gap-4 font-ekMukta flex items-center justify-between px-5">
+        <li><Link legacyBehavior href="/privacypolicy">Privacy Policy</Link></li>
+        <li><Link legacyBehavior href="/cookiepolicy">Cookie Policy</Link></li>
+        <li><Link legacyBehavior href="/terms">Tearm of Use</Link></li>
+      </ul>
+
+      <div className="mb-5 mt-10">
+        <p className="text-[#1E1E1E] text-[16px] text-center max-md:text-[10px] font-ekmukta-extralight">
+            Copyright © 2024 Fyne S.R.L. All right reserved.
+        </p>
       </div>
 
-      <div className="relative w-full">
-        <div className="absolute inset-0 h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D] opacity-20"></div>
-      </div>
-
-      <div className='mt-20'>
-        <Networking />
-      </div>
     </div>
   );
 }
