@@ -10,7 +10,6 @@ import GiftSection from '../Crowdfunding/components/mobile/GiftSection';
 import NavBarCrowd from '/src/app/wishlist/components/mobile/NavBarCrowd'
 
 export default function HeaderCrowdfundingMobile() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const headerRef = useRef(null);
 
     const currentData = images[0];
@@ -66,11 +65,12 @@ export default function HeaderCrowdfundingMobile() {
     }, []);
 
   return (
-    <div className="relative h-[100dvh] max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">    
+    <div className="relative max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">    
+        {/* <NavBarCrowd /> */}
 
         <div
             ref={headerRef}
-            className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/Background.webp')] bg-[url('/imgs/Crowdfunding/5294511292218891886.webp')] max-md:background-fixed`}
+            className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto md:bg-[url('/imgs/Background.webp')] bg-[url('/imgs/Crowdfunding/5294511292218891886.webp')] max-md:background-fixed`}
         ></div>
             
         <div
@@ -86,9 +86,6 @@ export default function HeaderCrowdfundingMobile() {
             <GiftSection />
 
         </div>
-
-
-
 
         {!isVideoVisible && (
             <button

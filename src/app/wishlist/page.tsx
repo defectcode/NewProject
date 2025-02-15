@@ -17,6 +17,7 @@ import useDeviceType from './components/hooks/useDeviceType';
 import Footer from "../components/Footer/Footer";
 import FooterMobile from "../components/Footer/FooterMobile";
 import DesktopWorkPage from "./DesktopWorkPage"
+import NavBarCrowd from './components/mobile/NavBarCrowd'
 
 export default function Crowdfunding() {
     const isMobile = useDeviceType();
@@ -39,6 +40,7 @@ export default function Crowdfunding() {
 
     return (
         <div className="h-auto bg-[#000000]">
+            {/* <NavBarCrowd/> */}
             {isMobile && activeSection === 'overview' && <HeaderCrowdfundingMobile />}
             {/* {!isMobile && activeSection === 'overview' && <HeaderCrowdfunding />} */}
             

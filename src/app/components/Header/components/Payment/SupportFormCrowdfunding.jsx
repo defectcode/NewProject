@@ -9,15 +9,29 @@ const SupportFormCrowdfunding = ({selectedRewardName, selectedRewardPrice}) => {
   const [amount, setAmount] = useState(50);
   const [paymentMethod, setPaymentMethod] = useState('stripe');
   const [customAmount, setCustomAmount] = useState(null);
-  const [isCustomAmount, setIsCustomAmount] = useState(false);
   const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
   const [paymentRequest, setPaymentRequest] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); 
+  
+  const [extraGift, setExtraGift] = useState(0);
+  const [customGift, setCustomGift] = useState('');
+  const [isCustom, setIsCustom] = useState(false);
+  
+  const handleGiftChange = (amount) => {
+    setIsCustom(false);
+    setExtraGift(amount);
+  };
+
+  const handleCustomInputChange = (e) => {
+    const value = e.target.value.replace(/[^0-9]/g, '');
+    setCustomGift(value);
+    setExtraGift(value ? parseFloat(value) : 0);
+    setIsCustom(true);
+  };
+
 
 
 
   const stripe = useStripe();
-  const elements = useElements();
 
   const CLIENT_SECRET = 'sk_test_4eC39HqLyjWDarjtT1zdp7dc'; 
 
@@ -66,26 +80,12 @@ const SupportFormCrowdfunding = ({selectedRewardName, selectedRewardPrice}) => {
     }
   }, [stripe, amount]);
 
-  const handleAmountChange = (amt) => {
-    setIsCustomAmount(false);
-    setAmount(amt);
-  };
-
-  const handleCustomAmountClick = () => {
-    setIsCustomAmount(true);
-    setAmount(customAmount === '' ? 0 : parseFloat(customAmount));
-  };
-
   const rewardPrice = parseFloat(
     selectedRewardPrice.replace(/[^0-9.]/g, '') || '0'
   );
 
-  const total = rewardPrice + customAmount;
+  const total = rewardPrice + extraGift;
 
-  const handleCustomAmountChange = (e) => {
-    const value = parseFloat(e.target.value) || 0;
-    setCustomAmount(value);
-  };
 
   const handlePaymentSuccess = async (paymentIntent) => {
     setIsPaymentSuccessful(true);
@@ -111,29 +111,11 @@ const SupportFormCrowdfunding = ({selectedRewardName, selectedRewardPrice}) => {
   };
   
 
-  const handleSupportClick = async () => {
-    if (paymentMethod === 'stripe') {
-      const width = 600;
-      const height = 800;
-      const left = (window.screen.width / 2) - (width / 2);
-      const top = (window.screen.height / 2) - (height / 2);
-
-      const stripeDonateUrl = `https://donate.stripe.com/14kaFlb407Nu76weUV?amount=`;
-
-      window.open(
-        stripeDonateUrl,
-        'Stripe Donation',
-        `width=${width},height=${height},top=${top},left=${left}`,
-      );
-    } else if (paymentMethod === 'paypal') {
-      document.querySelector('.paypal-button-container button').click();
-    }
-  };
-
+  
   return (
     <div className="flex flex-col justify-center items-center min-h-[350px] h-auto w-full font-heebo">
       <div className='w-full max-w-md'>
-        <p className="text-[#B7B7B7] text-[12px] font-light">You’ve selected</p>
+        <p className="text-[#B7B7B7] text-[12px] font-light font-inter">You’ve selected</p>
         <div className="flex flex-col justify-between gap-2 mb-5 text-sm">
 
           <div className='flex items-center justify-between text-[15px] bg-[#000000] rounded-[10px] px-5 mt-5 h-[45px]'>
@@ -142,49 +124,35 @@ const SupportFormCrowdfunding = ({selectedRewardName, selectedRewardPrice}) => {
               <span style={{ marginRight: '2px' }}>$</span>{selectedRewardPrice.replace('$', '').trim()}
             </button>
           </div>
-
-          <div className="relative flex items-center justify-between flex-grow mt-[26px]">
-            <h2 className='text-[#FFFFFF] text-[14px] font-semibold'>Want to add an extra gift?</h2>
-            <input
-              type="number"
-              pattern="\d*"
-              value={customAmount}
-              onClick={handleCustomAmountClick} 
-              onChange={handleCustomAmountChange}
-              className={`px-3 py-[10px] border-[#5B5B5B] rounded-xl font-normal max-w-[85px] w-full max-sm:w-[70px] flex-grow h-[45px] ${
-                isCustomAmount
-                  ? 'bg-[#252525] border-transparent' 
-                  : 'bg-[#252525] border-2' 
+          <h2 className="text-white text-sm font-semibold mt-3">Want to add an extra gift?</h2>
+        <div className="flex justify-between gap-2 mt-1">
+          {[1, 10, 50].map((amt) => (
+            <button
+              key={amt}
+              onClick={() => handleGiftChange(amt)}
+              className={`flex justify-center items-center rounded-[10px] w-1/4 h-[45px] text-sm font-bold ${
+                extraGift === amt && !isCustom ? 'bg-white text-black' : 'bg-[#252525] text-white border border-[#444]'
               }`}
-              placeholder="$Other"
-              style={{
-                appearance: 'textfield',
-                fontSize: '16px',
-                '::placeholder': {
-                  color: isCustomAmount ? '#FFFFFF' : '#5B5B5B',
-                },
-              }}
-            />
-            <style jsx>{`
-              input::-webkit-outer-spin-button,
-              input::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-              }
-
-              input[type='number'] {
-                -moz-appearance: textfield;
-              }
-            `}</style>
-          </div>
+            >
+              ${amt}
+            </button>
+          ))}
+          <input
+            type="text"
+            value={customGift}
+            onChange={handleCustomInputChange}
+            placeholder="$ Other"
+            className="w-1/4 h-[45px] text-center rounded-[10px] bg-[#252525] text-white border border-[#444] focus:bg-white focus:text-black focus:outline-none"
+          />
+        </div>
 
         </div>
-        <div className="my-5 mt-10 flex justify-between items-center w-full mx-auto">
+        <div className="my-5 mt-5 flex justify-between items-center w-full mx-auto">
           <p className="text-[#FFFFFF] text-[14px]">Total:</p>
           <div className="flex-grow border-t border-dotted border-[#A1A1A1]/20 mx-6"></div>
           <p className="text-[#FFFFFF] mr-1 flex gap-[3px]">${total.toFixed(2)}</p>
         </div>
-        <p className="mt-10 mb-5 text-[#B7B7B7] text-[12px] font-light flex justify-start ml-1">Select a Payment Method:</p>
+        <p className="mt-5 mb-5 text-[#B7B7B7] font-inter text-[12px] font-light flex justify-start ml-1">Select a Payment Method:</p>
         <div className="flex items-center justify-between mb-4 gap-5">
           {['stripe', 'paypal'].map((method) => (
             <button
@@ -208,15 +176,14 @@ const SupportFormCrowdfunding = ({selectedRewardName, selectedRewardPrice}) => {
           ))}
         </div>
 
-
         {paymentMethod === 'paypal' && (
           <div className="paypal-button-container">
-            <PayPalButton amount={amount} onSuccess={handlePaymentSuccess} />
+            <PayPalButton amount={total} onSuccess={handlePaymentSuccess} />
           </div>
         )}
         {paymentMethod === 'stripe' && (
           <div className="flex justify-center items-end h-[48px]">
-            <CheckoutButton amount={amount} />
+            <CheckoutButton amount={total} />
           </div>
         )}
         
