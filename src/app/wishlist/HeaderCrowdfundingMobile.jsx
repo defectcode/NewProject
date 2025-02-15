@@ -4,14 +4,16 @@ import Image from 'next/image';
 import { images } from '/src/app/wishlist/constants/carouselData.jsx'
 import Title from '../wishlist/components/Title';
 import FundraisingProgress from '../wishlist/components/Progres';
+import styles from './style/Header.module.css';  
 import ButonShere from '../Crowdfunding/components/mobile/ButonShere';
 import GiftSection from '../Crowdfunding/components/mobile/GiftSection';
-
 import NavBarCrowd from '/src/app/wishlist/components/mobile/NavBarCrowd'
 import VideoPlayer from './components/Video/VideoPlayer';
 
 export default function HeaderCrowdfundingMobile() {
     const headerRef = useRef(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
 
     const currentData = images[0];
     const [isVideoVisible, setIsVideoVisible] = useState(false);
@@ -30,6 +32,16 @@ export default function HeaderCrowdfundingMobile() {
             document.exitFullscreen();
         }
     };
+
+    const openSupportModal = () => {
+        setIsSupportModalOpen(true);
+    };
+    
+    const closeSupportModal = () => {
+        setIsSupportModalOpen(false);
+    };
+    
+    
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -75,32 +87,36 @@ export default function HeaderCrowdfundingMobile() {
         ></div>
             
         <div
-            className="absolute w-full h-[272px] bottom-0 z-20 pointer-events-none"
+            className="absolute w-full h-[272px] bottom-0 pointer-events-none"
             style={{
                 background: "linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.9) 50%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.1) 90%, rgba(0, 0, 0, 0) 100%)",
             }}
         ></div>
 
-        <div className={`relative z-30 h-full flex flex-col justify-end px-5`}>
-            <Title title={currentData.title} description={currentData.description} />
-            <FundraisingProgress data={currentData} />
+            <div className={`${styles.contentWrapper} relative  h-full flex flex-col justify-end px-5`}>
+                <Title title={currentData.title} description={currentData.description} />
+                <FundraisingProgress data={currentData} />
             <GiftSection />
 
         </div>
 
-        {!isVideoVisible && (
+        {!isVideoVisible && !isModalOpen && (
             <button
                 onClick={handleScreenClick}
-                className={`absolute flex items-center justify-center z-1 bg-transparent`}
+                className={`absolute flex items-center justify-center bg-transparent transition-opacity duration-300 ${
+                    isModalOpen ? "opacity-0 pointer-events-none" : "opacity-100"
+                }`}
                 style={{
                     top: '40%',
                     left: '50%',
                     transform: 'translate(-50%, -50%)',
                 }}
             >
-                <Image src="/imgs/pause.svg" alt="Play Video" width={50} height={50} className="w-[50px] h-[50px]" />
+                <Image src="/imgs/pause.svg" alt="Play Video" width={50} height={50} className="w-[50px] h-[50px] z-20" />
             </button>
         )}
+
+
 
         {isVideoVisible && (
             <VideoPlayer

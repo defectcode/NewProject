@@ -16,8 +16,47 @@ export default function ProposalWindow({ onClose }) {
   const [brandNameError, setBrandNameError] = useState('');
   const [goalError, setGoalError] = useState('');
 
+  const [selectedPositions, setSelectedPositions] = useState([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  
+
+  const resetForm = () => {
+    setSelectedPositions([]);
+    setEmail('');
+    setFullName('');
+    setPhone('');
+    setCountry('');
+    setMessage('');
+    setLinkedin('');
+    setPortfolio('');
+    setFile('');
+    setIsDropdownOpen(false);
+  };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    try {
+      const response = await fetch('/api/submitEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          position: selectedPositions.join(", "), 
+          email, 
+          fullName, 
+          phone, 
+          country, 
+          file, 
+          linkedin, 
+          portfolio 
+        }),
+      });
+
+
+      e.preventDefault();
 
     setFullNameError('');
     setEmailError('');
@@ -52,51 +91,25 @@ export default function ProposalWindow({ onClose }) {
     if (!isValid) {
       return;
     }
-
-    try {
-      const formUrl = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSep6g27u3tQvHY8j4q3FU8jR7DK93qrqIGcIl8Q_0SSE3LzGA/formResponse';
-      const formData = new URLSearchParams();
-      formData.append('entry.200719805', fullName);
-      formData.append('entry.783419390', contact);
-      formData.append('entry.1586475598', brand);
-      formData.append('entry.212391582', goal);
-      formData.append('entry.2105910764', message);
-
-      const response = await fetch(formUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formData.toString(),
-      });
-
+      
+  
       if (!response.ok) {
-        throw new Error('Failed to submit to Google Form');
-      }
-
-      const emailJsResponse = await emailjs.send(
-        'YOUR_SERVICE_ID', 
-        'YOUR_TEMPLATE_ID', 
-        {
-          fullName,
-          email,
-          brandName,
-          goal,
-          message,
-        },
-        'YOUR_USER_ID' 
-      );
-
-      if (emailJsResponse.status === 200) {
-        setIsSubmitted(true);
-      } else {
         throw new Error('Failed to send email');
       }
+  
+      const result = await response.json();
+      setMessage(result.message || 'Success!');
+  
+      resetForm();
+  
     } catch (error) {
-      console.error('Error:', error);
-      setIsSubmitted(true);
+      console.error('Error:', error.message);
+      setMessage('Something went wrong!');
     }
   };
+    
+
+
 
   if (isSubmitted) {
     return (

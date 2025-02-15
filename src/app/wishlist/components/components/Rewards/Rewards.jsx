@@ -37,7 +37,7 @@ const Rewards = () => {
           <ul>
             {rewards.map((reward) => (
               <li
-                key={reward.id}  // ✅ Adăugat "key"
+                key={reward.id}
                 onClick={() => setSelectedReward(reward)}
                 className={`cursor-pointer mb-2 p-2 ${
                   selectedReward.id === reward.id ? 'border-l-2 border-[#1E1E1E] text-[#1E1E1E]' : 'text-[#1E1E1E]'
@@ -74,12 +74,12 @@ const Rewards = () => {
           <div className="w-1/4 p-4">
             <h4 className="text-[#6F6F6F] text-[18px] mb-[10px]">Includes</h4>
             <ul>
-  {selectedReward.includes.map((item, index) => (
-    <li key={index} className="mb-2">
-      ✔ {item}
-    </li>
-  ))}
-</ul>
+              {selectedReward.includes.map((item, index) => (
+                <li key={index} className="mb-2">
+                  ✔ {item}
+                </li>
+              ))}
+            </ul>
 
           </div>
         </div>
