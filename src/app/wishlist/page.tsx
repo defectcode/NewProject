@@ -39,11 +39,10 @@ export default function Crowdfunding() {
 
     return (
         <div className="h-auto bg-[#000000]">
-            {isMobile && activeSection === 'overview' && <HeaderCrowdfundingMobile activeSection={activeSection} setActiveSection={setActiveSection} />}
-            {/* {!isMobile && activeSection === 'overview' && <HeaderCrowdfunding />} */}
+            {isMobile && activeSection === 'overview' && <HeaderCrowdfundingMobile />}
             
             {['rewards', 'community', 'extras'].includes(activeSection) && (
-            <NavBarCrowdfunding
+            <NavBarCrowdfundingMobileStatic
                 setActiveSection={setActiveSection}
                 activeSection={activeSection}
             />

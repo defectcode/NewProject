@@ -41,7 +41,7 @@ const ButonShere: React.FC<ButonShereProps> = ({ isShareFixed }) => {
 
     return (
         <div
-            className={`fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center bg-[#E8E8ED] h-[68px]`}
+            className={`fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center bg-transparent h-[68px]`}
             style={{
                 padding: "10px",
                 boxShadow: isShareFixed ? "0 -2px 10px rgba(0, 0, 0, 0.1)" : "none",

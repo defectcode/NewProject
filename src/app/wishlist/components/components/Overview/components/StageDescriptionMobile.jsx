@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { stageDescriptionData, images, icons, carouselImages, ModiuleElement } from "../constants/stagerData";
+import { stageDescriptionData, images, icons, carouselImages } from "../constants/stagerData";
 import FundingBreakdownMobile from "./FundingBreakdownMobile";
 import { CustomCarouselModule } from "./components/Carousel";
-import { ProgresCarousel } from "./components/ProgresCarousel";
-import Carousel, { CarouselModal } from "@/app/wishlist/components/components/Overview/components/components/CarouselModal";
+import { CarouselModal } from "@/app/wishlist/components/components/Overview/components/components/CarouselModal";
 
 export const CustomCarousel = ({ images }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -125,7 +124,7 @@ const StageDescriptionMobile = () => {
         <div id="overview" className="bg-[#000000] px-[20px] w-full flex flex-col items-start lg:items-center font-heebo">
             
             <div>
-                <h2 className="text-[24px] text-[#FFFFFF] mb-5 font-semibold mt-10 font-ekMukta leading-[1]">
+                <h2 className="text-[24px] text-[#FFFFFF] mb-5 font-semibold font-ekMukta leading-[1]">
                     {stageDescriptionData.stageTitle}
                 </h2>
                 <p className="text-[#CDCDCD] w-full text-[16px] font-ekMukta mb-5 leading-[1.3]">
@@ -148,13 +147,11 @@ const StageDescriptionMobile = () => {
 
                 <div className="font-ekMukta">
                     <div className="mt-5 mb-10">
-
                         <FundingBreakdownMobile />
-                        
-                        <h3 className="text-[#CDCDCD] text-[16px] mt-5 mb-5 leading-[1.4]">{stageDescriptionData.info}</h3>
-
+                        <h3 className="text-[#CDCDCD] text-[16px] mt-5 mb-5 leading-[1.4]">
+                            {stageDescriptionData.info}
+                        </h3>
                         <CustomCarouselModule carouselImages={carouselImages} />
-
                     </div>
                 </div>
             </div>

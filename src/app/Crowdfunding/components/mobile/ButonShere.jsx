@@ -36,11 +36,8 @@ const ButonShere = ({ isShareFixed }) => {
         setIsModalOpen(false);
     };
     return (
-        <div
-            className={`${
-                isShareFixed ? 'fixed bottom-0 left-0 right-0' : 'relative'
-            } flex items-center justify-center w-full h-auto bg-transparent z-50`}
-        >
+        <div className="fixed bottom-0 left-0 right-0 flex items-center justify-center w-full h-[60px] bg-transparent z-[100]">
+
 
             {isShareFixed ? (
                 <AnimatePresence>
