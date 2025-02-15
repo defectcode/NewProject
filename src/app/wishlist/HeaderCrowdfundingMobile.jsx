@@ -8,6 +8,7 @@ import ButonShere from '../Crowdfunding/components/mobile/ButonShere';
 import GiftSection from '../Crowdfunding/components/mobile/GiftSection';
 
 import NavBarCrowd from '/src/app/wishlist/components/mobile/NavBarCrowd'
+import VideoPlayer from './components/Video/VideoPlayer';
 
 export default function HeaderCrowdfundingMobile() {
     const headerRef = useRef(null);
