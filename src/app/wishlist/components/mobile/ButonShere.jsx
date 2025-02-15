@@ -20,7 +20,7 @@ const ButonShere = ({ isShareFixed }) => {
 
     useEffect(() => {
         if (isShareFixed) {
-            setTimeout(() => setShowButtons(true), 50); // Delay scurt pentru o apariție naturală
+            setTimeout(() => setShowButtons(true), 50);
         } else {
             setShowButtons(false);
         }
@@ -44,36 +44,33 @@ const ButonShere = ({ isShareFixed }) => {
 
             {isShareFixed ? (
                 <AnimatePresence>
-                {isShareFixed && showButtons && (
-                    <motion.div
-                        initial={{ y: 100, opacity: 0 }} // Încep de jos
-                        animate={{ y: 0, opacity: 1 }} // Se ridică și devin vizibile
-                        exit={{ y: 100, opacity: 0 }} // Coboară când devin nefixate
-                        transition={{ duration: 0.4, ease: "easeOut" }} // Tranziție smooth
-                        className="fixed bottom-0 left-0 right-0 flex items-center justify-center w-full h-auto bg-transparent z-50"
-                    >
-                        <div className="flex items-center justify-center w-full px-5 gap-5 bg-transparent mb-5">
-                            <div className="flex-[2]">
-                                <Support onClick={openModal} />
+                    {isShareFixed && showButtons && (
+                        <motion.div
+                            initial={{ y: 100, opacity: 0 }} 
+                            animate={{ y: 0, opacity: 1 }} 
+                            exit={{ y: 100, opacity: 0 }} 
+                            transition={{ duration: 0.4, ease: "easeOut" }} 
+                            className="fixed bottom-0 left-0 right-0 flex items-center justify-center w-full h-auto bg-transparent z-50"
+                        >
+                            <div className="flex items-center justify-center w-full px-5 gap-5 bg-transparent mb-5">
+                                <div className="flex-[2]">
+                                    <Support onClick={openModal} />
+                                </div>
+                                <OpenPopUp />
                             </div>
-                            <OpenPopUp />
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-
+                        </motion.div>
+                    )}
+                </AnimatePresence>
              ) : (
                 <div className="flex items-center justify-center w-full px-5 gap-[18px] bg-transparent mt-[18px] mb-5">
-                <div className="flex-[2]">
-                    <Support onClick={openModal} />
+                    <div className="flex-[2]">
+                        <Support onClick={openModal} />
+                    </div>
+                    <OpenPopUp />
                 </div>
-                <OpenPopUp />
-            </div>
 
              )}
             
-
             <Modal isOpen={isModalOpen} onClose={closeModal}>
                 <Elements stripe={stripePromise}>
                     <SupportForm />

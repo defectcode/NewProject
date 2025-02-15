@@ -5,11 +5,14 @@ import { images } from '/src/app/wishlist/constants/carouselData.jsx'
 import Title from '../wishlist/components/Title';
 import FundraisingProgress from '../wishlist/components/Progres';
 import ButonShere from '../Crowdfunding/components/mobile/ButonShere';
-import NavBarCrowd from './components/mobile/NavBarCrowd'
-import VideoPlayer from './components/VideoMobile/VideoPlayer';
+import GiftSection from '../Crowdfunding/components/mobile/GiftSection';
 
+import NavBarCrowd from '/src/app/wishlist/components/mobile/NavBarCrowd'
 
 export default function HeaderCrowdfundingMobile() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const headerRef = useRef(null);
+
     const currentData = images[0];
     const [isVideoVisible, setIsVideoVisible] = useState(false);
     const buttonRef = useRef(null); 
@@ -29,6 +32,27 @@ export default function HeaderCrowdfundingMobile() {
     };
 
     useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const entry = entries[0];
+                setIsShareFixed(!entry.isIntersecting); 
+            },
+            { threshold: 0 } 
+        );
+
+        if (buttonRef.current) {
+            observer.observe(buttonRef.current);
+        }
+
+        return () => {
+            if (buttonRef.current) {
+                observer.unobserve(buttonRef.current);
+            }
+        };
+    }, []);
+
+
+    useEffect(() => {
         const updateHeight = () => {
             const viewportHeight = window.innerHeight;
             document.documentElement.style.setProperty('--viewport-height', `${viewportHeight}px`);
@@ -42,59 +66,55 @@ export default function HeaderCrowdfundingMobile() {
     }, []);
 
   return (
-        <div className="relative h-[100dvh] max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">    
+    <div className="relative h-[100dvh] max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">    
 
-            <div
-                className={`absolute inset-0 w-full bg-center bg-no-repeat max-md:w-auto ${isVideoVisible ? 'bg-opacity-50 blur-sm' : ''}`}
-                style={{
-                    backgroundImage: `url('/imgs/Crowdfunding/5294511292218891886.webp')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}
-            ></div>
+        <div
+            ref={headerRef}
+            className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/Background.webp')] bg-[url('/imgs/Crowdfunding/5294511292218891886.webp')] max-md:background-fixed`}
+        ></div>
+            
+        <div
+            className="absolute w-full h-[272px] bottom-0 z-20 pointer-events-none"
+            style={{
+                background: "linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.9) 50%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.1) 90%, rgba(0, 0, 0, 0) 100%)",
+            }}
+        ></div>
 
-                
-            <div
-                className="absolute w-full h-[272px] bottom-0 z-20 pointer-events-none"
-                style={{
-                    background: "linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0.9) 50%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.1) 90%, rgba(0, 0, 0, 0) 100%)",
-                }}
-            ></div>
-
-
-            <div className={`relative z-30 h-full flex flex-col justify-end px-5 pb-[60px]`}>
-                <Title title={currentData.title} description={currentData.description} />
-                <FundraisingProgress data={currentData} />
-            </div>
-            <NavBarCrowd/>
-
-
-
-            {!isVideoVisible && (
-                <button
-                    onClick={handleScreenClick}
-                    className={`absolute flex items-center justify-center z-40 bg-transparent`}
-                    style={{
-                        top: '40%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                    }}
-                >
-                    <Image src="/imgs/pause.svg" alt="Play Video" width={50} height={50} className="w-[50px] h-[50px]" />
-                </button>
-            )}
-
-            {isVideoVisible && (
-                <VideoPlayer
-                    videoSrc="https://valeryfain.com/video/Video.webm"
-                    onClose={handleClose}
-                />
-            )}
-
-            <div ref={buttonRef} className="relative w-full">
-                <ButonShere isShareFixed={isShareFixed} />
-            </div>
+        <div className={`relative z-30 h-full flex flex-col justify-end px-5`}>
+            <Title title={currentData.title} description={currentData.description} />
+            <FundraisingProgress data={currentData} />
+            <GiftSection />
 
         </div>
-    );
+
+
+
+
+        {!isVideoVisible && (
+            <button
+                onClick={handleScreenClick}
+                className={`absolute flex items-center justify-center z-40 bg-transparent`}
+                style={{
+                    top: '40%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                }}
+            >
+                <Image src="/imgs/pause.svg" alt="Play Video" width={50} height={50} className="w-[50px] h-[50px]" />
+            </button>
+        )}
+
+        {isVideoVisible && (
+            <VideoPlayer
+                videoSrc="https://valeryfain.com/video/Video.webm"
+                onClose={handleClose}
+            />
+        )}
+
+        <div ref={buttonRef} className="relative w-full">
+            <ButonShere isShareFixed={isShareFixed} />
+        </div>
+
+    </div>
+  );
 }

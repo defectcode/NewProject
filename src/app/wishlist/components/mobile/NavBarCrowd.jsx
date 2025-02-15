@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import ShareBottonNavBar from '/src/app/SeriesConcept/components/mobile/Share/ShareButton'
+// import ShareBottonNavBar from '/src/app/SeriesConcept/components/mobile/Share/ShareButton'
 
 export default function NavBarCrowd() {
     return (
@@ -8,7 +8,7 @@ export default function NavBarCrowd() {
             <Link href='/'>
                 <Image src="/imgs/Crowdfunding/Valery Fain.svg" alt="logo" width={83} height={14} />
             </Link>
-            <ShareBottonNavBar/>
+            {/* <ShareBottonNavBar/> */}
         </div>
     );
 }

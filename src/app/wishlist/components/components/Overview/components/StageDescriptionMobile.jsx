@@ -124,7 +124,7 @@ const StageDescriptionMobile = () => {
         <div id="overview" className="bg-[#000000] px-[20px] w-full flex flex-col items-start lg:items-center font-heebo">
             
             <div>
-                <h2 className="text-[24px] text-[#FFFFFF] mb-5 font-semibold font-ekMukta leading-[1]">
+                <h2 className="text-[24px] text-[#FFFFFF] mb-5 font-semibold font-ekMukta leading-[1] mt-[40px]">
                     {stageDescriptionData.stageTitle}
                 </h2>
                 <p className="text-[#CDCDCD] w-full text-[16px] font-ekMukta mb-5 leading-[1.3]">
