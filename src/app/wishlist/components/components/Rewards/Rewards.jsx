@@ -34,23 +34,24 @@ const Rewards = () => {
 
           <div className="w-1/4 py-5">
 
-            <ul>
-              {rewards.map((reward) => (
-                <li
-                  key={reward.id}
-                  onClick={() => setSelectedReward(reward)}
-                  className={`cursor-pointer mb-2 p-2 ${
-                    selectedReward.id === reward.id ? 'border-l-2 border-[#1E1E1E] text-[#1E1E1E]' : 'text-[#1E1E1E]'
-                  }`}
-                >
-                  <span className="text-[18px] font-semibold">{reward.name}</span>
-                  <div className='flex items-center gap-1'>
-                    <span className="text-[16px] block font-bold text-[#6F6F6F]">{reward.price}</span>
-                    <span className="text-[14px] block font-normal text-[#6F6F6F]">{reward.items}</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
+          <ul>
+            {rewards.map((reward) => (
+              <li
+                key={reward.id}  // ✅ Adăugat "key"
+                onClick={() => setSelectedReward(reward)}
+                className={`cursor-pointer mb-2 p-2 ${
+                  selectedReward.id === reward.id ? 'border-l-2 border-[#1E1E1E] text-[#1E1E1E]' : 'text-[#1E1E1E]'
+                }`}
+              >
+                <span className="text-[18px] font-semibold">{reward.name}</span>
+                <div className='flex items-center gap-1'>
+                  <span className="text-[16px] block font-bold text-[#6F6F6F]">{reward.price}</span>
+                  <span className="text-[14px] block font-normal text-[#6F6F6F]">{reward.items}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+
           </div>
 
           <div className="w-2/4 p-4 flex justify-center">
@@ -72,13 +73,14 @@ const Rewards = () => {
 
           <div className="w-1/4 p-4">
             <h4 className="text-[#6F6F6F] text-[18px] mb-[10px]">Includes</h4>
-            <ul className="text-[#1E1E1E] text-[16px] list-inside">
-              {selectedReward.includes.map((item, index) => (
-                <li key={index} className="mb-2">
-                  ✔ {item}
-                </li>
-              ))}
-            </ul>
+            <ul>
+  {selectedReward.includes.map((item, index) => (
+    <li key={index} className="mb-2">
+      ✔ {item}
+    </li>
+  ))}
+</ul>
+
           </div>
         </div>
       </div>

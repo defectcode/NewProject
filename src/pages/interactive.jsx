@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../app/components/Header/components/Navbar'
+import Image from 'next/image';
 
 const Interactive = () => {
     return (
@@ -9,7 +10,7 @@ const Interactive = () => {
             <div className='overlay'></div>
             <div className='content'>
                 <div className='iconWrapper'>
-                    <img src="/imgs/Crowdfunding/Community/progress.svg" alt="Work In Progress Icon" />
+                    <Image src="/imgs/Crowdfunding/Community/progress.svg" alt="Work In Progress Icon" width={1} height={1} />
                 </div>
             </div>
         </div>
