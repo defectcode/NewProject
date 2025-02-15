@@ -40,8 +40,6 @@ export default function HeaderCrowdfundingMobile() {
     const closeSupportModal = () => {
         setIsSupportModalOpen(false);
     };
-    
-    
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -93,11 +91,10 @@ export default function HeaderCrowdfundingMobile() {
             }}
         ></div>
 
-            <div className={`${styles.contentWrapper} relative  h-full flex flex-col justify-end px-5`}>
-                <Title title={currentData.title} description={currentData.description} />
-                <FundraisingProgress data={currentData} />
+        <div className={`${styles.contentWrapper} relative h-full flex flex-col justify-end px-5`}>
+            <Title title={currentData.title} description={currentData.description} />
+            <FundraisingProgress data={currentData} />
             <GiftSection />
-
         </div>
 
         {!isVideoVisible && !isModalOpen && (
