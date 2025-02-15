@@ -91,7 +91,7 @@ export default function HeaderCrowdfundingMobile() {
         {!isVideoVisible && (
             <button
                 onClick={handleScreenClick}
-                className={`absolute flex items-center justify-center z-40 bg-transparent`}
+                className={`absolute flex items-center justify-center z-1 bg-transparent`}
                 style={{
                     top: '40%',
                     left: '50%',

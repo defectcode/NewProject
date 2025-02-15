@@ -72,7 +72,7 @@ const DonationProgress = () => {
                                 </p>
 
                                 {section.items && section.items.length > 0 && (
-                                    <ul className="list-disc pl-6 text-[16px] text-[#e7e7e7] px-5 pt-[10px] mx-5 mb-[30px]">
+                                    <ul className="list-disc pl-6 text-[16px] text-[#e7e7e7] px-5 pt-[10px] mx-5 mb-5">
                                         {section.items.map((item, idx) => (
                                             <li key={idx} className="leading-[1.4] font-ekMukta text-[16px]">
                                                 {item.name}
