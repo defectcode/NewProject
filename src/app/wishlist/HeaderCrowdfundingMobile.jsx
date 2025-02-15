@@ -6,6 +6,9 @@ import Title from '../wishlist/components/Title';
 import FundraisingProgress from '../wishlist/components/Progres';
 import ButonShere from '../Crowdfunding/components/mobile/ButonShere';
 import NavBarCrowd from '/src/app/wishlist/components/mobile/NavBarCrowd'
+import VideoPlayer from './components/Video/VideoPlayer';
+// import VideoPlayer from './components/VideoMobile/VideoPlayer';
+
 
 export default function HeaderCrowdfundingMobile() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,10 +48,15 @@ export default function HeaderCrowdfundingMobile() {
   return (
     <div className="relative h-[100dvh] max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">    
 
-        <div
-            ref={headerRef}
-            className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto ${isModalOpen ? 'bg-opacity-50 blur-sm' : ''} md:bg-[url('/imgs/Background.webp')] bg-[url('/imgs/Crowdfunding/5294511292218891886.webp')] max-md:background-fixed`}
-        ></div>
+<div
+                className={`absolute inset-0 w-full bg-center bg-no-repeat max-md:w-auto ${isVideoVisible ? 'bg-opacity-50 blur-sm' : ''}`}
+                style={{
+                    backgroundImage: `url('/imgs/Crowdfunding/5294511292218891886.webp')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                }}
+            ></div>
+
             
         <div
             className="absolute w-full h-[272px] bottom-0 z-20 pointer-events-none"
