@@ -6,7 +6,6 @@ import Title from '../wishlist/components/Title';
 import FundraisingProgress from '../wishlist/components/Progres';
 import ButonShere from '../Crowdfunding/components/mobile/ButonShere';
 import NavBarCrowd from '/src/app/wishlist/components/mobile/NavBarCrowd'
-import VideoPlayer from './components/Video/VideoPlayer';
 // import VideoPlayer from './components/VideoMobile/VideoPlayer';
 
 
