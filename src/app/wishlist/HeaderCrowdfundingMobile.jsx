@@ -8,7 +8,7 @@ import styles from './style/Header.module.css';
 import ButonShere from '../Crowdfunding/components/mobile/ButonShere';
 import GiftSection from '../Crowdfunding/components/mobile/GiftSection';
 import NavBarCrowd from '/src/app/wishlist/components/mobile/NavBarCrowd'
-import VideoPlayer from './components/Video/VideoPlayer';
+import VideoPlayer from './components/VideoMobile/VideoPlayer';
 
 export default function HeaderCrowdfundingMobile() {
     const headerRef = useRef(null);
