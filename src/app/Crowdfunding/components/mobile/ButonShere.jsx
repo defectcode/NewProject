@@ -61,7 +61,7 @@ const ButonShere = ({ isShareFixed }) => {
 
 
              ) : (
-                <div className="flex items-center justify-center w-full px-5 gap-[18px] bg-transparent mt-[18px] mb-5">
+                <div className="flex items-center justify-center w-full px-5 gap-[18px] bg-transparent mt-5 mb-7">
                 <div className="flex-[2]">
                     <Support onClick={openModal} />
                 </div>
