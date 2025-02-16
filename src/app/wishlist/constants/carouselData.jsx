@@ -8,7 +8,7 @@ export const images = [
       goalAmount: '1,417',
       subtitle: '200000',
       stageLabel: 'days left',
-      stageNumber: '30',
+      stageNumber: '28',
       supportersLabel: 'gifters',
       supportersCount: '8',
       description: 'Better content, better experience! This camera helps me create high-quality, engaging videos for you.',
