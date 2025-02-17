@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
-const CheckoutButton = ({ amount }) => {
+const CheckoutButton = ({ amount, onSuccess }) => {
   const router = useRouter();
 
   const handleClick = async () => {
@@ -26,18 +26,16 @@ const CheckoutButton = ({ amount }) => {
     const { sessionId } = await response.json();
     const { error } = await stripe.redirectToCheckout({ sessionId });
 
-    if (error) {
-      console.error('Eroare la redirecționarea către Stripe:', error);
-      router.push('/error');
+    if (!error && onSuccess) {
+      onSuccess(amount); // Actualizăm suma imediat după plată
     }
   };
 
   return (
     <button
-      className="flex items-center justify-center w-full h-[45px] bg-white text-[#1E1E1E] text-[15px] rounded-lg gap-1 font-bold leading-[1] font-avenir-heavy"
+      className="flex items-center justify-center w-full h-[45px] bg-white text-[#1E1E1E] text-[15px] rounded-lg gap-1 font-bold"
       onClick={handleClick}
     >
-      {/* <Image src="/icons/heart.svg" width={16} height={1} alt="heart" className="w-[16px] h-auto" /> */}
       Gift Now
     </button>
   );

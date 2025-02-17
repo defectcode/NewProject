@@ -72,6 +72,12 @@ const SupportForm = () => {
     setAmount(value === '' ? 0 : parseFloat(value));
   };
 
+  const handleDonationSuccess = (amount) => {
+    if (onSuccess) {
+        onSuccess(amount); // Actualizăm suma și numărul de donatori
+    }
+  };
+
   const handlePaymentSuccess = async (paymentIntent) => {
     console.log("🔵 Payment Success Triggered!");
     console.log("🟢 Payment Intent Data:", paymentIntent);
@@ -197,7 +203,7 @@ const SupportForm = () => {
         )}
         {paymentMethod === 'stripe' && (
           <div className="flex justify-center items-end">
-            <CheckoutButton amount={amount} />
+            <CheckoutButton amount={amount} onSuccess={() => handleDonationSuccess(amount)} />
           </div>
         )}
       </div>
