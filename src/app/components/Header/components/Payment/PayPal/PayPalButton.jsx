@@ -24,14 +24,30 @@ const PayPalButton = ({ amount, onSuccess }) => {
             });
           }}
           onApprove={(data, actions) => {
-            return actions.order.capture().then(details => {
+            return actions.order.capture().then(async (details) => {
               const orderID = data.orderID;
               console.log('Order approved with ID:', orderID);
               alert("Transaction completed by " + details.payer.name.given_name);
-              onSuccess();
 
-              // Only log here as you're focusing on frontend
-              console.log("Order ID to be sent to backend:", orderID);
+              const userEmail = details.payer.email_address || "no-email@example.com";
+
+              try {
+                const response = await fetch('/api/sendThankYouEmail', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ email: userEmail, amount }),
+                });
+
+                if (!response.ok) {
+                  throw new Error('Failed to send email');
+                }
+
+                console.log('Thank you email sent successfully');
+              } catch (error) {
+                console.error('Error sending thank you email:', error);
+              }
+
+              onSuccess();
             }).catch(error => {
               console.error('Error capturing order:', error);
               alert('Error capturing order. Please try again.');
@@ -44,7 +60,6 @@ const PayPalButton = ({ amount, onSuccess }) => {
         />
       </div>
 
-      {/* Add some custom CSS to target the PayPal button */}
       <style jsx>{`
         .paypal-buttons {
           border-radius: 1rem !important; /* Equivalent to rounded-lg */

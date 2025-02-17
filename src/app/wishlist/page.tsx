@@ -44,14 +44,14 @@ export default function Crowdfunding() {
             {isMobile && activeSection === 'overview' && <HeaderCrowdfundingMobile />}
             {/* {!isMobile && activeSection === 'overview' && <HeaderCrowdfunding />} */}
             
-            {['rewards', 'community', 'extras'].includes(activeSection) && (
-            <NavBarCrowdfundingMobileStatic
-                setActiveSection={setActiveSection}
-                activeSection={activeSection}
-            />
-        )}
+            {/* {['rewards', 'community', 'extras'].includes(activeSection) && (
+                <NavBarCrowdfundingMobileStatic
+                    setActiveSection={setActiveSection}
+                    activeSection={activeSection}
+                />
+            )} */}
 
-
+{/* 
             {isMobile ? (
                 <div>
                     <NavBarCrowdfundingMobile 
@@ -62,7 +62,7 @@ export default function Crowdfunding() {
                 ) : (
                     null
                 )
-            }
+            } */}
             {isMobile ? <div>{renderSection()}</div> : <DesktopWorkPage/>}
             {isMobile && activeSection != 'rewards' && activeSection != 'community' && activeSection != 'extras' ? <FooterMobile/> : null}
         </div>

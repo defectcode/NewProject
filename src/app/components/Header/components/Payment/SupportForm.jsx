@@ -35,22 +35,24 @@ const SupportForm = () => {
       });
 
       pr.on('paymentmethod', async (event) => {
-        const { error } = await stripe.confirmCardPayment(CLIENT_SECRET, {
+        const { paymentIntent, error } = await stripe.confirmCardPayment(CLIENT_SECRET, {
           payment_method: event.paymentMethod.id,
         });
+      
         if (error) {
           event.complete('fail');
         } else {
           event.complete('success');
-          handlePaymentSuccess();
+          handlePaymentSuccess(paymentIntent); 
         }
       });
+      
     }
   }, [stripe, amount]);
 
   const handleAmountChange = (amt) => {
     setIsCustomAmount(false);
-    setCustomAmount(''); // Resetăm input-ul "Other"
+    setCustomAmount('');
     setAmount(amt);
   };
 
@@ -65,9 +67,28 @@ const SupportForm = () => {
     setAmount(value === '' ? 0 : parseFloat(value));
   };
 
-  const handlePaymentSuccess = () => {
+  const handlePaymentSuccess = async (paymentIntent) => {
     setIsPaymentSuccessful(true);
+  
+    const userEmail = paymentIntent?.charges?.data[0]?.billing_details?.email || "no-email@example.com";
+  
+    try {
+      const response = await fetch('/api/sendThankYouEmail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: userEmail, amount }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
+  
+      console.log('Thank you email sent successfully');
+    } catch (error) {
+      console.error('Error sending thank you email:', error);
+    }
   };
+  
 
   return (
     <div className="flex flex-col justify-center items-center min-h-[350px] h-auto w-full">

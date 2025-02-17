@@ -5,12 +5,17 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import SupportForm from '@/app/components/Header/components/Payment/SupportForm';
 
+import useCountdownTimer from './hooks/useCountdownTimer'
+
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 const FundraisingProgress = ({ data }) => {
 
     const raisedAmount = parseInt(data.raisedAmount.replace(/,/g, ''), 10);
     const goalAmount = parseInt(data.goalAmount.replace(/,/g, ''), 10);
+
+    const countdown = useCountdownTimer(30 * 24 * 60 * 60); // 30 zile în secunde
+
 
     let rawProgressPercentage = (raisedAmount / goalAmount) * 100 || 0;
     let progressPercentage;
@@ -49,7 +54,7 @@ const FundraisingProgress = ({ data }) => {
             <div className="flex items-center justify-between mb-2 w-full lg:w-[346px]">
                 <span className="text-[20px] lg:text-2xl font-ekmukta font-bold text-[#FFFFFF] leading-[1]">${data.raisedAmount}</span>
                 <span className="text-md block font-ekMukta text-[15px] md:text-[#E8E8ED] text-[#C1C1C1] leading-[1]">
-                    <span className="text-[#FFFFFF] font-semibold font-ekMukta">{data.stageNumber}</span> {data.stageLabel} 
+                    <span className="text-[#FFFFFF] font-semibold font-ekMukta">{countdown}</span>
                 </span>
             </div>
 
