@@ -35,17 +35,22 @@ const SupportForm = () => {
       });
 
       pr.on('paymentmethod', async (event) => {
+        console.log("🔵 Stripe Payment Triggered!", event);
+      
         const { paymentIntent, error } = await stripe.confirmCardPayment(CLIENT_SECRET, {
           payment_method: event.paymentMethod.id,
         });
       
         if (error) {
           event.complete('fail');
+          console.error("🔴 Payment Error:", error);
         } else {
           event.complete('success');
-          handlePaymentSuccess(paymentIntent); 
+          console.log("🟢 Payment Intent after confirmation:", paymentIntent);
+          handlePaymentSuccess(paymentIntent);
         }
       });
+      
       
     }
   }, [stripe, amount]);
@@ -68,9 +73,16 @@ const SupportForm = () => {
   };
 
   const handlePaymentSuccess = async (paymentIntent) => {
-    setIsPaymentSuccessful(true);
+    console.log("🔵 Payment Success Triggered!");
+    console.log("🟢 Payment Intent Data:", paymentIntent);
+  
+    if (!paymentIntent) {
+      console.error("🔴 ERROR: Payment Intent is undefined!");
+      return;
+    }
   
     const userEmail = paymentIntent?.charges?.data[0]?.billing_details?.email || "no-email@example.com";
+    console.log("🟢 Extracted Email:", userEmail);
   
     try {
       const response = await fetch('/api/sendThankYouEmail', {
@@ -79,17 +91,18 @@ const SupportForm = () => {
         body: JSON.stringify({ email: userEmail, amount }),
       });
   
+      console.log("🟢 Email API Response:", response.status);
+  
       if (!response.ok) {
         throw new Error('Failed to send email');
       }
   
-      console.log('Thank you email sent successfully');
+      console.log('✅ Thank you email sent successfully!');
     } catch (error) {
-      console.error('Error sending thank you email:', error);
+      console.error('🔴 Error sending thank you email:', error);
     }
   };
   
-
   return (
     <div className="flex flex-col justify-center items-center min-h-[350px] h-auto w-full">
       <div className='w-full max-w-md'>
