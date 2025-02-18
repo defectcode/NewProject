@@ -16,26 +16,26 @@ const FundraisingProgress = ({ data }) => {
     const countdown = useCountdownTimer();
 
     const goalAmount = parseInt(data.goalAmount.replace(/,/g, ''), 10);
-    const wishlistId = data.wishlistId; // Preluăm ID-ul wishlist-ului
 
     useEffect(() => {
         const fetchTotalRaised = async () => {
             try {
-                const response = await fetch(`/api/stripe/total?wishlistId=${wishlistId}`);
+                const response = await fetch('/api/stripe/total');
                 const result = await response.json();
+            
 
                 setTotalRaised(result.totalRaised || 0);
                 setTotalTransactions(result.totalTransactions || 0);
             } catch (error) {
-                console.error("Error fetching wishlist data:", error);
+                console.error("Error fetching total raised:", error);
             }
         };
 
         fetchTotalRaised();
 
-        const interval = setInterval(fetchTotalRaised, 10000); // Actualizare la 10 secunde
+        const interval = setInterval(fetchTotalRaised, 10000);
         return () => clearInterval(interval);
-    }, [wishlistId]);
+    }, []);
 
     let rawProgressPercentage = (totalRaised / goalAmount) * 100 || 0;
     let progressPercentage = rawProgressPercentage > 0 && rawProgressPercentage < 1 

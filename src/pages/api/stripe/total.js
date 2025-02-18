@@ -4,37 +4,20 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
-    res.setHeader('Allow', ['GET']);
-    return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
-  }
-
-  const { wishlistId } = req.query; // Preluăm ID-ul wishlist-ului din query
-
-  if (!wishlistId) {
-    return res.status(400).json({ error: 'Missing wishlistId parameter' });
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    // Obținem toate plățile recente
     const payments = await stripe.paymentIntents.list({ limit: 100 });
 
-    // Filtrăm doar plățile care aparțin wishlist-ului respectiv
-    const wishlistPayments = payments.data.filter(
-      (payment) => payment.metadata?.wishlist_id === wishlistId && payment.status === "succeeded"
-    );
+    const totalRaised = payments.data
+      .filter(payment => payment.status === "succeeded")
+      .reduce((acc, payment) => acc + payment.amount_received, 0) / 100;
 
-    // Calculăm suma totală strânsă
-    const totalAmount = wishlistPayments.reduce(
-      (sum, payment) => sum + payment.amount_received,
-      0
-    );
+    const totalTransactions = payments.data.filter(payment => payment.status === "succeeded").length;
 
-    // Numărăm câți donatori au contribuit
-    const totalGifters = wishlistPayments.length;
-
-    res.status(200).json({ totalRaised: totalAmount / 100, totalTransactions: totalGifters });
+    res.status(200).json({ totalRaised, totalTransactions });
   } catch (error) {
-    console.error("Stripe API Error:", error);
     res.status(500).json({ error: error.message });
   }
 }
