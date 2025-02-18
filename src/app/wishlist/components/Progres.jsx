@@ -4,29 +4,42 @@ import Modal from '/src/app/components/Header/components/Modal.jsx';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import SupportForm from '@/app/components/Header/components/Payment/SupportForm';
-
-import useCountdownTimer from './hooks/useCountdownTimer'
+import useCountdownTimer from './hooks/useCountdownTimer';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 const FundraisingProgress = ({ data }) => {
-
-    const raisedAmount = parseInt(data.raisedAmount.replace(/,/g, ''), 10);
-    const goalAmount = parseInt(data.goalAmount.replace(/,/g, ''), 10);
-
-    const countdown = useCountdownTimer(30 * 24 * 60 * 60); // 30 zile în secunde
-
-
-    let rawProgressPercentage = (raisedAmount / goalAmount) * 100 || 0;
-    let progressPercentage;
-    if (rawProgressPercentage > 0 && rawProgressPercentage < 1) {
-        progressPercentage = rawProgressPercentage.toFixed(1);  
-    } else {
-        progressPercentage = Math.round(rawProgressPercentage); 
-    }
-
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const [totalRaised, setTotalRaised] = useState(0);
+    const [totalTransactions, setTotalTransactions] = useState(0);
+    const countdown = useCountdownTimer();
+
+    const goalAmount = parseInt(data.goalAmount.replace(/,/g, ''), 10);
+    const wishlistId = data.wishlistId; // Preluăm ID-ul wishlist-ului
+
+    useEffect(() => {
+        const fetchTotalRaised = async () => {
+            try {
+                const response = await fetch(`/api/stripe/total?wishlistId=${wishlistId}`);
+                const result = await response.json();
+
+                setTotalRaised(result.totalRaised || 0);
+                setTotalTransactions(result.totalTransactions || 0);
+            } catch (error) {
+                console.error("Error fetching wishlist data:", error);
+            }
+        };
+
+        fetchTotalRaised();
+
+        const interval = setInterval(fetchTotalRaised, 10000); // Actualizare la 10 secunde
+        return () => clearInterval(interval);
+    }, [wishlistId]);
+
+    let rawProgressPercentage = (totalRaised / goalAmount) * 100 || 0;
+    let progressPercentage = rawProgressPercentage > 0 && rawProgressPercentage < 1 
+        ? rawProgressPercentage.toFixed(1) : Math.round(rawProgressPercentage);
 
     useEffect(() => {
         const handleResize = () => {
@@ -35,47 +48,38 @@ const FundraisingProgress = ({ data }) => {
 
         handleResize();
         window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
-
-    const openModal = () => {
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
 
     return (
         <div className="text-white">
             <div className="flex items-center justify-between mb-2 w-full lg:w-[346px]">
-                <span className="text-[20px] lg:text-2xl font-ekmukta font-bold text-[#FFFFFF] leading-[1]">${data.raisedAmount}</span>
+                <span className="text-[20px] lg:text-2xl font-ekmukta font-bold text-[#FFFFFF] leading-[1]">
+                    ${totalRaised.toFixed(2)}
+                </span>
                 <span className="text-md block font-ekMukta text-[15px] md:text-[#E8E8ED] text-[#C1C1C1] leading-[1]">
                     <span className="text-[#FFFFFF] font-semibold font-ekMukta">{countdown}</span>
                 </span>
             </div>
 
-            <div className="relative w-auto lg:w-[380px]">
-                <div className="h-1 bg-[#FFFFFF]/50 rounded-full w-full lg:w-[346px] relative">
+            <div className="relative w-full max-w-[400px] mx-auto"> 
+                <div className="h-1 bg-[#FFFFFF]/50 rounded-full w-full relative">
                     <div
                         className="h-full rounded-full bg-gradient-to-r from-[#E50815] via-[#E50815] to-white"
-                        style={{ width: `${progressPercentage}%` }}
+                        style={{ width: `${Math.min(progressPercentage, 100)}%` }} 
                     ></div>
 
-                    {/* Logica pentru ajustarea punctului */}
                     <div
                         className="absolute top-1/2 -translate-y-1/2"
-                        style={{ left: `calc(${progressPercentage}% - ${progressPercentage < 10 ? '5px' : '10px'})` }}
+                        style={{ left: `calc(${Math.min(progressPercentage, 100)}% - 6px)` }} 
                     >
                         <div className="w-[8px] h-[8px] rounded-full bg-white flex items-center justify-center">
-                            <div className={`w-[6px] h-[6px] rounded-full bg-white {}`}></div>
+                            <div className="w-[6px] h-[6px] rounded-full bg-white"></div>
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <div className="flex items-center justify-between mt-[10px] lg:w-[346px]">
                 <div className="flex flex-col">
@@ -90,19 +94,19 @@ const FundraisingProgress = ({ data }) => {
                 </div>
                 <div className="flex items-center gap-1">
                     <span className="font-semibold font-ekMukta text-[16px] lg:text-[20px] md:text-[#E8E8ED] text-[#FFFFFF]">
-                        {data.supportersCount}
+                        {totalTransactions}
                     </span>
                     <span className="flex items-center text-[#C1C1C1] font-ekMukta font-normal text-[15px]">
-                        {data.supportersLabel}
+                        gifters
                     </span>
                 </div>
             </div>
 
             <div className="hidden md:block mt-2 lg:mt-10">
-                <Support onClick={openModal}/>
+                <Support onClick={() => setIsModalOpen(true)} />
             </div>
 
-            <Modal isOpen={isModalOpen} onClose={closeModal}>
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                 <Elements stripe={stripePromise}>
                     <SupportForm />
                 </Elements>

@@ -1,7 +1,11 @@
 import React from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { useRouter } from 'next/navigation';
 
 const PayPalButton = ({ amount, onSuccess }) => {
+
+  const router = useRouter();
+
   return (
     <PayPalScriptProvider options={{ "client-id": "AfEnL4qp83rEaCb7asE6vWs6LnXEyUvf5z7hGvzEui7faHLUyz3WIEsCbC4qpsV9SrSY2GivGQpL0eSK" }}>
       <div className="w-full rounded-lg overflow-hidden">
@@ -20,7 +24,7 @@ const PayPalButton = ({ amount, onSuccess }) => {
               return orderID;
             }).catch(error => {
               console.error('Error creating order:', error);
-              alert('Error creating order. Please try again.');
+              router.push('/error');
             });
           }}
           onApprove={(data, actions) => {
@@ -56,6 +60,7 @@ const PayPalButton = ({ amount, onSuccess }) => {
           onError={(err) => {
             console.error('Error in PayPal button:', err);
             alert('Error with PayPal transaction. Please try again.');
+            router.push('/error');
           }}
         />
       </div>

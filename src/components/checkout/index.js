@@ -22,12 +22,12 @@ const CheckoutButton = ({ amount, onSuccess }) => {
       router.push('/error');
       return;
     }
-
+    
     const { sessionId } = await response.json();
     const { error } = await stripe.redirectToCheckout({ sessionId });
 
     if (!error && onSuccess) {
-      onSuccess(amount); // Actualizăm suma imediat după plată
+      onSuccess(amount);
     }
   };
 

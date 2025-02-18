@@ -16,14 +16,14 @@ export default async function handler(req, res) {
               product_data: {
                 name: 'Support Donation',
               },
-              unit_amount: amount * 100, // Suma în cenți
+              unit_amount: amount * 100,
             },
             quantity: 1,
           },
         ],
         mode: 'payment',
         success_url: `${req.headers.origin}/success`,
-        cancel_url: `${req.headers.origin}/`,
+        cancel_url: `${req.headers.origin}/error`,
       });
 
       res.status(200).json({ sessionId: session.id });

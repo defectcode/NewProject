@@ -3,17 +3,33 @@ import { useStripe, useElements } from '@stripe/react-stripe-js';
 import PayPalButton from './PayPal/PayPalButton';
 import Image from 'next/image';
 import CheckoutButton from '@/components/checkout';
+import { useRouter } from 'next/navigation';
 
 const SupportForm = () => {
   const [amount, setAmount] = useState(50);
   const [paymentMethod, setPaymentMethod] = useState('stripe');
   const [customAmount, setCustomAmount] = useState('');
   const [isCustomAmount, setIsCustomAmount] = useState(false);
-  const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
   const [fullWishAmount, setFullWishAmount] = useState(1417); 
 
   const stripe = useStripe();
   const elements = useElements();
+  const router = useRouter();
+
+
+  const fetchDonationData = async () => {
+    try {
+      const response = await fetch('/api/stripe/total');
+      const data = await response.json();
+      updateTotal(data.totalAmount, data.donationsCount);
+    } catch (error) {
+      console.error('Eroare la preluarea datelor despre donații:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDonationData();
+  }, []);
 
   useEffect(() => {
     if (stripe && amount > 0) {
@@ -35,7 +51,6 @@ const SupportForm = () => {
       });
 
       pr.on('paymentmethod', async (event) => {
-        console.log("🔵 Stripe Payment Triggered!", event);
       
         const { paymentIntent, error } = await stripe.confirmCardPayment(CLIENT_SECRET, {
           payment_method: event.paymentMethod.id,
@@ -46,12 +61,9 @@ const SupportForm = () => {
           console.error("🔴 Payment Error:", error);
         } else {
           event.complete('success');
-          console.log("🟢 Payment Intent after confirmation:", paymentIntent);
           handlePaymentSuccess(paymentIntent);
         }
       });
-      
-      
     }
   }, [stripe, amount]);
 
@@ -74,21 +86,12 @@ const SupportForm = () => {
 
   const handleDonationSuccess = (amount) => {
     if (onSuccess) {
-        onSuccess(amount); // Actualizăm suma și numărul de donatori
+        onSuccess(amount); 
     }
   };
 
-  const handlePaymentSuccess = async (paymentIntent) => {
-    console.log("🔵 Payment Success Triggered!");
-    console.log("🟢 Payment Intent Data:", paymentIntent);
-  
-    if (!paymentIntent) {
-      console.error("🔴 ERROR: Payment Intent is undefined!");
-      return;
-    }
-  
+  const handlePaymentSuccess = async (paymentIntent) => {  
     const userEmail = paymentIntent?.charges?.data[0]?.billing_details?.email || "no-email@example.com";
-    console.log("🟢 Extracted Email:", userEmail);
   
     try {
       const response = await fetch('/api/sendThankYouEmail', {
@@ -96,18 +99,21 @@ const SupportForm = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: userEmail, amount }),
       });
-  
-      console.log("🟢 Email API Response:", response.status);
-  
+    
       if (!response.ok) {
         throw new Error('Failed to send email');
-      }
-  
-      console.log('✅ Thank you email sent successfully!');
+      }  
     } catch (error) {
-      console.error('🔴 Error sending thank you email:', error);
+      router.push('/error');
     }
+
+    router.push('/success');
   };
+
+  const handlePaymentFailure = () => {
+    router.push('/error');
+  };
+  
   
   return (
     <div className="flex flex-col justify-center items-center min-h-[350px] h-auto w-full">
@@ -122,9 +128,7 @@ const SupportForm = () => {
                   ? 'bg-white text-black font-bold'
                   : 'bg-[#252525] border-[1px] border-[#F1F1F1]/10'
               }`}
-            >
-              $1
-            </button>
+            > $1 </button>
 
             <button
               onClick={() => handleAmountChange(50)}
@@ -133,9 +137,7 @@ const SupportForm = () => {
                   ? 'bg-white text-black font-extrabold'
                   : 'bg-[#252525] border-[1px] border-[#F1F1F1]/10'
               }`}
-            >
-              $50
-            </button>
+            > $50 </button>
 
             <button
               onClick={() => handleAmountChange(500)}
@@ -144,9 +146,7 @@ const SupportForm = () => {
                   ? 'bg-white text-black font-bold'
                   : 'bg-[#252525] border-[1px] border-[#F1F1F1]/10'
               }`}
-            >
-              $500
-            </button>
+            > $500 </button>
 
             <div className="relative flex items-center w-1/4 md:flex-grow">
               <div className={`absolute left-[15px] ml- top-1/2 transform -translate-y-1/2 font-ekMukta text-[16px] ${isCustomAmount ? "text-black font-bold" : 'text-white'}`}>
@@ -198,12 +198,12 @@ const SupportForm = () => {
 
         {paymentMethod === 'paypal' && (
           <div className="paypal-button-container">
-            <PayPalButton amount={amount} onSuccess={handlePaymentSuccess} />
+            <PayPalButton amount={amount} onSuccess={handlePaymentSuccess} onError={handlePaymentFailure}/>
           </div>
         )}
         {paymentMethod === 'stripe' && (
           <div className="flex justify-center items-end">
-            <CheckoutButton amount={amount} onSuccess={() => handleDonationSuccess(amount)} />
+            <CheckoutButton amount={amount} onSuccess={() => handleDonationSuccess} onError={handlePaymentFailure}/>
           </div>
         )}
       </div>
