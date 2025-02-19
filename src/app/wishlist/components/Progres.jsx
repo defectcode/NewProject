@@ -20,23 +20,24 @@ const FundraisingProgress = ({ data }) => {
     useEffect(() => {
         const fetchTotalRaised = async () => {
             try {
-                const response = await fetch('/api/stripe/total');
+                if (!data.paymentLinkId) return; // Asigură-te că există un paymentLinkId
+                
+                const response = await fetch(`/api/stripe/total?paymentLinkId=${data.paymentLinkId}`);
+                if (!response.ok) throw new Error("Failed to fetch data");
+                
                 const result = await response.json();
-            
-
                 setTotalRaised(result.totalRaised || 0);
                 setTotalTransactions(result.totalTransactions || 0);
             } catch (error) {
                 console.error("Error fetching total raised:", error);
             }
         };
-
+    
         fetchTotalRaised();
-
         const interval = setInterval(fetchTotalRaised, 10000);
         return () => clearInterval(interval);
-    }, []);
-
+    }, [data.paymentLinkId]); // Dependență pentru actualizare corectă
+    
     let rawProgressPercentage = (totalRaised / goalAmount) * 100 || 0;
     let progressPercentage = rawProgressPercentage > 0 && rawProgressPercentage < 1 
         ? rawProgressPercentage.toFixed(1) : Math.round(rawProgressPercentage);

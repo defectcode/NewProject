@@ -93,7 +93,7 @@ export default function HeaderCrowdfundingMobile() {
 
         <div className={`${styles.contentWrapper} relative h-full flex flex-col justify-end px-5`}>
             <Title title={currentData.title} description={currentData.description} />
-            <FundraisingProgress data={currentData} />
+            <FundraisingProgress data={{ goalAmount: "1417", paymentLinkId: "token_abc123" }} />
             <GiftSection />
         </div>
 
