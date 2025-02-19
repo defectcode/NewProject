@@ -29,6 +29,8 @@ export default async function handler(req, res) {
       payment.status === "succeeded"
     );
 
+    
+
     console.log("✅ Filtered Payments:", JSON.stringify(filteredPayments, null, 2));
 
     const totalRaised = filteredPayments.reduce((acc, payment) => acc + payment.amount_received, 0) / 100;
