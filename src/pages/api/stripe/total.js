@@ -16,8 +16,6 @@ export default async function handler(req, res) {
   try {
     const payments = await stripe.paymentIntents.list({ limit: 100 });
 
-    console.log("🔎 All Payments from Stripe:", JSON.stringify(payments, null, 2));
-
     if (!payments || !payments.data) {
       return res.status(500).json({ error: "Stripe API response is invalid." });
     }
@@ -29,16 +27,11 @@ export default async function handler(req, res) {
       payment.status === "succeeded"
     );
 
-    
-
-    console.log("✅ Filtered Payments:", JSON.stringify(filteredPayments, null, 2));
-
     const totalRaised = filteredPayments.reduce((acc, payment) => acc + payment.amount_received, 0) / 100;
     const totalTransactions = filteredPayments.length;
 
     res.status(200).json({ totalRaised, totalTransactions });
   } catch (error) {
-    console.error("❌ Stripe API Error:", error);
     res.status(500).json({ error: error.message });
   }
 }

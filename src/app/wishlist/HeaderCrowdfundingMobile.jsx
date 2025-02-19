@@ -77,8 +77,6 @@ export default function HeaderCrowdfundingMobile() {
 
   return (
     <div className="relative max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">    
-        {/* <NavBarCrowd /> */}
-
         <div
             ref={headerRef}
             className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto md:bg-[url('/imgs/Background.webp')] bg-[url('/imgs/Crowdfunding/5294511292218891886.webp')] max-md:background-fixed`}
@@ -93,7 +91,7 @@ export default function HeaderCrowdfundingMobile() {
 
         <div className={`${styles.contentWrapper} relative h-full flex flex-col justify-end px-5`}>
             <Title title={currentData.title} description={currentData.description} />
-            <FundraisingProgress data={{ goalAmount: "1417", paymentLinkId: "token_abc123" }} />
+            <FundraisingProgress data={{ goalAmount: "1417", paymentLinkId: "plink_1QtnQ7Eop8dXaHk5KT3KWoFA" }} />
             <GiftSection />
         </div>
 
@@ -112,8 +110,6 @@ export default function HeaderCrowdfundingMobile() {
                 <Image src="/imgs/pause.svg" alt="Play Video" width={50} height={50} className="w-[50px] h-[50px] z-20" />
             </button>
         )}
-
-
 
         {isVideoVisible && (
             <VideoPlayer

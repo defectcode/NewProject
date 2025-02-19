@@ -20,7 +20,7 @@ const FundraisingProgress = ({ data }) => {
     useEffect(() => {
         const fetchTotalRaised = async () => {
             try {
-                if (!data.paymentLinkId) return; // Asigură-te că există un paymentLinkId
+                if (!data.paymentLinkId) return; 
                 
                 const response = await fetch(`/api/stripe/total?paymentLinkId=${data.paymentLinkId}`);
                 if (!response.ok) throw new Error("Failed to fetch data");
@@ -36,7 +36,7 @@ const FundraisingProgress = ({ data }) => {
         fetchTotalRaised();
         const interval = setInterval(fetchTotalRaised, 10000);
         return () => clearInterval(interval);
-    }, [data.paymentLinkId]); // Dependență pentru actualizare corectă
+    }, [data.paymentLinkId]);
     
     let rawProgressPercentage = (totalRaised / goalAmount) * 100 || 0;
     let progressPercentage = rawProgressPercentage > 0 && rawProgressPercentage < 1 
@@ -56,23 +56,25 @@ const FundraisingProgress = ({ data }) => {
         <div className="text-white">
             <div className="flex items-center justify-between mb-2 w-full lg:w-[346px]">
                 <span className="text-[20px] lg:text-2xl font-ekmukta font-bold text-[#FFFFFF] leading-[1]">
-                    ${totalRaised.toFixed(2)}
+                    $117
                 </span>
+                {/* <span className="text-[20px] lg:text-2xl font-ekmukta font-bold text-[#FFFFFF] leading-[1]">
+                    ${totalRaised.toFixed(2)}
+                </span> */}
                 <span className="text-md block font-ekMukta text-[15px] md:text-[#E8E8ED] text-[#C1C1C1] leading-[1]">
                     <span className="text-[#FFFFFF] font-semibold font-ekMukta">{countdown}</span>
                 </span>
             </div>
-
             <div className="relative w-full max-w-[400px] mx-auto"> 
                 <div className="h-1 bg-[#FFFFFF]/50 rounded-full w-full relative">
                     <div
                         className="h-full rounded-full bg-gradient-to-r from-[#E50815] via-[#E50815] to-white"
-                        style={{ width: `${Math.min(progressPercentage, 100)}%` }} 
+                        style={{ width: `${Math.min(progressPercentage, 8)}%` }} 
                     ></div>
 
                     <div
                         className="absolute top-1/2 -translate-y-1/2"
-                        style={{ left: `calc(${Math.min(progressPercentage, 100)}% - 6px)` }} 
+                        style={{ left: `calc(${Math.min(progressPercentage, 8)}% - 6px)` }} 
                     >
                         <div className="w-[8px] h-[8px] rounded-full bg-white flex items-center justify-center">
                             <div className="w-[6px] h-[6px] rounded-full bg-white"></div>
@@ -80,14 +82,15 @@ const FundraisingProgress = ({ data }) => {
                     </div>
                 </div>
             </div>
-
-
             <div className="flex items-center justify-between mt-[10px] lg:w-[346px]">
                 <div className="flex flex-col">
                     <span className="font-semibold text-[15px] lg:text-[20px]">
-                        <span className='font-semibold font-ekMukta text-[15px] md:text-[#E8E8ED] text-[#FFFFFF]'>
-                            {progressPercentage}<span className='text-[13px] font-ekMukta'>%</span>&nbsp;
+                    <span className='font-semibold font-ekMukta text-[15px] md:text-[#E8E8ED] text-[#FFFFFF]'>
+                            8<span className='text-[13px] font-ekMukta'>%</span>&nbsp;
                         </span>
+                        {/* <span className='font-semibold font-ekMukta text-[15px] md:text-[#E8E8ED] text-[#FFFFFF]'>
+                            {progressPercentage}<span className='text-[13px] font-ekMukta'>%</span>&nbsp;
+                        </span> */}
                         <span className="text-[#C1C1C1] font-ekmukta text-[15px]">
                             raised of ${data.goalAmount} wish
                         </span>
@@ -106,7 +109,6 @@ const FundraisingProgress = ({ data }) => {
             <div className="hidden md:block mt-2 lg:mt-10">
                 <Support onClick={() => setIsModalOpen(true)} />
             </div>
-
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                 <Elements stripe={stripePromise}>
                     <SupportForm />
