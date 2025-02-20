@@ -15,7 +15,7 @@ const Success = () => {
           <Image src="/imgs/pages/Success.svg" alt="success" width={60} height={50} />
           <h1 className="text-[#FFFFFF] text-[24px] font-extrabold mt-[30px] mb-4 leading-[1]">Thank you, Name! </h1>
           <p className="text-[#FFFFFF] text-[16px] font-extralight mb-10">
-            Your payment was processed successfully.You'll receive a receipt by email shortly.
+            Your payment was processed successfully.You`ll receive a receipt by email shortly.
           </p>
           <Link legacyBehavior href="/" >
             <button className="bg-[#F5F5F7] text-[#1E1E1E] px-6 py-3 rounded-lg text-lg font-semibold hover:bg-green-700 transition duration-300">
