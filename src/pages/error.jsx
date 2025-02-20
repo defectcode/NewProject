@@ -14,7 +14,7 @@ const Error = () => {
         <div className="flex flex-col items-center">
           <Image src="/imgs/pages/Error.svg" alt="success" width={59} height={59} />
           
-          <h2 className="text-[#FFFFFF] text-[24px] font-extrabold mt-[30px] mb-4">Sory, Name!</h2>
+          <h2 className="text-[#FFFFFF] text-[24px] font-extrabold mt-[30px] mb-4">Sory!</h2>
           <p className="text-gray-400 text-xl mb-8">
             Your payment was not processed.<br/>Try again later!
           </p>
