@@ -77,6 +77,7 @@ export default function HeaderCrowdfundingMobile() {
 
   return (
     <div className="relative max-md:h-[var(--viewport-height)] w-auto text-white font-ekMukta overflow-hidden">    
+
         <div
             ref={headerRef}
             className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat max-md:w-auto md:bg-[url('/imgs/Background.webp')] bg-[url('/imgs/Crowdfunding/5294511292218891886.webp')] max-md:background-fixed`}
