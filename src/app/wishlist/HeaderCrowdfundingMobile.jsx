@@ -92,8 +92,8 @@ export default function HeaderCrowdfundingMobile() {
 
         <div className={`${styles.contentWrapper} relative h-full flex flex-col justify-end px-5`}>
             <Title title={currentData.title} description={currentData.description} />
-            <FundraisingProgress data={{ goalAmount: "1417", paymentLinkId: "plink_1QtnQ7Eop8dXaHk5KT3KWoFA" }} />
-            {/* <FundraisingProgress data={{ goalAmount: "1417", paymentLinkId: "plink_1QtXZhHWwCgaMkWCzM9cDLUa" }} /> */}
+            {/* <FundraisingProgress data={{ goalAmount: "1417", paymentLinkId: "plink_1QtnQ7Eop8dXaHk5KT3KWoFA" }} /> */}
+            <FundraisingProgress data={{ goalAmount: "1417", paymentLinkId: "plink_1QtXZhHWwCgaMkWCzM9cDLUa" }} />
 
             <GiftSection />
         </div>
