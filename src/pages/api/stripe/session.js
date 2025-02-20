@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
       console.log("🔹 Received data:", { amount, paymentLinkId, userId });
 
-      const origin = req.headers.origin || 'http://localhost:3000';
+      const origin = req.headers.origin || 'https://valeryfain.com';
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
