@@ -71,7 +71,7 @@ const StripePayment = ({ amount, onPaymentSuccess }) => {
             const left = (window.screen.width / 2) - (width / 2);
             const top = (window.screen.height / 2) - (height / 2);
 
-            const stripeDonateUrl = `https://donate.stripe.com/14kaFlb407Nu76weUV?amount=${amount}`;
+            const stripeDonateUrl = `https://donate.stripe.com/3cs4gX9ZWaZGfD24gi?amount=${amount}`;
 
             window.open(
               stripeDonateUrl,
