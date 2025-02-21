@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   }
   
   try {
-    const payments = await stripe.paymentIntents.list({ limit: 100 });
+    const payments = await stripe.paymentIntents.list({ limit: 1000 });
 
     if (!payments || !payments.data) {
       return res.status(500).json({ error: "Stripe API response is invalid." });
