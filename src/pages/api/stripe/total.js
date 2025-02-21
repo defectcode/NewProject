@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     const filteredPayments = payments.data.filter(payment =>
       payment.metadata &&
       payment.metadata.payment_link_id &&
-      payment.metadata.payment_link_id.trim() === paymentLinkId.trim() && 
+      // payment.metadata.payment_link_id.trim() === paymentLinkId.trim() && 
       payment.status === "succeeded"
     );
 
