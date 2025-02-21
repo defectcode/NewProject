@@ -26,7 +26,7 @@ export default async function handler(req, res) {
           },
         ],
         mode: 'payment',
-        metadata: { payment_link_id: paymentLinkId, user_id: userId },
+        metadata: { payment_link_id: 'plink_1QtXZhHWwCgaMkWCzM9cDLUa', user_id: userId },
         success_url: `${origin}/success`,
         cancel_url: `${origin}/error`,
       });

@@ -33,7 +33,7 @@ export default async function handler(req, res) {
       await stripe.paymentIntents.update(session.payment_intent, {
         metadata: {
           payment_link_id: "plink_1QtXZhHWwCgaMkWCzM9cDLUa",
-          user_id: user_id
+          user_id: user_id,
         },
       });
 
