@@ -5,7 +5,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export const config = {
   api: {
-    bodyParser: false, // Stripe necesită bodyParser dezactivat pentru webhook-uri
+    bodyParser: false,
   },
 };
 
@@ -34,11 +34,7 @@ export default async function handler(req, res) {
     try {
       await stripe.paymentIntents.update(session.payment_intent, {
         metadata: {
-          // payment_link_id: session.metadata?.payment_link_id || "plink_1QtnQ7Eop8dXaHk5KT3KWoFA",
-          // payment_link_id: session.metadata?.payment_link_id || "plink_1QtXZhHWwCgaMkWCzM9cDLUa",
           payment_link_id: session.metadata?.payment_link_id || "plink_1QtXZhHWwCgaMkWCzM9cDLUa",
-
-
         },
       });
 
