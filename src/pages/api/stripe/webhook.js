@@ -14,6 +14,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+
+
   const sig = req.headers['stripe-signature'];
   let event;
 
@@ -28,7 +30,6 @@ export default async function handler(req, res) {
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
 
-    // ✅ Adaugă acest log pentru a verifica `metadata`
     console.log("🔹 Session metadata:", session.metadata);
 
     try {

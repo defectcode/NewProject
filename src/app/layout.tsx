@@ -8,10 +8,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Valery Fine",
   description: "Collaboration",
-  // description: "Your site description",
-  themeColor: "#000000",
-  appleMobileWebAppStatusBarStyle: "black-translucent",
-  appleMobileWebAppCapable: "yes",
 };
 
 export default function RootLayout({

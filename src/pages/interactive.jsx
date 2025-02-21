@@ -7,13 +7,13 @@ const Interactive = () => {
         <div>
             <Navbar/>
             <div id="rewards" className={`rewardsContainer relative`}>
-            <div className='overlay'></div>
-            <div className='content'>
-                <div className='iconWrapper'>
-                    <Image src="/imgs/Crowdfunding/Community/progress.svg" alt="Work In Progress Icon" width={1} height={1} />
+                <div className='overlay'></div>
+                <div className='content'>
+                    <div className='iconWrapper'>
+                        <Image src="/imgs/Crowdfunding/Community/progress.svg" alt="Work In Progress Icon" width={1} height={1} />
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     );
 }

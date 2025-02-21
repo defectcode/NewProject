@@ -19,7 +19,7 @@ const Success = () => {
           </p>
           <Link legacyBehavior href="/" >
             <button className="bg-[#F5F5F7] text-[#1E1E1E] px-6 py-3 rounded-lg text-lg font-semibold hover:bg-green-700 transition duration-300">
-            Go Back Home
+              Go Back Home
             </button>
           </Link>
         </div>

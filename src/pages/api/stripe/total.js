@@ -13,7 +13,6 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Payment Link ID is required' });
   }
   
-
   try {
     const payments = await stripe.paymentIntents.list({ limit: 1000 });
 

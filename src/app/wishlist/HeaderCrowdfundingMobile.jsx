@@ -7,14 +7,11 @@ import FundraisingProgress from '../wishlist/components/Progres';
 import styles from './style/Header.module.css';  
 import ButonShere from '../Crowdfunding/components/mobile/ButonShere';
 import GiftSection from '../Crowdfunding/components/mobile/GiftSection';
-import NavBarCrowd from '/src/app/wishlist/components/mobile/NavBarCrowd'
 import VideoPlayer from './components/VideoMobile/VideoPlayer';
 
 export default function HeaderCrowdfundingMobile() {
     const headerRef = useRef(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
-
     const currentData = images[0];
     const [isVideoVisible, setIsVideoVisible] = useState(false);
     const buttonRef = useRef(null); 
@@ -31,14 +28,6 @@ export default function HeaderCrowdfundingMobile() {
         if (document.fullscreenElement) {
             document.exitFullscreen();
         }
-    };
-
-    const openSupportModal = () => {
-        setIsSupportModalOpen(true);
-    };
-    
-    const closeSupportModal = () => {
-        setIsSupportModalOpen(false);
     };
 
     useEffect(() => {
@@ -60,7 +49,6 @@ export default function HeaderCrowdfundingMobile() {
             }
         };
     }, []);
-
 
     useEffect(() => {
         const updateHeight = () => {

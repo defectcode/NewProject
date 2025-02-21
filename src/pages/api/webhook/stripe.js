@@ -18,9 +18,8 @@ export default async function handler(req, res) {
 
         console.log("✅ PaymentIntent succeeded:", paymentIntent.id);
 
-        // Adaugă metadata acum
         await stripe.paymentIntents.update(paymentIntent.id, {
-            metadata: { payment_link_id: "token_abc123" },
+            metadata: { payment_link_id: "plink_1QtXZhHWwCgaMkWCzM9cDLUa" },
         });
 
         console.log("🔄 Metadata updated for:", paymentIntent.id);

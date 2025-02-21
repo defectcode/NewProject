@@ -43,7 +43,6 @@ const HeaderSeriesConcept = () => {
             </div>
 
 
-{/* https://www.dropbox.com/scl/fi/93yq0hsq1ptdb6dlgico4/VideoAtelier.mp4?rlkey=c2zddkgjz05b05x3pi39rkenq&st=lauvesd1&raw=1 */}
             {isVideoVisible && (
                 <VideoPlayer 
                     videoSrc="https://valeryfain.com/video/desktop.webm" 

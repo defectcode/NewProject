@@ -81,7 +81,6 @@ const FundraisingProgress = ({ data }) => {
                 </div>
             </div>
 
-
             <div className="flex items-center justify-between mt-[10px] lg:w-[346px]">
                 <div className="flex flex-col">
                     <span className="font-semibold text-[15px] lg:text-[20px]">
