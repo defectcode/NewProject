@@ -7,6 +7,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  console.log(JSON.stringify(req.body, null, 2));
+
   const { paymentLinkId } = req.query;
 
   if (!paymentLinkId) {
