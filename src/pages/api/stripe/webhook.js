@@ -27,13 +27,12 @@ export default async function handler(req, res) {
 
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
-
     console.log("🔹 Session metadata:", session.metadata);
 
     try {
       await stripe.paymentIntents.update(session.payment_intent, {
         metadata: {
-          payment_link_id: session.metadata?.payment_link_id || "plink_1QtXZhHWwCgaMkWCzM9cDLUa",
+          payment_link_id: "plink_1QtXZhHWwCgaMkWCzM9cDLUa",
         },
       });
 
