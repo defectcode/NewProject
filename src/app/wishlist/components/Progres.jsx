@@ -7,7 +7,6 @@ import SupportForm from '@/app/components/Header/components/Payment/SupportForm'
 import useCountdownTimer from './hooks/useCountdownTimer';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
-
 const FundraisingProgress = ({ data }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
@@ -26,7 +25,7 @@ const FundraisingProgress = ({ data }) => {
                 if (!response.ok) throw new Error("Failed to fetch data");
                 
                 const result = await response.json();
-                setTotalRaised(result.totalRaised || 0);
+                setTotalRaised((result.totalRaised || 0) + 1135);
                 setTotalTransactions(result.totalTransactions || 0);
             } catch (error) {
                 console.error("Error fetching total raised:", error);
@@ -94,7 +93,7 @@ const FundraisingProgress = ({ data }) => {
                 </div>
                 <div className="flex items-center gap-1">
                     <span className="font-semibold font-ekMukta text-[16px] lg:text-[20px] md:text-[#E8E8ED] text-[#FFFFFF]">
-                        {totalTransactions}
+                        {totalTransactions + 1}
                     </span>
                     <span className="flex items-center text-[#C1C1C1] font-ekMukta font-normal text-[15px]">
                         gifters
